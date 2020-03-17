@@ -18,13 +18,17 @@ public class Player : MonoBehaviourPun, IPunObservable
 
     void Awake()
     {
+        cam = GetComponentInChildren<Camera>();
+
         if (!photonView.IsMine)
+        {
             enabled = false;
+            cam.gameObject.SetActive(false);
+        }
     }
 
     private void Start()
     {
-        cam = GetComponentInChildren<Camera>();
 
         if(hideCursor)
         {
