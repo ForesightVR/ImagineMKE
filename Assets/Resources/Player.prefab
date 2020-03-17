@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  rotationSpeed: 10
+  rotationSpeed: 1
   hideCursor: 1
 --- !u!114 &-2575297340956361790
 MonoBehaviour:

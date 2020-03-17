@@ -20,7 +20,6 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
         PhotonNetwork.OfflineMode = false;
         PhotonNetwork.NickName = "PlayerName";
         PhotonNetwork.GameVersion = "v1";
-
         PhotonNetwork.ConnectUsingSettings();
     }
 

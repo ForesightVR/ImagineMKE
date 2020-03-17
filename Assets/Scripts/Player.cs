@@ -16,12 +16,6 @@ public class Player : MonoBehaviourPun, IPunObservable
     float mouseX;
     float mouseY;
 
-    private void Awake()
-    {
-        if (!photonView.IsMine)
-            enabled = false;
-    }
-
     private void Start()
     {
         cam = GetComponentInChildren<Camera>();
@@ -41,8 +35,11 @@ public class Player : MonoBehaviourPun, IPunObservable
 
     void Move()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        if (photonView.IsMine)
+        {
+            horizontal = Input.GetAxis("Horizontal");
+            vertical = Input.GetAxis("Vertical");
+        }
 
         Vector3 move = new Vector3(horizontal, 0, vertical);
         move = transform.TransformDirection(move);
@@ -53,8 +50,14 @@ public class Player : MonoBehaviourPun, IPunObservable
     void Rotate()
     {
 
-        mouseX += Input.GetAxis("Mouse X") * rotationSpeed;
-        mouseY += Input.GetAxis("Mouse Y") * rotationSpeed;
+        if (photonView.IsMine)
+        {
+            mouseX += Input.GetAxis("Mouse X");
+            mouseY += Input.GetAxis("Mouse Y");
+        }
+
+        mouseX *= rotationSpeed;
+        mouseY *= rotationSpeed;
 
         mouseY = Mathf.Clamp(mouseY, -90f, 90f);
 
