@@ -19,12 +19,12 @@ public class Player : MonoBehaviourPun, IPunObservable
     void Awake()
     {
         cam = GetComponentInChildren<Camera>();
+        cam.gameObject.SetActive(false);
 
         if (!photonView.IsMine)
-        {
             enabled = false;
-            cam.gameObject.SetActive(false);
-        }
+        else
+            cam.gameObject.SetActive(true);
     }
 
     private void Start()
