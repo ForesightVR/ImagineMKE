@@ -16,6 +16,12 @@ public class Player : MonoBehaviourPun, IPunObservable
     float mouseX;
     float mouseY;
 
+    void Awake()
+    {
+        if (!photonView.IsMine)
+            enabled = false;
+    }
+
     private void Start()
     {
         cam = GetComponentInChildren<Camera>();
