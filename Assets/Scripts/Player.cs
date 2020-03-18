@@ -10,6 +10,7 @@ public class Player : MonoBehaviourPun, IPunObservable
     public bool hideCursor = true;
 
     Camera cam;
+    Animator animator;
 
     float horizontal;
     float vertical;
@@ -29,6 +30,7 @@ public class Player : MonoBehaviourPun, IPunObservable
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
 
         if(hideCursor)
         {
@@ -51,10 +53,18 @@ public class Player : MonoBehaviourPun, IPunObservable
             vertical = Input.GetAxis("Vertical");
         }
 
+        animator.SetFloat("Horizontal", horizontal);
+        animator.SetFloat("Vertical", vertical);
+
         Vector3 move = new Vector3(horizontal, 0, vertical);
+
         move = transform.TransformDirection(move);
         move.y = 0;
+
+
         transform.position += move.normalized * speed * Time.deltaTime;
+
+        
     }
 
     void Rotate()
