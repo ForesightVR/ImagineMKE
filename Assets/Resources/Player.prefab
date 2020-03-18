@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: -8953504746447058601}
   - component: {fileID: 1282212309}
   - component: {fileID: 1282212308}
+  - component: {fileID: 2830664979472363697}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -314,11 +315,29 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: MouseX
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Move
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
+--- !u!114 &2830664979472363697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7112158658435239151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126494ae2a10a34499272ed97a6c9f5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logLevel: 1
+  recorderInUse: {fileID: 0}
+  speakerInUse: {fileID: 0}
+  AutoCreateRecorderIfNotFound: 0
+  UsePrimaryRecorder: 1
+  SetupDebugSpeaker: 1
 --- !u!1 &7112158658794469169
 GameObject:
   m_ObjectHideFlags: 0
