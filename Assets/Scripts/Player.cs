@@ -5,8 +5,10 @@ using Photon.Pun;
 
 public class Player : MonoBehaviourPun, IPunObservable
 {
-    public float speed = 5;
+    public float speed = 1;
     public float rotationSpeed = 100;
+    public float runSpeed = 3;
+
     public bool hideCursor = true;
 
     Camera cam;
@@ -16,6 +18,7 @@ public class Player : MonoBehaviourPun, IPunObservable
     float vertical;
     float mouseX;
     float mouseY;
+    bool leftShift;
 
     void Awake()
     {
@@ -47,24 +50,26 @@ public class Player : MonoBehaviourPun, IPunObservable
 
     void Move()
     {
+        leftShift = false;
         if (photonView.IsMine)
         {
             horizontal = Input.GetAxis("Horizontal");
             vertical = Input.GetAxis("Vertical");
+            leftShift = Input.GetKey(KeyCode.LeftShift);
         }
 
-        animator.SetFloat("Horizontal", horizontal);
-        animator.SetFloat("Vertical", vertical);
+        animator.speed = leftShift ? 1.5f : 1;
+        animator.SetFloat("Horizontal", horizontal, .1f, Time.deltaTime);
+        animator.SetFloat("Vertical", vertical, .1f, Time.deltaTime);
 
         Vector3 move = new Vector3(horizontal, 0, vertical);
+
+        animator.SetBool("Move", move == Vector3.zero ? false : true);
 
         move = transform.TransformDirection(move);
         move.y = 0;
 
-
-        transform.position += move.normalized * speed * Time.deltaTime;
-
-        
+        transform.position += move.normalized * (leftShift ? runSpeed :  speed) * Time.deltaTime;
     }
 
     void Rotate()
@@ -75,11 +80,13 @@ public class Player : MonoBehaviourPun, IPunObservable
             mouseX += Input.GetAxis("Mouse X");
             mouseY += Input.GetAxis("Mouse Y");
         }
+        
+        animator.SetFloat("MouseX", Input.GetAxisRaw("Mouse X"), .1f, Time.deltaTime);
 
         mouseX *= rotationSpeed;
         mouseY *= rotationSpeed;
 
-        mouseY = Mathf.Clamp(mouseY, -90f, 90f);
+        mouseY = Mathf.Clamp(mouseY, -60f, 90f);
 
         transform.rotation = Quaternion.Euler(0, mouseX, 0);
         cam.transform.localRotation = Quaternion.Euler(-mouseY, 0, 0);
