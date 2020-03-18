@@ -24,6 +24,8 @@ public class Player : MonoBehaviourPun, IPunObservable
 
     void Awake()
     {
+        DontDestroyOnLoad(this.gameObject);
+
         cam = GetComponentInChildren<Camera>();
         cam.gameObject.SetActive(false);
 

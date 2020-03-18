@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        if(!PhotonNetwork.IsConnected)
+        if (!PhotonNetwork.IsConnected)
         {
             SceneManager.LoadScene(menuSceneName);
             return;
@@ -24,10 +24,14 @@ public class GameManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         //Player.RefereshInstance(ref localPlayer, playerPrefab);
+
+        if (Player.LocalPlayerInstance == null)
+            PhotonNetwork.Instantiate(playerPrefab.gameObject.name, Vector3.zero, Quaternion.identity);
     }
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
+        Debug.Log("Player Entered Room");
         base.OnPlayerEnteredRoom(newPlayer);
         if(Player.LocalPlayerInstance == null)
             PhotonNetwork.Instantiate(playerPrefab.gameObject.name, Vector3.zero, Quaternion.identity);
