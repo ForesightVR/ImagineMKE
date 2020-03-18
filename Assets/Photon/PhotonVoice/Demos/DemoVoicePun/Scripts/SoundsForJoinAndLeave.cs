@@ -1,7 +1,6 @@
 ﻿using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
-
 public class SoundsForJoinAndLeave : MonoBehaviourPunCallbacks
 {
     public AudioClip JoinClip;
@@ -10,6 +9,7 @@ public class SoundsForJoinAndLeave : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
+        
         if (this.JoinClip != null)
         {
             if (this.source == null) this.source = FindObjectOfType<AudioSource>();

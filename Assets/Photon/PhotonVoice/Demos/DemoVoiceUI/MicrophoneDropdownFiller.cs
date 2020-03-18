@@ -2,7 +2,7 @@
 using Photon.Voice.Unity;
 using UnityEngine;
 using UnityEngine.UI;
-
+using Microphone = FrostweepGames.Plugins.Native;
 
 namespace Photon.Voice.DemoVoiceUI
 {
@@ -59,7 +59,7 @@ namespace Photon.Voice.DemoVoiceUI
             this.micOptions = new List<MicRef>();
             List<string> micOptionsStrings = new List<string>();
 
-            foreach (string x in Microphone.devices)
+            foreach (string x in Microphone.CustomMicrophone.devices)
             {
                 this.micOptions.Add(new MicRef(x));
                 micOptionsStrings.Add(string.Format("[Unity] {0}", x));

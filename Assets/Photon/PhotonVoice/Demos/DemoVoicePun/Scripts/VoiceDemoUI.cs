@@ -11,8 +11,9 @@
 using System;
 using Photon.Voice.Unity;
 using Photon.Voice.PUN;
-
 #pragma warning disable 0649 // Field is never assigned to, and will always have its default value
+
+using Microphone = FrostweepGames.Plugins.Native;
 
 namespace ExitGames.Demos.DemoPunVoice
 {
@@ -20,6 +21,7 @@ namespace ExitGames.Demos.DemoPunVoice
     using UnityEngine;
     using UnityEngine.UI;
     using Client.Photon;
+    using Microphone = FrostweepGames.Plugins.Native;
 
 #if !UNITY_EDITOR && UNITY_PS4
     using Sony.NP;
@@ -260,22 +262,22 @@ namespace ExitGames.Demos.DemoPunVoice
             }
             if (devicesInfoText != null)
             {
-                if (Microphone.devices == null || Microphone.devices.Length == 0)
+                if (Microphone.CustomMicrophone.devices == null || Microphone.CustomMicrophone.devices.Length == 0)
                 {
                     devicesInfoText.enabled = true;
                     devicesInfoText.color = Color.red;
-                    devicesInfoText.text = "No microphone device detected!";
+                    devicesInfoText.text = "No Microphone.CustomMicrophone device detected!";
                 }
-                else if (Microphone.devices.Length == 1)
+                else if (Microphone.CustomMicrophone.devices.Length == 1)
                 {
-                    devicesInfoText.text = string.Format("Mic.: {0}", Microphone.devices[0]);
+                    devicesInfoText.text = string.Format("Mic.: {0}", Microphone.CustomMicrophone.devices[0]);
                 }
                 else
                 {
-                    devicesInfoText.text = string.Format("Multi.Mic.Devices:\n0. {0} (active)\n", Microphone.devices[0]);
-                    for (int i = 1; i < Microphone.devices.Length; i++)
+                    devicesInfoText.text = string.Format("Multi.Mic.Devices:\n0. {0} (active)\n", Microphone.CustomMicrophone.devices[0]);
+                    for (int i = 1; i < Microphone.CustomMicrophone.devices.Length; i++)
                     {
-                        devicesInfoText.text = string.Concat(devicesInfoText.text, string.Format("{0}. {1}\n", i, Microphone.devices[i]));
+                        devicesInfoText.text = string.Concat(devicesInfoText.text, string.Format("{0}. {1}\n", i, Microphone.CustomMicrophone.devices[i]));
                     }
                 }
             }

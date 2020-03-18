@@ -12,6 +12,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Microphone = FrostweepGames.Plugins.Native;
 
 namespace Photon.Voice.Unity
 {
@@ -1042,7 +1043,7 @@ namespace Photon.Voice.Unity
                             this.Logger.LogError("Photon microphone input source creation failure: {0}. Falling back to Unity microphone", inputSource.Error);
                         }
                     }
-                    if (Microphone.devices.Length < 1)
+                    if (Microphone.CustomMicrophone.devices.Length < 1)
                     {
                         if (this.Logger.IsInfoEnabled)
                         {
@@ -1244,12 +1245,12 @@ namespace Photon.Voice.Unity
 
         private static bool IsDefaultUnityMic(string mic)
         {
-            return string.IsNullOrEmpty(mic) || Array.IndexOf(Microphone.devices, mic) == 0;
+            return string.IsNullOrEmpty(mic) || Array.IndexOf(Microphone.CustomMicrophone.devices, mic) == 0;
         }
 
         private static bool IsValidUnityMic(string mic)
         {
-            return string.IsNullOrEmpty(mic) || Microphone.devices.Contains(mic);
+            return string.IsNullOrEmpty(mic) || Microphone.CustomMicrophone.devices.Contains(mic);
         }
 
         #endregion

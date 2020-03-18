@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Linq;
+using Microphone = FrostweepGames.Plugins.Native;
 
 namespace Photon.Voice.Unity
 {
@@ -17,13 +18,13 @@ namespace Photon.Voice.Unity
             {
                 this.device = device;
 				this.logger = logger;
-                if (Microphone.devices.Length < 1)
+                if (Microphone.CustomMicrophone.devices.Length < 1)
                 {
                     Error = "No microphones found (Microphone.devices is empty)";
                     logger.LogError("[PV] MicWrapper: " + Error);
                     return;
                 }
-                if (!string.IsNullOrEmpty(device) && !Microphone.devices.Contains(device))
+                if (!string.IsNullOrEmpty(device) && !Microphone.CustomMicrophone.devices.Contains(device))
                 {
                     logger.LogError(string.Format("[PV] MicWrapper: \"{0}\" is not a valid Unity microphone device, falling back to default one", device));
                     device = null;
@@ -31,7 +32,7 @@ namespace Photon.Voice.Unity
                 int minFreq;
                 int maxFreq;
                 logger.LogInfo("[PV] MicWrapper: initializing microphone '{0}', suggested frequency = {1}).", device, suggestedFrequency);
-                Microphone.GetDeviceCaps(device, out minFreq, out maxFreq);
+                Microphone.CustomMicrophone.GetDeviceCaps(device, out minFreq, out maxFreq);
                 var frequency = suggestedFrequency;
                 //        minFreq = maxFreq = 44100; // test like android client
                 if (suggestedFrequency < minFreq || maxFreq != 0 && suggestedFrequency > maxFreq)
@@ -40,7 +41,7 @@ namespace Photon.Voice.Unity
                         suggestedFrequency, minFreq, maxFreq);
                     frequency = maxFreq;
                 }
-                this.mic = Microphone.Start(device, true, 1, frequency);
+                this.mic = Microphone.CustomMicrophone.Start(device, true, 1, frequency);
                 logger.LogInfo("[PV] MicWrapper: microphone '{0}' initialized, frequency = {1}, channels = {2}.", device, this.mic.frequency, this.mic.channels);
             }
             catch (Exception e)
@@ -60,7 +61,7 @@ namespace Photon.Voice.Unity
 
         public void Dispose()
         {
-            Microphone.End(this.device);
+            Microphone.CustomMicrophone.End(this.device);
         }
 
         private int micPrevPos;
@@ -73,7 +74,7 @@ namespace Photon.Voice.Unity
             {
                 return false;
             }
-            int micPos = Microphone.GetPosition(this.device);
+            int micPos = Microphone.CustomMicrophone.GetPosition(this.device);
             // loop detection
             if (micPos < micPrevPos)
             {
