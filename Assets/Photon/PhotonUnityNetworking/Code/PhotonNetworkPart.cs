@@ -2143,6 +2143,10 @@ namespace Photon.Pun
 
 
                     PhotonView pvToDestroy = null;
+
+                    for(int i = 0; i < photonViewList.Count; i++)
+                        Debug.Log(photonViewList.Keys.ToArray()[i]);
+
                     if (photonViewList.TryGetValue(instantiationId, out pvToDestroy))
                     {
                         RemoveInstantiatedGO(pvToDestroy.gameObject, true);

@@ -23,12 +23,14 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        Player.RefereshInstance(ref localPlayer, playerPrefab);
+        //Player.RefereshInstance(ref localPlayer, playerPrefab);
     }
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
         base.OnPlayerEnteredRoom(newPlayer);
-        Player.RefereshInstance(ref localPlayer, playerPrefab);
+        if(Player.LocalPlayerInstance == null)
+            PhotonNetwork.Instantiate(playerPrefab.gameObject.name, Vector3.zero, Quaternion.identity);
+        //Player.RefereshInstance(ref localPlayer, playerPrefab);
     }
 }

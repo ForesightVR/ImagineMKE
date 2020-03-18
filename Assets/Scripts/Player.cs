@@ -11,6 +11,8 @@ public class Player : MonoBehaviourPun, IPunObservable
 
     public bool hideCursor = true;
 
+    public static GameObject LocalPlayerInstance;
+
     Camera cam;
     Animator animator;
 
@@ -28,7 +30,10 @@ public class Player : MonoBehaviourPun, IPunObservable
         if (!photonView.IsMine)
             enabled = false;
         else
+        {
+            LocalPlayerInstance = this.gameObject;
             cam.gameObject.SetActive(true);
+        }
     }
 
     private void Start()
@@ -92,20 +97,21 @@ public class Player : MonoBehaviourPun, IPunObservable
         cam.transform.localRotation = Quaternion.Euler(-mouseY, 0, 0);
     }
 
-    public static void RefereshInstance(ref Player player, Player prefab)
-    {
-        Vector3 position = Vector3.zero;
-        Quaternion rotation = Quaternion.identity;
+    //public static void RefereshInstance(ref Player player, Player prefab)
+    //{
+    //    Vector3 position = Vector3.zero;
+    //    Quaternion rotation = Quaternion.identity;
 
-        if (player != null)
-        {
-            position = player.transform.position;
-            rotation = player.transform.rotation;
-            PhotonNetwork.Destroy(player.gameObject);
-        }
+    //    if (player != null)
+    //    {
+    //        position = player.transform.position;
+    //        rotation = player.transform.rotation;
+    //       // PhotonNetwork.Destroy(player.gameObject);
+    //    }
 
-        player = PhotonNetwork.Instantiate(prefab.gameObject.name, position, rotation).GetComponent<Player>();
-    }
+    //    if(player == null)
+    //        player = PhotonNetwork.Instantiate(prefab.gameObject.name, position, rotation).GetComponent<Player>();
+    //}
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
