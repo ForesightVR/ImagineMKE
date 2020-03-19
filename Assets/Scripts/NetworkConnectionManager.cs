@@ -12,6 +12,9 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     public static NetworkConnectionManager Instance;
     public string roomName;
 
+    private string adminPassword = "foresightAdmin";
+    public bool IsAdmin { get; private set; }
+
     private void Awake()
     {
         Instance = this;
@@ -27,6 +30,14 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     public void SetNickName(TMP_InputField inputField)
     {
         PhotonNetwork.NickName = inputField.text;
+    }
+
+    public void CheckAdminStatus(TMP_InputField inputField)
+    {
+        if (inputField.text == adminPassword)
+            IsAdmin = true;
+        else
+            IsAdmin = false;
     }
 
     public void ConnectToMaster()

@@ -108,6 +108,7 @@ public class Player : MonoBehaviourPun, IPunObservable
         cam.transform.localRotation = Quaternion.Euler(-mouseY, 0, 0);
     }
 
+
     //public static void RefereshInstance(ref Player player, Player prefab)
     //{
     //    Vector3 position = Vector3.zero;

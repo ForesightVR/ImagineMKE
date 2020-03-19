@@ -24,7 +24,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         if (Player.LocalPlayerInstance == null)
+        {
             PhotonNetwork.Instantiate(playerPrefab.gameObject.name, Vector3.zero, Quaternion.identity);
+            PhotonNetwork.LocalPlayer.SetAdminStatus(NetworkConnectionManager.Instance.IsAdmin);
+        }
     }
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
