@@ -14,7 +14,7 @@ public class PlayerList : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab))
             TogglePlayerList(!playerList.activeSelf);
     }
 
@@ -38,6 +38,12 @@ public class PlayerList : MonoBehaviour
                 newPlayerInfo.SetInfo(player);
                 playerInfos.Add(newPlayerInfo);
             }
+        }
+
+        if(PhotonNetwork.LocalPlayer.IsAdmin)
+        {
+            foreach (PlayerInfo info in playerInfos)
+                info.SetAdmin();
         }
     }
 }

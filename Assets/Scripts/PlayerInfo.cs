@@ -12,9 +12,11 @@ public class PlayerInfo : MonoBehaviour
     public void SetInfo(Photon.Realtime.Player player)
     {
         playerName.text = player.NickName;
+    }
 
-        if (player.IsAdmin)
-            kickButton.SetActive(true);
+    public void SetAdmin()
+    {
+        kickButton.SetActive(true);
     }
 
     public void ChangeVolume()
