@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 0e07785beb45aed4196e4a4531e1fd1e
   - enabled: 1
-    path: Assets/Scenes/MainScene.unity
+    path: Assets/Scenes/Islands of Brilliance.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
