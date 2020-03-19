@@ -15,6 +15,7 @@ public class Player : MonoBehaviourPun, IPunObservable
 
     public static GameObject LocalPlayerInstance;
 
+    public CameraFacingBillboard cameraFacingBillboard;
     [HideInInspector]
     public Camera cam;
     Animator animator;
@@ -32,6 +33,7 @@ public class Player : MonoBehaviourPun, IPunObservable
         cam = GetComponentInChildren<Camera>();
         cam.gameObject.SetActive(false);
         nickName.text = photonView.Owner.NickName;
+        Debug.LogError("Name: " + nickName + " Entered " + PhotonNetwork.CurrentRoom.Name);
 
         if (!photonView.IsMine)
         {
@@ -39,6 +41,7 @@ public class Player : MonoBehaviourPun, IPunObservable
         }
         else
         {
+            Debug.LogError("Name: " + nickName.text);
             LocalPlayerInstance = this.gameObject;
             cam.gameObject.SetActive(true);
         }

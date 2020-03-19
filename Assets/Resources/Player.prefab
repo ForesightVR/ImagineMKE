@@ -563,6 +563,7 @@ MonoBehaviour:
   runSpeed: 8
   nickName: {fileID: 1692887540}
   hideCursor: 1
+  cameraFacingBillboard: {fileID: 2721044787151386225}
   cam: {fileID: 0}
 --- !u!114 &-2575297340956361790
 MonoBehaviour:

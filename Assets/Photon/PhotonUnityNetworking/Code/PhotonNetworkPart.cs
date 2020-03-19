@@ -884,6 +884,32 @@ namespace Photon.Pun
             return result;
         }
 
+        public static PhotonView GetPhotonView(Player photonPlayer)
+        {
+            PhotonView result = null;
+            //photonViewList.TryGetValue(viewID, out result);
+
+            if (result == null)
+            {
+                PhotonView[] views = GameObject.FindObjectsOfType(typeof(PhotonView)) as PhotonView[];
+
+                for (int i = 0; i < views.Length; i++)
+                {
+                    PhotonView view = views[i];
+                    if (view.Owner == photonPlayer)
+                    {
+                        if (view.didAwake)
+                        {
+                            Debug.LogWarning("Had to lookup view that wasn't in photonViewList: " + view);
+                        }
+                        return view;
+                    }
+                }
+            }
+
+            return result;
+        }
+
         public static void RegisterPhotonView(PhotonView netView)
         {
             if (!Application.isPlaying)

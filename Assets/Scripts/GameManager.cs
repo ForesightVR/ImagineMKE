@@ -23,8 +23,6 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        //Player.RefereshInstance(ref localPlayer, playerPrefab);
-
         if (Player.LocalPlayerInstance == null)
             PhotonNetwork.Instantiate(playerPrefab.gameObject.name, Vector3.zero, Quaternion.identity);
     }
@@ -35,6 +33,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         base.OnPlayerEnteredRoom(newPlayer);
         if(Player.LocalPlayerInstance == null)
             PhotonNetwork.Instantiate(playerPrefab.gameObject.name, Vector3.zero, Quaternion.identity);
+
         //Player.RefereshInstance(ref localPlayer, playerPrefab);
     }
 }
