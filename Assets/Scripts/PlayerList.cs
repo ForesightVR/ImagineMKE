@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using System.Linq;
+using Photon.Realtime;
 
-public class PlayerList : MonoBehaviour
+public class PlayerList : MonoBehaviourPunCallbacks
 {
     public PlayerInfo playerInfoPrefab;
     public GameObject playerList;
@@ -45,5 +46,15 @@ public class PlayerList : MonoBehaviour
             foreach (PlayerInfo info in playerInfos)
                 info.SetAdmin();
         }
+    }
+
+    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    {
+        base.OnPlayerLeftRoom(otherPlayer);
+
+        PlayerInfo playerInfo = playerInfos.FirstOrDefault(x => x.playerName.text == otherPlayer.NickName);
+
+        if (playerInfo)
+            playerInfos.Remove(playerInfo);
     }
 }
