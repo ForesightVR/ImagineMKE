@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using TMPro;
 
 public class Player : MonoBehaviourPun, IPunObservable
 {
     public float speed = 1;
     public float rotationSpeed = 100;
     public float runSpeed = 3;
+    public TextMeshProUGUI nickName;
 
     public bool hideCursor = true;
 
     public static GameObject LocalPlayerInstance;
 
-    Camera cam;
+    [HideInInspector]
+    public Camera cam;
     Animator animator;
 
     float horizontal;
@@ -28,9 +31,12 @@ public class Player : MonoBehaviourPun, IPunObservable
 
         cam = GetComponentInChildren<Camera>();
         cam.gameObject.SetActive(false);
+        nickName.text = photonView.Owner.NickName;
 
         if (!photonView.IsMine)
+        {
             enabled = false;
+        }
         else
         {
             LocalPlayerInstance = this.gameObject;
