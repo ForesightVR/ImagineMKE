@@ -50,11 +50,14 @@ public class PlayerList : MonoBehaviourPunCallbacks
 
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
     {
+        Debug.Log("OnPlayerLeftRoom");
         base.OnPlayerLeftRoom(otherPlayer);
-
         PlayerInfo playerInfo = playerInfos.FirstOrDefault(x => x.playerName.text == otherPlayer.NickName);
 
         if (playerInfo)
+        {
             playerInfos.Remove(playerInfo);
+            Destroy(playerInfo.gameObject);
+        }
     }
 }
