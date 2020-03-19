@@ -11,6 +11,7 @@ public class OnConnectedToServer : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         base.OnConnectedToMaster();
+        Debug.Log("E _ ONConnected");
         unityEvent?.Invoke();
     }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using System.Linq;
 using Photon.Realtime;
+using UnityEngine.SceneManagement;
 
 public class PlayerList : MonoBehaviourPunCallbacks
 {
@@ -22,7 +23,16 @@ public class PlayerList : MonoBehaviourPunCallbacks
     public void TogglePlayerList(bool activeState)
     {
         if(activeState == true)
+        {
             UpdatePlayerList();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
 
         playerList.SetActive(activeState);
     }
@@ -46,6 +56,21 @@ public class PlayerList : MonoBehaviourPunCallbacks
             foreach (PlayerInfo info in playerInfos)
                 info.SetAdmin();
         }
+    }
+
+    public void KickPlayer(PlayerInfo playerToKick)
+    {
+        if (PhotonNetwork.LocalPlayer.IsAdmin)
+        {
+            PhotonNetwork.CloseConnection(playerToKick.Player);
+        }
+    }
+
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        base.OnDisconnected(cause);
+        Debug.Log("Disconnected");
+        SceneManager.LoadScene(0);
     }
 
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)

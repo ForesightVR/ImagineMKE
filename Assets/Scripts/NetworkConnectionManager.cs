@@ -17,7 +17,14 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (Instance != this)
+            Destroy(gameObject);
+
         DontDestroyOnLoad(gameObject);
         roomName = RoomSelection.Instance.rooms[0].roomName;
     }
@@ -55,6 +62,7 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
             return;
         }
 
+        Debug.Log("Connecting To Room");
         PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = 30 }, new TypedLobby("Main Lobby", LobbyType.Default));
     }
 
@@ -67,7 +75,7 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     public override void OnDisconnected(DisconnectCause cause)
     {
         base.OnDisconnected(cause);
-        Debug.LogError(cause);
+        Debug.Log("Disconnected");
     }
 
     public override void OnJoinedRoom()
