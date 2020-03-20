@@ -29,7 +29,7 @@ public class ExitPlayModeOnScriptCompile {
     // Called each time the editor updates.
     private static void OnEditorUpdate () {
         if (EditorApplication.isPlaying && EditorApplication.isCompiling) {
-            Debug.Log ("Exiting play mode due to script compilation.");
+
             EditorApplication.isPlaying = false;
         }
     }

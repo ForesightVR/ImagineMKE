@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
-        Debug.Log("Player Entered Room");
+
         base.OnPlayerEnteredRoom(newPlayer);
         if(Player.LocalPlayerInstance == null)
             PhotonNetwork.Instantiate(playerPrefab.gameObject.name, Vector3.zero, Quaternion.identity);

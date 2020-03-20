@@ -13,7 +13,6 @@ public class Room : MonoBehaviour
 
     public void UpdateRoomInfo()
     {
-        Debug.Log("Update Room Info");
         roomSelection.UpdateRoomInfo(roomName, roomDescription);
     }
 }

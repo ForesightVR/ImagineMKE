@@ -69,19 +69,16 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         base.OnConnectedToMaster();
-        Debug.Log("Connected to Master!");
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
         base.OnDisconnected(cause);
-        Debug.Log("Disconnected");
     }
 
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
-        Debug.Log("Room Joined!");
         SceneManager.LoadScene(roomName);
     }
 
@@ -96,6 +93,5 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         base.OnCreateRoomFailed(returnCode, message);
-        Debug.LogError(message);
     }
 }
