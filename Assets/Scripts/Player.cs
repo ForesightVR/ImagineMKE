@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using TMPro;
 
-public class Player : MonoBehaviourPun, IPunObservable
+public class Player : MonoBehaviourPun//, IPunObservable
 {
     public float speed = 1;
     public float rotationSpeed = 100;
@@ -125,21 +125,21 @@ public class Player : MonoBehaviourPun, IPunObservable
     //        player = PhotonNetwork.Instantiate(prefab.gameObject.name, position, rotation).GetComponent<Player>();
     //}
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-            stream.SendNext(horizontal);
-            stream.SendNext(vertical);
-            stream.SendNext(mouseX);
-            stream.SendNext(mouseY);
-        }
-        else
-        {
-            horizontal = (float)stream.ReceiveNext();
-            vertical = (float)stream.ReceiveNext();
-            mouseX = (float)stream.ReceiveNext();
-            mouseY = (float)stream.ReceiveNext();
-        }
-    }
+    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    //{
+    //    if (stream.IsWriting)
+    //    {
+    //        stream.SendNext(horizontal);
+    //        stream.SendNext(vertical);
+    //        stream.SendNext(mouseX);
+    //        stream.SendNext(mouseY);
+    //    }
+    //    else
+    //    {
+    //        horizontal = (float)stream.ReceiveNext();
+    //        vertical = (float)stream.ReceiveNext();
+    //        mouseX = (float)stream.ReceiveNext();
+    //        mouseY = (float)stream.ReceiveNext();
+    //    }
+    //}
 }

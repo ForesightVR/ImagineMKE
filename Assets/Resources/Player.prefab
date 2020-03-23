@@ -465,9 +465,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c5c3f49df0d074b8d24b1eb09666bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 4
   rotationSpeed: 1
-  runSpeed: 10
+  runSpeed: 8
   nickName: {fileID: 1692887540}
   hideCursor: 1
   cameraFacingBillboard: {fileID: 2721044787151386225}
@@ -487,11 +487,10 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: -8953504746447058601}
-  - {fileID: 8938767925967031454}
   - {fileID: 1282212308}
   viewIdField: 0
   InstantiationId: 0
