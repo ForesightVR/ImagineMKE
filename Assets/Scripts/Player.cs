@@ -19,6 +19,7 @@ public class Player : MonoBehaviourPun, IPunObservable
     [HideInInspector]
     public Camera cam;
     Animator animator;
+    CharacterController cc;
 
     float horizontal;
     float vertical;
@@ -30,6 +31,7 @@ public class Player : MonoBehaviourPun, IPunObservable
     {
         DontDestroyOnLoad(this.gameObject);
 
+        cc = GetComponent<CharacterController>();
         cam = GetComponentInChildren<Camera>();
         cam.gameObject.SetActive(false);
         nickName.text = photonView.Owner.NickName;
@@ -85,7 +87,7 @@ public class Player : MonoBehaviourPun, IPunObservable
         move = transform.TransformDirection(move);
         move.y = 0;
 
-        transform.position += move.normalized * (leftShift ? runSpeed :  speed) * Time.deltaTime;
+        cc.SimpleMove(move.normalized * (leftShift ? runSpeed :  speed));
     }
 
     void Rotate()
