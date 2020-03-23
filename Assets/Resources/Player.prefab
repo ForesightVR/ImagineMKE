@@ -423,7 +423,6 @@ GameObject:
   - component: {fileID: 7112158658435239136}
   - component: {fileID: 8938767925967031454}
   - component: {fileID: -2575297340956361790}
-  - component: {fileID: -8953504746447058601}
   - component: {fileID: 1282212309}
   - component: {fileID: 1282212308}
   - component: {fileID: 2830664979472363697}
@@ -493,25 +492,9 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 4725101313736112202}
   - {fileID: 1282212308}
-  - {fileID: -8953504746447058601}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-8953504746447058601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7112158658435239151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
 --- !u!95 &1282212309
 Animator:
   serializedVersion: 3
@@ -627,6 +610,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   realPosition: {x: 0, y: 0, z: 0}
   positionAtLastPacket: {x: 0, y: 0, z: 0}
+  realRotation: {x: 0, y: 0, z: 0, w: 1}
+  rotationAtLastPacket: {x: 0, y: 0, z: 0, w: 1}
   currentTime: 0
   currentPacketTime: 0
   lastPacketTime: 0
