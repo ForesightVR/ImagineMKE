@@ -5324,6 +5324,7 @@ GameObject:
   - component: {fileID: 1892976651}
   - component: {fileID: 1892976650}
   - component: {fileID: 1892976649}
+  - component: {fileID: 1892976654}
   m_Layer: 5
   m_Name: Enter
   m_TagString: Untagged
@@ -5485,8 +5486,8 @@ MonoBehaviour:
   buttonEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1787138412}
-        m_MethodName: ConnectToRoom
+      - m_Target: {fileID: 1892976654}
+        m_MethodName: Connect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5506,6 +5507,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892976647}
   m_CullTransparentMesh: 0
+--- !u!114 &1892976654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892976647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a4a1fa842f8d1a4eb2b2f6890456705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1943693190
 GameObject:
   m_ObjectHideFlags: 0

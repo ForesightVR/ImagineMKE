@@ -62,7 +62,6 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
             return;
         }
 
-        Debug.Log("Connecting To Room");
         PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = 30 }, new TypedLobby("Main Lobby", LobbyType.Default));
     }
 

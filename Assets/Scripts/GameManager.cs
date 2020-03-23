@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (!PhotonNetwork.IsConnected)
         {
-            SceneManager.LoadScene(menuSceneName);
+            ReturnToMenu();
             return;
         }
     }
@@ -38,5 +38,16 @@ public class GameManager : MonoBehaviourPunCallbacks
             PhotonNetwork.Instantiate(playerPrefab.gameObject.name, Vector3.zero, Quaternion.identity);
 
         //Player.RefereshInstance(ref localPlayer, playerPrefab);
+    }
+
+    public void LeaveRom()
+    {
+        PhotonNetwork.LeaveRoom();
+        ReturnToMenu();
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene(menuSceneName);
     }
 }
