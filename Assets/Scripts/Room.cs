@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Photon.Pun;
 
 public class Room : MonoBehaviour
 {
@@ -14,5 +15,10 @@ public class Room : MonoBehaviour
     public void UpdateRoomInfo()
     {
         roomSelection.UpdateRoomInfo(roomName, roomDescription);
+    }
+
+    public void UpdateRoomCounter(int currentCount, int maxCount)
+    {
+        roomCounter.text = $"{currentCount} / {maxCount}";
     }
 }

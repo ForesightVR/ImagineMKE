@@ -306,7 +306,7 @@ namespace Photon.Pun
         /// <summary>
         /// Controls how verbose PUN is.
         /// </summary>
-        public static PunLogLevel LogLevel = PunLogLevel.ErrorsOnly;
+        public static PunLogLevel LogLevel = PunLogLevel.Informational;
 
         /// <summary>
         /// This client's Player instance is always available, unless the app shuts down.

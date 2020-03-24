@@ -9,9 +9,9 @@ public class OnConnectedToServer : MonoBehaviourPunCallbacks
 {
     public UnityEvent unityEvent;
 
-    public override void OnConnectedToMaster()
+    public override void OnJoinedLobby()
     {
-        base.OnConnectedToMaster();
+        base.OnJoinedLobby();
         unityEvent?.Invoke();
     }
 

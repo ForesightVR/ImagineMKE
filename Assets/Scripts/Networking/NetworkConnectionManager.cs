@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
@@ -11,6 +12,9 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
 {
     public static NetworkConnectionManager Instance;
     public string roomName;
+    public byte maxPlayers = 15;
+
+    public TypedLobby typedLobby = new TypedLobby("mainLobby", LobbyType.SqlLobby);
 
     private string adminPassword = "foresightAdmin";
     public bool IsAdmin { get; private set; }
@@ -62,17 +66,42 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
             return;
         }
 
-        PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = 30 }, new TypedLobby("Main Lobby", LobbyType.Default));
+        PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayers }, typedLobby);
     }
 
     public override void OnConnectedToMaster()
     {
         base.OnConnectedToMaster();
+        PhotonNetwork.JoinLobby(typedLobby);
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
         base.OnDisconnected(cause);
+    }
+
+    public override void OnJoinedLobby()
+    {
+        base.OnJoinedLobby();
+    }
+
+    public override void OnLeftLobby()
+    {
+        base.OnLeftLobby();
+    }
+
+    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    {
+        base.OnRoomListUpdate(roomList);
+        RoomSelection.Instance.rooms.ForEach(x =>
+        {
+            var room = roomList.FirstOrDefault(y => y.Name == x.roomName);
+
+            if (room != null)
+                x.UpdateRoomCounter(room.PlayerCount, room.MaxPlayers);
+            else
+                x.UpdateRoomCounter(0, maxPlayers);
+        });
     }
 
     public override void OnJoinedRoom()
