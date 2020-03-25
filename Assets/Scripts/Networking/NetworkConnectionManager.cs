@@ -13,6 +13,7 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     public static NetworkConnectionManager Instance;
     public string roomName;
     public byte maxPlayers = 15;
+    public byte CharacterSelected { get; private set; }
 
     public TypedLobby typedLobby = new TypedLobby("mainLobby", LobbyType.SqlLobby);
 
@@ -31,6 +32,11 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
 
         DontDestroyOnLoad(gameObject);
         roomName = RoomSelection.Instance.rooms[0].roomName;
+    }
+
+    public void SetCharacter(byte characterIndex)
+    {
+        CharacterSelected = characterIndex;
     }
 
     public void ChangeRoomName(Room room)

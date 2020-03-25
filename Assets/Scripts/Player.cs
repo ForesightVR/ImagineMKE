@@ -16,6 +16,8 @@ public class Player : MonoBehaviourPun//, IPunObservable
     public static GameObject LocalPlayerInstance;
 
     public CameraFacingBillboard cameraFacingBillboard;
+    public List<GameObject> characterOptions;
+
     [HideInInspector]
     public Camera cam;
     Animator animator;
@@ -42,6 +44,7 @@ public class Player : MonoBehaviourPun//, IPunObservable
         }
         else
         {
+            photonView.RPC("RPCSelectCharacter", RpcTarget.AllBuffered, NetworkConnectionManager.Instance.CharacterSelected);
             LocalPlayerInstance = this.gameObject;
             cam.gameObject.SetActive(true);
         }
@@ -49,13 +52,21 @@ public class Player : MonoBehaviourPun//, IPunObservable
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
 
         if(hideCursor)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+    }
+
+    [PunRPC]
+    void RPCSelectCharacter(byte index)
+    {
+        characterOptions[index].SetActive(true);
+        animator = GetComponentInChildren<Animator>();
+        animator.Rebind();
+        GetComponent<PhotonAnimatorView>().SetAnimator(animator);
     }
 
     private void Update()
