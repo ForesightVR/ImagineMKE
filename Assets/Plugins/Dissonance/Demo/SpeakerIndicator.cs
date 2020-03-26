@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace Dissonance.Demo
 {
-    public class SpeakerIndicator
-        : MonoBehaviour
+    public class SpeakerIndicator : MonoBehaviour
     {
+        public float indicatorHeight = 2;
         private GameObject _indicator;
         private Light _light;
         private Transform _transform;
@@ -25,7 +25,7 @@ namespace Dissonance.Demo
             //Get some bits from the indicator game object
             _indicator = Instantiate(Resources.Load<GameObject>("SpeechIndicator"));
             _indicator.transform.SetParent(transform);
-            _indicator.transform.localPosition = new Vector3(0, 3, 0);
+            _indicator.transform.localPosition = new Vector3(0, indicatorHeight, 0);
 
             _light = _indicator.GetComponent<Light>();
             _transform = _indicator.GetComponent<Transform>();
