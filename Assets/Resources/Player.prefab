@@ -728,7 +728,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 4725101313736112202}
   - {fileID: 1282212308}
-  viewIdField: 1
+  viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &1282212308
@@ -891,6 +891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19dd0b766a7ddc940a3aed2bf0e21d8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  indicatorHeight: 2
 --- !u!114 &5058772786128831987
 MonoBehaviour:
   m_ObjectHideFlags: 0
