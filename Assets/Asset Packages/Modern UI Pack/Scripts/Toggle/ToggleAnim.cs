@@ -15,10 +15,10 @@ namespace Michsky.UI.ModernUIPack
             toggleObject.onValueChanged.AddListener(TaskOnClick);
 
             if (toggleObject.isOn)
-                toggleAnimator.Play("Toggle On");
+                toggleAnimator.Play("Start On");
 
             else
-                toggleAnimator.Play("Toggle Off");
+                toggleAnimator.Play("Start Off");
         }
 
         void TaskOnClick(bool value)
