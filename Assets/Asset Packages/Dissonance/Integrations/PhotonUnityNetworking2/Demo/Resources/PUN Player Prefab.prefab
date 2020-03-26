@@ -365,3 +365,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19dd0b766a7ddc940a3aed2bf0e21d8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  indicatorHeight: 2
