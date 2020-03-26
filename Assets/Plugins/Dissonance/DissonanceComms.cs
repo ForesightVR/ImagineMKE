@@ -308,6 +308,7 @@ namespace Dissonance
 
         [UsedImplicitly] private void Start()
         {
+            DontDestroyOnLoad(this);
             // Unity is unreliable about late loading DLLs so try to load dependencies as early as possible.
             try
             {
