@@ -8,7 +8,7 @@ ModelImporter:
     second: 0_T-Pose
   - first:
       74: -6210783685909449719
-    second: 2.Base Male_TempMotion
+    second: Wide Stance Idle
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -70,7 +70,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: 2.Base Male_TempMotion
+      name: Wide Stance Idle
       takeName: 2.Base Male_TempMotion
       internalID: 0
       firstFrame: 0
@@ -85,7 +85,7 @@ ModelImporter:
       loopBlend: 1
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
+      loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
