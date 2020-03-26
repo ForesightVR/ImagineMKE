@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
+using Dissonance;
 
 namespace Foresight
 {
-    public class Player : MonoBehaviourPun//, IPunObservable
+    public class Player : MonoBehaviourPun, IDissonancePlayer //, IPunObservable
     {
         [Header("Movement")]
         public float speed = 1;
@@ -39,6 +40,14 @@ namespace Foresight
         float mouseX;
         float mouseY;
         bool leftShift;
+
+        #region IDissonancePlayer
+        public string PlayerId { get { return PhotonNetwork.LocalPlayer.UserId; } }
+        public Vector3 Position { get { return transform.position; } }
+        public Quaternion Rotation { get { return transform.rotation; } }
+        public NetworkPlayerType Type { get { return photonView.IsMine ? NetworkPlayerType.Local : NetworkPlayerType.Remote; } }
+        public bool IsTracking { get { return true; } }
+        #endregion
 
         void Awake()
         {
