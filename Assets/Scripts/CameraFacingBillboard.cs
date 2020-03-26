@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Foresight;
+using Player = Foresight.Player;
 
 public class CameraFacingBillboard : MonoBehaviour
 {

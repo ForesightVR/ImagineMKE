@@ -4,6 +4,8 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
+using Foresight;
+using Player = Foresight.Player;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
