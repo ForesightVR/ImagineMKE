@@ -25,4 +25,12 @@ EditorBuildSettings:
     path: Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room
       for 2.unity
     guid: 764428c63577f4580af4ce54ca9f4b1b
+  - enabled: 1
+    path: Assets/Asset Packages/Dissonance/Integrations/PhotonUnityNetworking2/Demo/PUN2
+      Demo.unity
+    guid: beea722e0e0a9b94d9a930a0ab1a3f95
+  - enabled: 1
+    path: Assets/Asset Packages/Dissonance/Integrations/PhotonUnityNetworking2/Demo/PUN2
+      Game World.unity
+    guid: 8ce0b35beaf0d714f956693ff9885a9d
   m_configObjects: {}
