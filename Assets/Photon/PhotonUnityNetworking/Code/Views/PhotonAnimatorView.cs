@@ -24,7 +24,6 @@ namespace Photon.Pun
     /// When Using Trigger Parameters, make sure the component that sets the trigger is higher in the stack of Components on the GameObject than 'PhotonAnimatorView'
     /// Triggers are raised true during one frame only.
     /// </remarks>
-    [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(PhotonView))]
     [AddComponentMenu("Photon Networking/Photon Animator View")]
     public class PhotonAnimatorView : MonoBehaviour, IPunObservable
@@ -123,11 +122,16 @@ namespace Photon.Pun
         private void Awake()
         {
             this.m_PhotonView = GetComponent<PhotonView>();
-            this.m_Animator = GetComponent<Animator>();
+        }
+
+        public void SetAnimator(Animator animator)
+        {
+            this.m_Animator = animator;
         }
 
         private void Update()
         {
+            if (!this.m_Animator) return;
             if (this.m_Animator.applyRootMotion && this.m_PhotonView.IsMine == false && PhotonNetwork.IsConnected == true)
             {
                 this.m_Animator.applyRootMotion = false;

@@ -1,24 +1,65 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class NetworkConnectionManager : MonoBehaviourPunCallbacks
 {
-    public string mainSceneName;
+    public static NetworkConnectionManager Instance;
+    public string roomName;
+    public byte maxPlayers = 15;
+    public byte CharacterSelected { get; private set; }
+
+    public TypedLobby typedLobby = new TypedLobby("mainLobby", LobbyType.SqlLobby);
+
+    private string adminPassword = "foresightAdmin";
+    public bool IsAdmin { get; private set; }
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (Instance != this)
+            Destroy(gameObject);
+
         DontDestroyOnLoad(gameObject);
+        roomName = RoomSelection.Instance.rooms[0].roomName;
+    }
+
+    public void SetCharacter(byte characterIndex)
+    {
+        CharacterSelected = characterIndex;
+    }
+
+    public void ChangeRoomName(Room room)
+    {
+        roomName = room.roomName;
+    }
+
+    public void SetNickName(TMP_InputField inputField)
+    {
+        PhotonNetwork.NickName = inputField.text;
+    }
+
+    public void CheckAdminStatus(TMP_InputField inputField)
+    {
+        if (inputField.text == adminPassword)
+            IsAdmin = true;
+        else
+            IsAdmin = false;
     }
 
     public void ConnectToMaster()
     {
         PhotonNetwork.OfflineMode = false;
-        PhotonNetwork.NickName = "PlayerName";
         PhotonNetwork.GameVersion = "v1";
         PhotonNetwork.ConnectUsingSettings();
     }
@@ -31,30 +72,48 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
             return;
         }
 
-        //Other Options for joining a room.
-        //PhotonNetwork.CreateRoom("Room Name") //Create a specific room -- Error Callback: OnCreateRoomFailed()
-        //PhotonNetwor.JoinRoom("Room Name") //Join a specific room -- Error Callback: OnJoinRoomFailed()
-
-        PhotonNetwork.JoinRandomRoom();
+        PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayers }, typedLobby);
     }
 
     public override void OnConnectedToMaster()
     {
         base.OnConnectedToMaster();
-        Debug.Log("Connected to Master!");
+        PhotonNetwork.JoinLobby(typedLobby);
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
         base.OnDisconnected(cause);
-        Debug.LogError(cause);
+    }
+
+    public override void OnJoinedLobby()
+    {
+        base.OnJoinedLobby();
+    }
+
+    public override void OnLeftLobby()
+    {
+        base.OnLeftLobby();
+    }
+
+    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    {
+        base.OnRoomListUpdate(roomList);
+        RoomSelection.Instance.rooms.ForEach(x =>
+        {
+            var room = roomList.FirstOrDefault(y => y.Name == x.roomName);
+
+            if (room != null)
+                x.UpdateRoomCounter(room.PlayerCount, room.MaxPlayers);
+            else
+                x.UpdateRoomCounter(0, maxPlayers);
+        });
     }
 
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
-        Debug.Log("Room Joined!");
-        SceneManager.LoadScene(mainSceneName);
+        SceneManager.LoadScene(roomName);
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
@@ -62,12 +121,11 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
         base.OnJoinRandomFailed(returnCode, message);
         Debug.Log("No Room Available! Creating new room...");
 
-        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 10 });
+        //PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 10 });
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         base.OnCreateRoomFailed(returnCode, message);
-        Debug.LogError(message);
     }
 }
