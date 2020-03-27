@@ -13,6 +13,7 @@ namespace Photon.Pun
 {
     using UnityEngine;
 
+
     [AddComponentMenu("Photon Networking/Photon Transform View")]
     [HelpURL("https://doc.photonengine.com/en-us/pun/v2/gameplay/synchronization-and-state")]
     [RequireComponent(typeof(PhotonView))]
@@ -84,6 +85,8 @@ namespace Photon.Pun
             }
             else
             {
+
+
                 if (this.m_SynchronizePosition)
                 {
                     this.m_NetworkPosition = (Vector3)stream.ReceiveNext();

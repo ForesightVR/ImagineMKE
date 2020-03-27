@@ -43,7 +43,6 @@ namespace Photon.Realtime
         /// Used internally to identify the masterclient of a room.
         /// </summary>
         protected internal Room RoomReference { get; set; }
-        public bool IsAdmin { get; private set; }
 
 
         /// <summary>Backing field for property.</summary>
@@ -177,11 +176,6 @@ namespace Photon.Realtime
             }
 
             return this.RoomReference.GetPlayer(id);
-        }
-
-        public void SetAdminStatus(bool status)
-        {
-            IsAdmin = status;
         }
 
         /// <summary>Gets this Player's next Player, as sorted by ActorNumber (Player.ID). Wraps around.</summary>

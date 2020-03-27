@@ -4,8 +4,6 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
-using Foresight;
-using Player = Foresight.Player;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -16,40 +14,21 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        if (!PhotonNetwork.IsConnected)
+        if(!PhotonNetwork.IsConnected)
         {
-            ReturnToMenu();
+            SceneManager.LoadScene(menuSceneName);
             return;
         }
     }
 
     private void Start()
     {
-        if (Player.LocalPlayerInstance == null)
-        {
-            PhotonNetwork.Instantiate(playerPrefab.gameObject.name, Vector3.zero, Quaternion.identity);
-            PhotonNetwork.LocalPlayer.SetAdminStatus(NetworkConnectionManager.Instance.IsAdmin);
-        }
+        Player.RefereshInstance(ref localPlayer, playerPrefab);
     }
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
-
         base.OnPlayerEnteredRoom(newPlayer);
-        if(Player.LocalPlayerInstance == null)
-            PhotonNetwork.Instantiate(playerPrefab.gameObject.name, Vector3.zero, Quaternion.identity);
-
-        //Player.RefereshInstance(ref localPlayer, playerPrefab);
-    }
-
-    public void LeaveRom()
-    {
-        PhotonNetwork.LeaveRoom();
-        ReturnToMenu();
-    }
-
-    public void ReturnToMenu()
-    {
-        SceneManager.LoadScene(menuSceneName);
+        Player.RefereshInstance(ref localPlayer, playerPrefab);
     }
 }
