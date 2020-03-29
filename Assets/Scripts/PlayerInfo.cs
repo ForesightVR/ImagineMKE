@@ -36,6 +36,7 @@ public class PlayerInfo : MonoBehaviour
         {
             source = voice.AudioSource;
             volumeSlider.mainSlider.onValueChanged.AddListener(delegate { ChangeVolume(volumeSlider.mainSlider.value); });
+            lastVolume = volumeSlider.mainSlider.value;
         }
         else //there is no voicePlayback, so we shouldn't have the UI do anything
         {
