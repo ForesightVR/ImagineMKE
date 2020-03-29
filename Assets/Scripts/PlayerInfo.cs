@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using Michsky.UI.ModernUIPack;
 using Dissonance.Audio.Playback;
@@ -10,8 +11,13 @@ public class PlayerInfo : MonoBehaviour
 {
     public TextMeshProUGUI playerName;
     public GameObject kickButton;
+    public ButtonManagerBasic muteButton;
     public SliderManager volumeSlider;
     AudioSource source;
+
+    //Mute Variables
+    float lastVolume;
+    bool isMute;
 
     public Photon.Realtime.Player Player { get; private set; }
 
@@ -24,16 +30,19 @@ public class PlayerInfo : MonoBehaviour
 
         var voiceChats = dissonance.transform.GetComponentsInChildren<VoicePlayback>();
 
-        if (voiceChats.Length > 0)
-        {
-            var voice = voiceChats.FirstOrDefault(x => x.PlayerName == player.UserId);
+        var voice = voiceChats.FirstOrDefault(x => x.PlayerName == player.UserId);
 
-            if (voice != null)
-            {
-                source = voice.AudioSource;
-                volumeSlider.mainSlider.onValueChanged.AddListener(delegate { ChangeVolume(volumeSlider.mainSlider.value); });
-            }
+        if (voice != null)
+        {
+            source = voice.AudioSource;
+            volumeSlider.mainSlider.onValueChanged.AddListener(delegate { ChangeVolume(volumeSlider.mainSlider.value); });
         }
+        else //there is no voicePlayback, so we shouldn't have the UI do anything
+        {
+            volumeSlider.gameObject.SetActive(false);
+            muteButton.gameObject.SetActive(false);
+        }
+        
     }
 
     public void SetAdmin()
@@ -46,6 +55,27 @@ public class PlayerInfo : MonoBehaviour
         if (source != null)
         {
             source.volume = changedValue;
+        }
+    }
+
+    public void MuteVolume()
+    {
+        isMute = !isMute;
+
+        if (isMute)
+        {
+            lastVolume = source.volume;
+            volumeSlider.mainSlider.value = 0;
+            volumeSlider.mainSlider.interactable = false;
+            source.volume = 0;
+            muteButton.buttonText = "Unmute";
+        }
+        else
+        {
+            source.volume = lastVolume;
+            volumeSlider.mainSlider.value = lastVolume;
+            volumeSlider.mainSlider.interactable = true;
+            muteButton.buttonText = "Mute";
         }
     }
 }
