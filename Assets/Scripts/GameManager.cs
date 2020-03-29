@@ -10,14 +10,18 @@ using Dissonance;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+    public static GameManager Instance;
+
     public Player playerPrefab;
     public string menuSceneName;
+    public bool MenuOpen { get; private set; }
 
     Player localPlayer;
     DissonanceComms Comms;
 
     private void Awake()
     {
+        Instance = this;
         if (!PhotonNetwork.IsConnected)
         {
             ReturnToMenu();
@@ -35,6 +39,11 @@ public class GameManager : MonoBehaviourPunCallbacks
             PhotonNetwork.Instantiate(playerPrefab.gameObject.name, Vector3.zero, Quaternion.identity);
             PhotonNetwork.LocalPlayer.SetAdminStatus(NetworkConnectionManager.Instance.IsAdmin);
         }
+    }
+
+    public void MenuState(bool state)
+    {
+        MenuOpen = state;
     }
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)

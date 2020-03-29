@@ -5038,6 +5038,7 @@ MonoBehaviour:
   playerList: {fileID: 787209191}
   playerInfoHolder: {fileID: 1958625682}
   playerInfos: []
+  chatInput: {fileID: 2047128563}
 --- !u!1 &1103808449
 GameObject:
   m_ObjectHideFlags: 0
@@ -7146,6 +7147,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8867916268811125572, guid: fd7750589315f4846a97505613a7c64b,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8867916268811125572, guid: fd7750589315f4846a97505613a7c64b,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8867916268811125572, guid: fd7750589315f4846a97505613a7c64b,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8867916268811125572, guid: fd7750589315f4846a97505613a7c64b,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2047128563}
+    - target: {fileID: 8867916268811125572, guid: fd7750589315f4846a97505613a7c64b,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8867916268811125572, guid: fd7750589315f4846a97505613a7c64b,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8867916268811125572, guid: fd7750589315f4846a97505613a7c64b,
+        type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8871593103714295884, guid: fd7750589315f4846a97505613a7c64b,
         type: 3}
       propertyPath: m_Color.r
@@ -7163,6 +7199,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd7750589315f4846a97505613a7c64b, type: 3}
+--- !u!1 &2047128563 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8827867356803760742, guid: fd7750589315f4846a97505613a7c64b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2047128562}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2048450023
 GameObject:
   m_ObjectHideFlags: 0

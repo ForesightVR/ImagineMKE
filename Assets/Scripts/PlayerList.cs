@@ -14,10 +14,16 @@ public class PlayerList : MonoBehaviourPunCallbacks
 
     public List<PlayerInfo> playerInfos = new List<PlayerInfo>();
 
+    public GameObject chatInput;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
+        {
             TogglePlayerList(!playerList.activeSelf);
+            GameManager.Instance.MenuState(playerList.activeSelf);
+        }
+        GameManager.Instance.MenuState(chatInput.activeSelf);
     }
 
     public void TogglePlayerList(bool activeState)

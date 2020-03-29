@@ -45,8 +45,9 @@ namespace Dissonance.Demo
 
             //Clear the UI
             _input.text = "";
-            _input.gameObject.SetActive(false);
             _isInputtingText = false;
+            _input.gameObject.SetActive(false);
+            _input.DeactivateInputField();
 
             //Stop forcing the chat visible
             if (_log!= null)
@@ -55,11 +56,10 @@ namespace Dissonance.Demo
 
         public void Update ()
         {
+            var global = Input.GetKeyDown(KeyCode.Return);
             //Monitor keyboard keys if we're not inputting text
-            if (!_isInputtingText)
+            if (!_isInputtingText && global)
             {
-                var global = Input.GetKey(KeyCode.Return);
-
                 //If a key is pressed
                 if (global)
                     ShowTextInput("Global");
