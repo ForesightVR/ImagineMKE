@@ -56,6 +56,9 @@ public class PlayerInfo : MonoBehaviour
         if (source != null)
         {
             source.volume = changedValue;
+
+            if (changedValue != 0)
+                isMute = false;
         }
     }
 
@@ -67,7 +70,6 @@ public class PlayerInfo : MonoBehaviour
         {
             lastVolume = source.volume;
             volumeSlider.mainSlider.value = 0;
-            volumeSlider.mainSlider.interactable = false;
             source.volume = 0;
             muteButton.buttonText = "Unmute";
         }
@@ -75,7 +77,6 @@ public class PlayerInfo : MonoBehaviour
         {
             source.volume = lastVolume;
             volumeSlider.mainSlider.value = lastVolume;
-            volumeSlider.mainSlider.interactable = true;
             muteButton.buttonText = "Mute";
         }
     }
