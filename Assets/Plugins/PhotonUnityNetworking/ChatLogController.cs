@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Dissonance.Networking;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
+using Photon.Pun;
+using JetBrains.Annotations;
 
 namespace Dissonance.Demo
 {
@@ -45,10 +48,11 @@ namespace Dissonance.Demo
             //Ignore your own messages coming back from the server
             if (Comms != null && message.Sender == Comms.LocalPlayerName)
                 return;
+            
 
             //Decide what we're going to print
             var msg = string.Format("{0} ({1}): {2}",
-                message.Sender.Substring(0, Math.Min(8, message.Sender.Length)),
+                PhotonNetwork.PlayerList.ToList().Where(x => x.UserId == message.Sender).FirstOrDefault().NickName, //message.Sender.Substring(0, Math.Min(8, message.Sender.Length))
                 message.RecipientType == ChannelType.Room ? message.Recipient : "Whisper",
                 message.Message
             );
