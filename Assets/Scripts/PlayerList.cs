@@ -19,11 +19,9 @@ public class PlayerList : MonoBehaviourPunCallbacks
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
             TogglePlayerList(!playerList.activeSelf);
-            GameManager.Instance.MenuState(playerList.activeSelf);
-        }
-        GameManager.Instance.MenuState(chatInput.activeSelf);
+
+        GameManager.Instance.MenuState(playerList.activeSelf || chatInput.activeSelf);
     }
 
     public void TogglePlayerList(bool activeState)
