@@ -12,8 +12,6 @@ namespace Dissonance.Demo
         private string _targetChannel;
 
         public DissonanceComms Comms;
-        public string Team1Channel = "A";
-        public string Team2Channel = "B";
 
         private InputField _input;
         private ChatLogController _log;
@@ -59,17 +57,11 @@ namespace Dissonance.Demo
             //Monitor keyboard keys if we're not inputting text
             if (!_isInputtingText)
             {
-                var global = Input.GetKey(KeyCode.Y);
-                var red = Input.GetKey(KeyCode.U);
-                var blue = Input.GetKey(KeyCode.I);
+                var global = Input.GetKey(KeyCode.Return);
 
                 //If a key is pressed
                 if (global)
                     ShowTextInput("Global");
-                else if (red)
-                    ShowTextInput(Team1Channel);
-                else if (blue)
-                    ShowTextInput(Team2Channel);
             }
         }
 

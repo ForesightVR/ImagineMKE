@@ -6,6 +6,7 @@ using Photon.Realtime;
 using UnityEngine.SceneManagement;
 using Foresight;
 using Player = Foresight.Player;
+using Dissonance;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public string menuSceneName;
 
     Player localPlayer;
+    DissonanceComms Comms;
 
     private void Awake()
     {
@@ -21,6 +23,9 @@ public class GameManager : MonoBehaviourPunCallbacks
             ReturnToMenu();
             return;
         }
+
+        Comms = Comms ?? FindObjectOfType<DissonanceComms>();
+        Comms.Rooms.Join("Global");
     }
 
     private void Start()
