@@ -41,7 +41,8 @@ public class PlayerInfo : MonoBehaviour
         else //there is no voicePlayback, so we shouldn't have the UI do anything
         {
             volumeSlider.gameObject.SetActive(false);
-            muteButton.gameObject.SetActive(false);
+            if(muteButton)
+                muteButton.gameObject.SetActive(false);
         }
         
     }

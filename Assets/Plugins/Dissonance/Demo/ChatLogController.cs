@@ -53,7 +53,7 @@ namespace Dissonance.Demo
                 message.Message
             );
 
-            AddMessage(msg, new Color(0.19f, 0.19f, 0.19f));
+            AddMessage(msg, Color.white);
         }
 
         public void AddMessage(string message, Color color)
