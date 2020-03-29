@@ -19,6 +19,7 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
 
     private string adminPassword = "foresightAdmin";
     public bool IsAdmin { get; private set; }
+    public PhotonDissonanceBridge bridge;
 
     private void Awake()
     {
@@ -72,13 +73,14 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
             return;
         }
 
-        PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayers }, typedLobby);
+        PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayers , PublishUserId = true}, typedLobby);
     }
 
     public override void OnConnectedToMaster()
     {
         base.OnConnectedToMaster();
         PhotonNetwork.JoinLobby(typedLobby);
+        bridge.SetPlayerId();
     }
 
     public override void OnDisconnected(DisconnectCause cause)
