@@ -16,8 +16,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     public string menuSceneName;
     public bool MenuOpen { get; private set; }
 
-    Player localPlayer;
+    RoomMembership roomMembership;
     DissonanceComms Comms;
+
 
     private void Awake()
     {
@@ -26,10 +27,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             ReturnToMenu();
             return;
-        }
-
-        Comms = Comms != null ? Comms : FindObjectOfType<DissonanceComms>();
-        Comms.Rooms.Join(NetworkConnectionManager.Instance.roomName);
+        }        
     }
 
     private void Start()
@@ -49,15 +47,18 @@ public class GameManager : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
         base.OnPlayerEnteredRoom(newPlayer);
-        if(Player.LocalPlayerInstance == null)
+        if (Player.LocalPlayerInstance == null) // if null, the player is joining the room
+        {
+            Comms = Comms != null ? Comms : FindObjectOfType<DissonanceComms>();
+            roomMembership = Comms.Rooms.Join(NetworkConnectionManager.Instance.roomName);
             PhotonNetwork.Instantiate(playerPrefab.gameObject.name, Vector3.zero, Quaternion.identity);
-
-        //Player.RefereshInstance(ref localPlayer, playerPrefab);
+        }            
     }
 
     public void LeaveRom()
     {
-        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LeaveRoom();        
+        Comms.Rooms.Leave(roomMembership);
         ReturnToMenu();
     }
 

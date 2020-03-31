@@ -40,7 +40,7 @@ namespace Dissonance.Demo
         {
             Comms = Comms ?? FindObjectOfType<DissonanceComms>();
 
-            _textPrototype = Resources.Load<GameObject>("LogTextPrototype");
+            //_textPrototype = Resources.Load<GameObject>("LogTextPrototype");
             _canvas = GetComponent<CanvasGroup>();
 
             _heightLimit = gameObject.GetComponent<RectTransform>().rect.height - 20;
