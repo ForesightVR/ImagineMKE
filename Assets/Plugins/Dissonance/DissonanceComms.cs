@@ -75,6 +75,8 @@ namespace Dissonance
         // ReSharper restore EventNeverSubscribedTo.Global
         #endregion
 
+        public string roomName;
+
         public DissonanceComms()
         {
             _playbackPool = new PlaybackPool((IPriorityManager)this, (IVolumeProvider)this);
