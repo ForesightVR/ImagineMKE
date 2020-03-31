@@ -118,18 +118,18 @@ Material:
     m_Floats:
     - _Choppiness: 0.0024
     - _ChromaticAberration: 0
-    - _Density: 0.59
+    - _Density: 1
     - _Depth: 1
     - _DepthFade: 1
-    - _DepthTransparency: 0.2
+    - _DepthTransparency: 1.12
     - _DistanceFade: 0.5
-    - _Distortion: 0.523
+    - _Distortion: 0
     - _EdgeLength: 15
     - _EnableProbeRelfections: 1
     - _EnableRealtimeReflections: 1
     - _EnableReflections: 1
     - _Fade: 3.86
-    - _FarTilingDistance: 1000
+    - _FarTilingDistance: 992.3
     - _FarTilingFade: 1
     - _Float0: 180
     - _Float1: 1.85
@@ -141,9 +141,9 @@ Material:
     - _Float6: 0
     - _Float7: 0.744
     - _Float8: 0.1
-    - _FlowSpeed: 0
+    - _FlowSpeed: 4
     - _FoamBlend: 0.2
-    - _FoamContrast: 0.262
+    - _FoamContrast: 0
     - _FoamDepth: 0
     - _FoamFalloff: 0
     - _FoamIntensity: 1.92
@@ -151,26 +151,26 @@ Material:
     - _FoamTiling: 1.019
     - _FoamVisibility: 1
     - _Frequency: 5
-    - _Gloss: 0.8
+    - _Gloss: 390.7
     - _GlossyReflections: 1
     - _Height: 0.002
     - _LightWrapping: 2
     - _LinearColorSpace: 0
     - _MediumDistance: 100
     - _MediumDistanceFalloff: 2.56
-    - _MediumTilingDistance: 100
+    - _MediumTilingDistance: 173.8
     - _MediumTilingFade: 1
     - _NormalStrength: 1.61
     - _NormalTiling: 0.11
     - _ObjectRotation: 0
     - _PhysicalNormalStrength: 0
-    - _ProbeReflectionIntensity: 0.05
+    - _ProbeReflectionIntensity: 0.62
     - _ProjectGrid: 0
-    - _RealtimeReflectionIntensity: 1
+    - _RealtimeReflectionIntensity: 0.48
     - _ReflectionIntensity: 0.546
     - _Refraction: 1
     - _Refraction2: 0
-    - _RippleStrength: 0.5
+    - _RippleStrength: 0.1
     - _Scale0: 0
     - _Scale1: 0
     - _Scale2: 0
@@ -178,10 +178,10 @@ Material:
     - _ShoreFade: 1
     - _ShoreTransparency: 0
     - _ShorelineBlend: 0.33
-    - _ShorelineFrequency: 22.92
-    - _ShorelineNormalStrength: 0.62
-    - _ShorelineSpeed: 0.026
-    - _Specular: 0.6
+    - _ShorelineFrequency: 6.2
+    - _ShorelineNormalStrength: 0
+    - _ShorelineSpeed: 0
+    - _Specular: 17.57
     - _SpecularHighlights: 1
     - _Speculari: 1.12
     - _Speed: 0.1
@@ -197,12 +197,12 @@ Material:
     - _TransScattering: 1
     - _TransShadow: 0
     - _Translucency: 0
-    - _TransparencyFade: 1
+    - _TransparencyFade: 36.58
     - _UsingLinearColorSpace: 0
     - _WaterDepth: 6.47
     - _WaterFalloff: 2.4
     - _Wave: 0
-    - _WaveSpeed: 0.05
+    - _WaveSpeed: 0.22
     - _XOffset0: 0
     - _XOffset1: 0
     - _XOffset2: 0

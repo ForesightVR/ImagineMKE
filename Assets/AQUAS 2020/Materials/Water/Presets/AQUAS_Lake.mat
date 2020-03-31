@@ -160,11 +160,11 @@ Material:
     - _MediumDistanceFalloff: 2.56
     - _MediumTilingDistance: 100
     - _MediumTilingFade: 1
-    - _NormalStrength: 1.43
-    - _NormalTiling: 0.45
+    - _NormalStrength: 2
+    - _NormalTiling: 0.11
     - _ObjectRotation: 0
     - _PhysicalNormalStrength: 0
-    - _ProbeReflectionIntensity: 0.12
+    - _ProbeReflectionIntensity: 0.73
     - _ProjectGrid: 0
     - _RealtimeReflectionIntensity: 1
     - _ReflectionIntensity: 0.546
