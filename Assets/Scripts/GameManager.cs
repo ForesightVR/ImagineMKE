@@ -27,7 +27,26 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             ReturnToMenu();
             return;
-        }        
+        }
+    }
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Comms = Comms != null ? Comms : FindObjectOfType<DissonanceComms>();
+        roomMembership = Comms.Rooms.Join(NetworkConnectionManager.Instance.roomName);
+        Debug.Log(roomMembership.RoomName);
     }
 
     private void Start()
@@ -47,10 +66,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
         base.OnPlayerEnteredRoom(newPlayer);
-        if (Player.LocalPlayerInstance == null) // if null, the player is joining the room
+        if (Player.LocalPlayerInstance == null)
         {
-            Comms = Comms != null ? Comms : FindObjectOfType<DissonanceComms>();
-            roomMembership = Comms.Rooms.Join(NetworkConnectionManager.Instance.roomName);
             PhotonNetwork.Instantiate(playerPrefab.gameObject.name, Vector3.zero, Quaternion.identity);
         }            
     }
