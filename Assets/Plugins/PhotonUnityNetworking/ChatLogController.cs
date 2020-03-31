@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Dissonance.Networking;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
@@ -25,7 +26,17 @@ namespace Dissonance.Demo
         private DateTime _fadeOutStartTime;
         #endregion
 
-        public void Start ()
+        public void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        public void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        public void OnSceneLoaded (Scene scene, LoadSceneMode mode)
         {
             Comms = Comms ?? FindObjectOfType<DissonanceComms>();
 
