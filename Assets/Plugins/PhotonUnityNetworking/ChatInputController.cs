@@ -62,7 +62,7 @@ namespace Dissonance.Demo
             {
                 //If a key is pressed
                 if (global)
-                    ShowTextInput("Global");
+                    ShowTextInput(Comms.roomName);
             }
         }
 

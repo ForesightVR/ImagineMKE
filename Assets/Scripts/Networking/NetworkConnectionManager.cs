@@ -103,12 +103,18 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
         base.OnRoomListUpdate(roomList);
         RoomSelection.Instance.rooms.ForEach(x =>
         {
-            var room = roomList.FirstOrDefault(y => y.Name == x.roomName);
+            if (roomList.Count > 0)
+            {
+                var room = roomList.FirstOrDefault(y => y.Name == x.roomName);
 
-            if (room != null)
-                x.UpdateRoomCounter(room.PlayerCount, room.MaxPlayers);
-            else
-                x.UpdateRoomCounter(0, maxPlayers);
+                if (room != null && room.MaxPlayers > 0)
+                {
+                    x.UpdateRoomCounter(room.PlayerCount, room.MaxPlayers);
+                    return;
+                }                    
+            }
+
+            x.UpdateRoomCounter(0, maxPlayers);
         });
     }
 

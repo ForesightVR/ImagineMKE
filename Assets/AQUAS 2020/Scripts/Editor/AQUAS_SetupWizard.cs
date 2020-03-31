@@ -687,10 +687,10 @@ namespace AQUAS
             TerrainData terrainData = terrain.GetComponent<Terrain>().terrainData;
             
             int index = 0;
-            Texture2D duplicateHeightMap = new Texture2D(terrainData.heightmapWidth, terrainData.heightmapHeight, TextureFormat.ARGB32, false);
+            Texture2D duplicateHeightMap = new Texture2D(terrainData.heightmapResolution, terrainData.heightmapResolution, TextureFormat.ARGB32, false);
             duplicateHeightMap.filterMode = FilterMode.Trilinear;
             duplicateHeightMap.anisoLevel = 16;
-            float[,] rawHeights = terrainData.GetHeights(0, 0, terrainData.heightmapWidth, terrainData.heightmapHeight);
+            float[,] rawHeights = terrainData.GetHeights(0, 0, terrainData.heightmapResolution, terrainData.heightmapResolution);
 
             float seaLevel = waterplane.transform.position.y;
 

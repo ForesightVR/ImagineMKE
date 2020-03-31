@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Dissonance.Networking;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace Dissonance.Demo
         #region fields and properties
         public DissonanceComms Comms;
 
-        private GameObject _textPrototype;
+        public GameObject _textPrototype;
         private CanvasGroup _canvas;
 
         private float _heightLimit;
@@ -25,11 +26,21 @@ namespace Dissonance.Demo
         private DateTime _fadeOutStartTime;
         #endregion
 
-        public void Start ()
+        public void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        public void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        public void OnSceneLoaded (Scene scene, LoadSceneMode mode)
         {
             Comms = Comms ?? FindObjectOfType<DissonanceComms>();
 
-            _textPrototype = Resources.Load<GameObject>("LogTextPrototype");
+            //_textPrototype = Resources.Load<GameObject>("LogTextPrototype");
             _canvas = GetComponent<CanvasGroup>();
 
             _heightLimit = gameObject.GetComponent<RectTransform>().rect.height - 20;
@@ -48,7 +59,8 @@ namespace Dissonance.Demo
             //Ignore your own messages coming back from the server
             if (Comms != null && message.Sender == Comms.LocalPlayerName)
                 return;
-            
+
+            Debug.Log($"Message: {message.Sender} {message.Message}");
 
             //Decide what we're going to print
             var msg = string.Format("{0} ({1}): {2}",
@@ -57,6 +69,8 @@ namespace Dissonance.Demo
                 message.Message
             );
 
+            Debug.Log(msg);
+
             AddMessage(msg, Color.white);
         }
 
@@ -64,6 +78,7 @@ namespace Dissonance.Demo
         {
             //Instantiate the text prototype
             //This cast is required on Unity 5.4! There it return an object
+            Debug.Log($"TextProto: {_textPrototype}");
             var obj = (GameObject)Instantiate(_textPrototype, gameObject.transform);
 
             //Put text into the object
