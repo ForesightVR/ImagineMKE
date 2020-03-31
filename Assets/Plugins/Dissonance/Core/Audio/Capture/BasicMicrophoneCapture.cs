@@ -6,6 +6,7 @@ using Dissonance.Datastructures;
 using NAudio.Wave;
 using UnityEngine;
 using UnityEngine.Profiling;
+using Microphone = FrostweepGames.Plugins.WebGL.Microphone;
 
 namespace Dissonance.Audio.Capture
 {
@@ -58,7 +59,7 @@ namespace Dissonance.Audio.Capture
                 Log.AssertAndThrowPossibleBug(_clip == null, "1BAD3E74-B451-4B7D-A9B9-35225BE55364", "Attempted to Start microphone capture, but capture is already running");
 
                 //Early exit if there are no microphones connected
-                if (Log.AssertAndLogWarn(Microphone.devices.Length > 0, "No microphone detected; disabling voice capture"))
+                if (Log.AssertAndLogWarn(!Microphone.Instance.HasConnectedMicrophoneDevices(), "No microphone detected; disabling voice capture"))
                     return null;
 
                 //Check the micName and default to null if it's invalid (all whitespace or not a known device)
@@ -74,7 +75,7 @@ namespace Dissonance.Audio.Capture
                     //If min and max are both zero that indicates we can use any sample rate
                     int minFreq;
                     int maxFreq;
-                    Microphone.GetDeviceCaps(_micName, out minFreq, out maxFreq);
+                    Microphone.Instance.GetDeviceCaps(_micName, out minFreq, out maxFreq);
                     sampleRate = minFreq == 0 && maxFreq == 0 ? 48000 : Mathf.Clamp(48000, minFreq, maxFreq);
                     Log.Debug("GetDeviceCaps name=`{0}` min=`{1}` max=`{2}`", _micName, minFreq, maxFreq);
                 }
@@ -91,7 +92,7 @@ namespace Dissonance.Audio.Capture
                 try
                 {
                     //Get the audioclip from Unity for this microphone (with a fairly large internal buffer)
-                    _clip = Microphone.Start(_micName, true, 10, sampleRate);
+                    _clip = Microphone.Instance.Start(_micName, true, 10, sampleRate);
                     if (_clip == null)
                     {
                         Log.Error("Failed to start microphone capture");
@@ -146,7 +147,7 @@ namespace Dissonance.Audio.Capture
             if (string.IsNullOrEmpty(micName))
                 return null;
 
-            if (!Microphone.devices.Contains(micName))
+            if (!Microphone.Instance.GetMicrophoneDevices().Contains(micName))
             {
                 Log.Warn("Cannot find microphone '{0}', using default mic", micName);
                 return null;
@@ -169,7 +170,7 @@ namespace Dissonance.Audio.Capture
             }
 
             //Stop capture
-            Microphone.End(_micName);
+            Microphone.Instance.End(_micName);
             _format = null;
             _clip = null;
             _readHead = 0;
@@ -206,7 +207,7 @@ namespace Dissonance.Audio.Capture
             //Don't deliver any audio at all until microphone has initialised (i.e. delivered at least one sample)
             if (!_started)
             {
-                _readHead = Microphone.GetPosition(_micName);
+                _readHead = Microphone.Instance.GetPosition(_micName);
                 _started = _readHead > 0;
 
                 if (!_started)
@@ -231,7 +232,7 @@ namespace Dissonance.Audio.Capture
 
             // If the microphone simply isn't recording at this point something has gone wrong, for example an external script has called Microphone.End
             // or something else has taken exclusive control of the mic. Force a reset and hope that fixes the issue.
-            if (!Microphone.IsRecording(_micName))
+            if (!Microphone.Instance.IsRecording(_micName))
             {
                 Log.Warn("Microphone stopped recording for an unknown reason (possibly due to an external script calling `Microphone.End`");
                 return true;
@@ -245,7 +246,7 @@ namespace Dissonance.Audio.Capture
             else
             {
                 //No subscribers - discard the data in the mic input buffer
-                _readHead = Microphone.GetPosition(_micName);
+                _readHead = Microphone.Instance.GetPosition(_micName);
                 _rawMicSamples.Reset();
                 _rawMicFrames.Reset();
 
@@ -262,7 +263,7 @@ namespace Dissonance.Audio.Capture
         private void DrainMicSamples()
         {
             // How many samples has the mic moved since the last time we read from it?
-            var writeHead = Microphone.GetPosition(_micName);
+            var writeHead = Microphone.Instance.GetPosition(_micName);
             var samplesToRead = (uint)((_clip.samples + writeHead - _readHead) % _clip.samples);
 
             //Early exit if no samples are available
