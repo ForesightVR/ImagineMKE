@@ -167,8 +167,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Comms: {fileID: 0}
-  Team1Channel: A
-  Team2Channel: B
 --- !u!114 &8868606456072862496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Comms: {fileID: 0}
+  _textPrototype: {fileID: 1186889986227776, guid: e27b3349c74988a49a6faffe3506a529,
+    type: 3}
 --- !u!225 &8765153598174450522
 CanvasGroup:
   m_ObjectHideFlags: 0

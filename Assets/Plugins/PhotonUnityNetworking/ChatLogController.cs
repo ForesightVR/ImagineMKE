@@ -16,7 +16,7 @@ namespace Dissonance.Demo
         #region fields and properties
         public DissonanceComms Comms;
 
-        private GameObject _textPrototype;
+        public GameObject _textPrototype;
         private CanvasGroup _canvas;
 
         private float _heightLimit;
@@ -59,7 +59,8 @@ namespace Dissonance.Demo
             //Ignore your own messages coming back from the server
             if (Comms != null && message.Sender == Comms.LocalPlayerName)
                 return;
-            
+
+            Debug.Log($"Message: {message.Sender} {message.Message}");
 
             //Decide what we're going to print
             var msg = string.Format("{0} ({1}): {2}",
@@ -68,6 +69,8 @@ namespace Dissonance.Demo
                 message.Message
             );
 
+            Debug.Log(msg);
+
             AddMessage(msg, Color.white);
         }
 
@@ -75,6 +78,7 @@ namespace Dissonance.Demo
         {
             //Instantiate the text prototype
             //This cast is required on Unity 5.4! There it return an object
+            Debug.Log($"TextProto: {_textPrototype}");
             var obj = (GameObject)Instantiate(_textPrototype, gameObject.transform);
 
             //Put text into the object
