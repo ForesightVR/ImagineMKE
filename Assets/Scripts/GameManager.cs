@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviourPunCallbacks
             return;
         }
 
-        Comms = Comms ?? FindObjectOfType<DissonanceComms>();
-        Comms.Rooms.Join("Global");
+        Comms = Comms != null ? Comms : FindObjectOfType<DissonanceComms>();
+        Comms.Rooms.Join(NetworkConnectionManager.Instance.roomName);
     }
 
     private void Start()
@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
-
         base.OnPlayerEnteredRoom(newPlayer);
         if(Player.LocalPlayerInstance == null)
             PhotonNetwork.Instantiate(playerPrefab.gameObject.name, Vector3.zero, Quaternion.identity);
