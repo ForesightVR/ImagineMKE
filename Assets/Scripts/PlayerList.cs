@@ -73,13 +73,13 @@ public class PlayerList : MonoBehaviourPunCallbacks
     public override void OnDisconnected(DisconnectCause cause)
     {
         base.OnDisconnected(cause);
-        Debug.Log("Disconnected");
+        //Debug.Log("Disconnected");
         SceneManager.LoadScene(0);
     }
 
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
     {
-        Debug.Log("OnPlayerLeftRoom");
+        //Debug.Log("OnPlayerLeftRoom");
         base.OnPlayerLeftRoom(otherPlayer);
         PlayerInfo playerInfo = playerInfos.FirstOrDefault(x => x.playerName.text == otherPlayer.NickName);
 
