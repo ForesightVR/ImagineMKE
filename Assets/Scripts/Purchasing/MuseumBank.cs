@@ -9,8 +9,8 @@ using System;
 
 public static class MuseumBank
 {
-    static string oauth_consumerKey = "ck_7fadaa800f1910ae41d02859a814bb487a5acb34";
-    static string oauth_consumerSecret = "cs_d0580a9960dd425db90bb587b04c569dab73efe8";
+    static string oauth_consumerKey = "ck_42bc844ad5f5679fa919f8104137bd276daefbe2";
+    static string oauth_consumerSecret = "cs_e65a26fd8ece512d02363359388e863f2eedc598";
 
     static string vendorsApiString = "/wp-json/wcmp/v1/vendors";
     static string productsApiString = "/wp-json/wc/v3/products";
