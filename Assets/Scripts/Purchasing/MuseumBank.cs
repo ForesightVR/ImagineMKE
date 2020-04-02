@@ -50,7 +50,11 @@ public static class MuseumBank
             Artist artist = new Artist((int)data["id"], $"{data["first_name"]} {data["last_name"]}", (string)data["shop"]["description"]);
 
             string artistImageString = GetImageLink((string)data["shop"]["description"]);
-            CoroutineUtility.instance.StartCoroutine(GetImage(artist, artistImageString));
+
+            if (artistImageString.Length > 0)
+            {
+                CoroutineUtility.instance.StartCoroutine(GetImage(artist, artistImageString));
+            }            
 
             artists.Add(artist);
         }
@@ -92,7 +96,6 @@ public static class MuseumBank
             //add it to the list of vendor
 
             var intList = data["variations"]?.Select(x => (int)x).ToList() ?? new List<int>();
-
 
             string tag = (string)data["tags"][0]["name"];
             Debug.Log("Cause: " + tag);
@@ -137,6 +140,7 @@ public static class MuseumBank
     static IEnumerator GetImage(Artist artist, string imagePath)
     {
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(imagePath);
+
         yield return www.SendWebRequest();
 
         if (www.isNetworkError || www.isHttpError)
