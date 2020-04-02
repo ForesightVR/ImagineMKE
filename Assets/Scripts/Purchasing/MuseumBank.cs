@@ -15,6 +15,8 @@ public static class MuseumBank
     static string vendorsApiString = "/wp-json/wcmp/v1/vendors";
     static string productsApiString = "/wp-json/wc/v3/products";
 
+    static string websiteRoot = "https://outsidersvr.com";
+
     public static List<Artist> artists = new List<Artist>();
 
     public static void CallGet()
@@ -104,14 +106,14 @@ public static class MuseumBank
 
     static UnityWebRequest CreateGetRequest(string apiString)
     {
-        string url = GenerateRequestURL("https://foresightvr.com" + apiString);
+        string url = GenerateRequestURL(websiteRoot + apiString);
         var request = UnityWebRequest.Get(url);
         return request;
     }
 
     static UnityWebRequest CreateGetRequest(string apiString, List<string> parameters)
     {
-        string url = GenerateRequestURL("https://foresightvr.com" + apiString, parameters);
+        string url = GenerateRequestURL(websiteRoot + apiString, parameters);
         var request = UnityWebRequest.Get(url);
         return request;
     }
