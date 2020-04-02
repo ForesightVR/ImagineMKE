@@ -15,6 +15,8 @@ public static class MuseumBank
     static string vendorsApiString = "/wp-json/wcmp/v1/vendors";
     static string productsApiString = "/wp-json/wc/v3/products";
 
+    static string websiteRoot = "https://outsidersvr.com";
+
     public static List<Artist> artists = new List<Artist>();
 
     public static void CallGet()
@@ -48,7 +50,11 @@ public static class MuseumBank
             Artist artist = new Artist((int)data["id"], $"{data["first_name"]} {data["last_name"]}", (string)data["shop"]["description"]);
 
             string artistImageString = GetImageLink((string)data["shop"]["description"]);
-            CoroutineUtility.instance.StartCoroutine(GetImage(artist, artistImageString));
+
+            if (artistImageString.Length > 0)
+            {
+                CoroutineUtility.instance.StartCoroutine(GetImage(artist, artistImageString));
+            }            
 
             artists.Add(artist);
         }
@@ -91,7 +97,6 @@ public static class MuseumBank
 
             var intList = data["variations"]?.Select(x => (int)x).ToList() ?? new List<int>();
 
-
             string tag = (string)data["tags"][0]["name"];
             Debug.Log("Cause: " + tag);
 
@@ -104,14 +109,14 @@ public static class MuseumBank
 
     static UnityWebRequest CreateGetRequest(string apiString)
     {
-        string url = GenerateRequestURL("https://foresightvr.com" + apiString);
+        string url = GenerateRequestURL(websiteRoot + apiString);
         var request = UnityWebRequest.Get(url);
         return request;
     }
 
     static UnityWebRequest CreateGetRequest(string apiString, List<string> parameters)
     {
-        string url = GenerateRequestURL("https://foresightvr.com" + apiString, parameters);
+        string url = GenerateRequestURL(websiteRoot + apiString, parameters);
         var request = UnityWebRequest.Get(url);
         return request;
     }
@@ -135,6 +140,7 @@ public static class MuseumBank
     static IEnumerator GetImage(Artist artist, string imagePath)
     {
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(imagePath);
+
         yield return www.SendWebRequest();
 
         if (www.isNetworkError || www.isHttpError)
