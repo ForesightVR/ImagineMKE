@@ -47,7 +47,7 @@ public static class MuseumBank
         foreach (JObject jObject in jArray)
         {
             JObject data = JObject.Parse(jObject.ToString());
-            Artist artist = new Artist((int)data["id"], $"{data["first_name"]} {data["last_name"]}", (string)data["shop"]["description"]);
+            Artist artist = new Artist((int)data["id"], $"{data["first_name"]} {data["last_name"]}", StripHTML((string)data["shop"]["description"]));
 
             string artistImageString = GetImageLink((string)data["shop"]["description"]);
 
