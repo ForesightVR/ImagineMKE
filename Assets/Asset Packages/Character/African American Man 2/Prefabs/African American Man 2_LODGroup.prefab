@@ -1,0 +1,221 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7349981635842848940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4612037650220422025}
+  - component: {fileID: 5580581611857133490}
+  m_Layer: 0
+  m_Name: African American Man 2_LODGroup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4612037650220422025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7349981635842848940}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7819464155830244253}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &5580581611857133490
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7349981635842848940}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.00018954277, y: 0.9177153, z: 0.035402298}
+  m_Size: 2.0316145
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.5
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 8603893904759890057}
+    - renderer: {fileID: 3356408105885369138}
+    - renderer: {fileID: 904251640754807834}
+    - renderer: {fileID: 988142182888075206}
+    - renderer: {fileID: 677244014296456152}
+    - renderer: {fileID: 1363655960652791220}
+    - renderer: {fileID: 14013640747938924}
+  - screenRelativeHeight: 0.33333334
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 4802497146459600563}
+  - screenRelativeHeight: 0.25
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 5723465093639757385}
+  - screenRelativeHeight: 0.02
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2797855679674749868}
+  m_Enabled: 1
+--- !u!1001 &3026108848385620103
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4612037650220422025}
+    m_Modifications:
+    - target: {fileID: -9193248767792875324, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 07ec2c890e4c22f42822cbee6ab7759e, type: 2}
+    - target: {fileID: -5295231113293630770, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+        type: 3}
+      propertyPath: m_Name
+      value: African American Man 2_LODGroup
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 831dc1c45b9e47a47b8b80aeed80fd64, type: 3}
+--- !u!4 &7819464155830244253 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+    type: 3}
+  m_PrefabInstance: {fileID: 3026108848385620103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8603893904759890057 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -2406665901200091122, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+    type: 3}
+  m_PrefabInstance: {fileID: 3026108848385620103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &3356408105885369138 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -8688922982703498315, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+    type: 3}
+  m_PrefabInstance: {fileID: 3026108848385620103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &904251640754807834 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2698335560718736541, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+    type: 3}
+  m_PrefabInstance: {fileID: 3026108848385620103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &988142182888075206 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6608905036096366783, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+    type: 3}
+  m_PrefabInstance: {fileID: 3026108848385620103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &677244014296456152 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2348882434874319711, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+    type: 3}
+  m_PrefabInstance: {fileID: 3026108848385620103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1363655960652791220 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4256543942595396915, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+    type: 3}
+  m_PrefabInstance: {fileID: 3026108848385620103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &14013640747938924 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3012675750323719403, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+    type: 3}
+  m_PrefabInstance: {fileID: 3026108848385620103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4802497146459600563 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1487594963377205708, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+    type: 3}
+  m_PrefabInstance: {fileID: 3026108848385620103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5723465093639757385 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1832066905162242354, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+    type: 3}
+  m_PrefabInstance: {fileID: 3026108848385620103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &2797855679674749868 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -8129807545865704661, guid: 831dc1c45b9e47a47b8b80aeed80fd64,
+    type: 3}
+  m_PrefabInstance: {fileID: 3026108848385620103}
+  m_PrefabAsset: {fileID: 0}

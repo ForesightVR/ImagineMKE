@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5bf7bbd3c681f0844a31bce231f6875f
+guid: f95fb21e5bd38264fb4c4b7c1391fc3f
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
@@ -14,72 +14,72 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Boots_Pbr
-    second: {fileID: 2100000, guid: 063fb24d502e0f44e85e65b334f596c3, type: 2}
+    second: {fileID: 2100000, guid: 94c518285e0cd6b4aa70b8ad04455075, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Ga_Eye_Pbr
-    second: {fileID: 2100000, guid: 8eddb08a2c86dba4eb93af64b6ac0732, type: 2}
+    second: {fileID: 2100000, guid: 362a3b0a5fff9b0418fa03748cdef042, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Ga_Teeth_Pbr
-    second: {fileID: 2100000, guid: 0532bdc3f01a4de42bf06b8a87a063ee, type: 2}
+    second: {fileID: 2100000, guid: d1bbb70cac8217a4bb434db3c1dd5cb7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Jeans_Pbr
-    second: {fileID: 2100000, guid: 6363537426d064d47ab6ef649039d5a8, type: 2}
+    second: {fileID: 2100000, guid: 222c807b1d0b4ea44b9b75bcc6466519, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Shirt_Pbr
-    second: {fileID: 2100000, guid: 5691208a421c1534db8492048077b9b8, type: 2}
+    second: {fileID: 2100000, guid: a7dcfabd6ba364c46b8e075c75388a46, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Std_Nails_Pbr
-    second: {fileID: 2100000, guid: 504b37ba9a4f7bd41929e349098ae570, type: 2}
+    second: {fileID: 2100000, guid: efad998d005159b49aad6f13e650200a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Std_Skin_Arm_Pbr
-    second: {fileID: 2100000, guid: 8c0d672a9e4a7da43bee38b75502426a, type: 2}
+    second: {fileID: 2100000, guid: d32ddd3b182cc8640acd60b635df02ac, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Std_Skin_Body_Pbr
-    second: {fileID: 2100000, guid: 2561e5763330ebf409f144b584df0f7d, type: 2}
+    second: {fileID: 2100000, guid: 786af8a54360de34eb69883d67642399, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Std_Skin_Head_Pbr
-    second: {fileID: 2100000, guid: 61fbf81b3bcfc1747b0c73cf4917cfa8, type: 2}
+    second: {fileID: 2100000, guid: 65a4ffdeff3396c4a96e2f304bd84f42, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Std_Skin_Leg_Pbr
-    second: {fileID: 2100000, guid: 0479c7ec88751c54c87a1e5e760b7ac7, type: 2}
+    second: {fileID: 2100000, guid: 2d507874fe29da247b77348f5d8a6892, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Std_Tongue_Pbr
-    second: {fileID: 2100000, guid: 8c8c3147a17f55a46a52cd77790b89f7, type: 2}
+    second: {fileID: 2100000, guid: b3f7543ce1a2dfe40aced39cd3ce1858, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: remesh_7_combined_Remeshed_LOD1_Pbr
-    second: {fileID: 2100000, guid: f498e8f29d665ef49afc97b166ab2c49, type: 2}
+    second: {fileID: 2100000, guid: 25e6cdfa94197fe458329f5b26d2b342, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: remesh_7_combined_Remeshed_LOD2_Pbr
-    second: {fileID: 2100000, guid: a88e341c81a24eb44877a99a5a710516, type: 2}
+    second: {fileID: 2100000, guid: 9eac837aba4b1f649a0f6b9adbfe67ab, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: remesh_7_combined_Remeshed_LOD3_Pbr
-    second: {fileID: 2100000, guid: 0f702c9104c6fdd40b9f832044f6a2c4, type: 2}
+    second: {fileID: 2100000, guid: 4cd5b68bc11ba434a9b4e71278a817fd, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -99,7 +99,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -188,13 +188,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 3
+  animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
