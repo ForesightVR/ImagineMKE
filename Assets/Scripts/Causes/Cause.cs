@@ -7,4 +7,5 @@ public class Cause : MonoBehaviour
 {
     [SerializeField]
     protected UnityEvent cause;
+    public bool isLocal;
 }

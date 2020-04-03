@@ -503,6 +503,7 @@ MonoBehaviour:
   cause:
     m_PersistentCalls:
       m_Calls: []
+  isLocal: 1
   interactionLayer:
     serializedVersion: 2
     m_Bits: 2048

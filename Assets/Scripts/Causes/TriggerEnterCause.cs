@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Photon.Pun;
 
 public class TriggerEnterCause : Cause
 {
@@ -10,6 +11,8 @@ public class TriggerEnterCause : Cause
 
     private void OnTriggerEnter(Collider other)
     {
+        if (isLocal && !PhotonNetwork.LocalPlayer.IsLocal) return;
+
         if (other.transform.tag.Equals(causeTag))
             cause?.Invoke();
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class TriggerExitCuase : Cause
 {
@@ -9,6 +10,8 @@ public class TriggerExitCuase : Cause
 
     private void OnTriggerExit(Collider other)
     {
+        if (isLocal && !PhotonNetwork.LocalPlayer.IsLocal) return;
+
         if (other.transform.tag.Equals(causeTag))
             cause?.Invoke();
     }

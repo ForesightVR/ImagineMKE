@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class RaycastCause : Cause
 {
@@ -14,6 +15,8 @@ public class RaycastCause : Cause
 
     void Update()
     {
+        if (isLocal && !PhotonNetwork.LocalPlayer.IsLocal) return;
+
         Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100f, interactionLayer))
