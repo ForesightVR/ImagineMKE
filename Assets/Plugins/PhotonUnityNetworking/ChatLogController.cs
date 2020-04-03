@@ -34,6 +34,9 @@ namespace Dissonance.Demo
         public void OnDisable()
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
+
+            if(Comms)
+                Comms.Text.MessageReceived -= OnMessageReceived;
         }
 
         public void OnSceneLoaded (Scene scene, LoadSceneMode mode)

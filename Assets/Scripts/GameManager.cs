@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         }            
     }
 
-    public void LeaveRom()
+    public void LeaveRoom()
     {
         PhotonNetwork.LeaveRoom();        
         Comms.Rooms.Leave(roomMembership);

@@ -5240,6 +5240,16 @@ PrefabInstance:
       propertyPath: chatInput
       value: 
       objectReference: {fileID: 1774415496}
+    - target: {fileID: 4785366550155027790, guid: 5a5f9da7bfb6c1f4eba1851a38beb1bd,
+        type: 3}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 196104123}
+    - target: {fileID: 4785366550155027790, guid: 5a5f9da7bfb6c1f4eba1851a38beb1bd,
+        type: 3}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LeaveRoom
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a5f9da7bfb6c1f4eba1851a38beb1bd, type: 3}
 --- !u!1 &1103808449
