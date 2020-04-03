@@ -9,13 +9,11 @@ using System;
 
 public static class MuseumBank
 {
-    static string oauth_consumerKey = "ck_42bc844ad5f5679fa919f8104137bd276daefbe2";
-    static string oauth_consumerSecret = "cs_e65a26fd8ece512d02363359388e863f2eedc598";
+    static string oauth_consumerKey = "ck_7fadaa800f1910ae41d02859a814bb487a5acb34";
+    static string oauth_consumerSecret = "cs_d0580a9960dd425db90bb587b04c569dab73efe8";
 
     static string vendorsApiString = "/wp-json/wcmp/v1/vendors";
     static string productsApiString = "/wp-json/wc/v3/products";
-
-    static string websiteRoot = "https://outsidersvr.com";
 
     public static List<Artist> artists = new List<Artist>();
 
@@ -50,11 +48,7 @@ public static class MuseumBank
             Artist artist = new Artist((int)data["id"], $"{data["first_name"]} {data["last_name"]}", (string)data["shop"]["description"]);
 
             string artistImageString = GetImageLink((string)data["shop"]["description"]);
-
-            if (artistImageString.Length > 0)
-            {
-                CoroutineUtility.instance.StartCoroutine(GetImage(artist, artistImageString));
-            }            
+            CoroutineUtility.instance.StartCoroutine(GetImage(artist, artistImageString));
 
             artists.Add(artist);
         }
@@ -97,6 +91,7 @@ public static class MuseumBank
 
             var intList = data["variations"]?.Select(x => (int)x).ToList() ?? new List<int>();
 
+
             string tag = (string)data["tags"][0]["name"];
             Debug.Log("Cause: " + tag);
 
@@ -109,14 +104,14 @@ public static class MuseumBank
 
     static UnityWebRequest CreateGetRequest(string apiString)
     {
-        string url = GenerateRequestURL(websiteRoot + apiString);
+        string url = GenerateRequestURL("https://foresightvr.com" + apiString);
         var request = UnityWebRequest.Get(url);
         return request;
     }
 
     static UnityWebRequest CreateGetRequest(string apiString, List<string> parameters)
     {
-        string url = GenerateRequestURL(websiteRoot + apiString, parameters);
+        string url = GenerateRequestURL("https://foresightvr.com" + apiString, parameters);
         var request = UnityWebRequest.Get(url);
         return request;
     }
@@ -140,7 +135,6 @@ public static class MuseumBank
     static IEnumerator GetImage(Artist artist, string imagePath)
     {
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(imagePath);
-
         yield return www.SendWebRequest();
 
         if (www.isNetworkError || www.isHttpError)
