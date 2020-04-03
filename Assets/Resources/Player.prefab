@@ -796,7 +796,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 4725101313736112202}
   - {fileID: 1282212308}
-  viewIdField: 0
+  viewIdField: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &1282212308
@@ -2059,7 +2059,7 @@ PrefabInstance:
     - target: {fileID: 2200932281135596564, guid: df0874980ecc24a41928dcd0b655c103,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2406672172802520429, guid: df0874980ecc24a41928dcd0b655c103,
         type: 3}
