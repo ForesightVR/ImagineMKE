@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 1655129687598507134}
   - component: {fileID: 3992484634150672612}
   - component: {fileID: 4706260198003029130}
-  m_Layer: 5
+  - component: {fileID: 365161108474820758}
+  - component: {fileID: 2566353889146035376}
+  m_Layer: 11
   m_Name: Art Piece Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,3 +75,32 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!65 &365161108474820758
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6990560591504306111}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2566353889146035376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6990560591504306111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc8cb58fb7df9ad40aa07a01672c4af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  methodArray:
+  - SetArtistCanvas
+  - ChangeArt
+  chosenMethod: ChangeArt

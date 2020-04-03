@@ -27,6 +27,7 @@ public class ArtistCanvas : MonoBehaviour
         foreach (Art art in extraArt)
         {
             Image displayImage = Instantiate(artPieceDisplay, artistPiecesList);
+            displayImage.GetComponent<ChangeArtEffect>().SetArtistCanvas(this);
             displayImage.sprite = art.artImage;
         }
     }
