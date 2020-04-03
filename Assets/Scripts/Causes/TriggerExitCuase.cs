@@ -10,7 +10,14 @@ public class TriggerExitCuase : Cause
 
     private void OnTriggerExit(Collider other)
     {
-        if (isLocal && !PhotonNetwork.LocalPlayer.IsLocal) return;
+        if (isLocal && causeTag == "Player")
+        {
+            if (other.tag.Equals(causeTag))
+            {
+                if (!other.GetComponent<PhotonView>().IsMine)
+                    return;
+            }
+        }
 
         if (other.transform.tag.Equals(causeTag))
             cause?.Invoke();

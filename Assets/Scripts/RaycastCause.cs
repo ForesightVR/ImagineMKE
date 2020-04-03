@@ -8,14 +8,19 @@ public class RaycastCause : Cause
     public LayerMask interactionLayer;
     Camera mainCamera;
 
+    bool localOnly;
+
     private void Start()
     {
         mainCamera = transform.root.GetComponentInChildren<Camera>();
+
+        if(isLocal)
+        localOnly = !transform.root.GetComponent<PhotonView>().IsMine;
     }
 
     void Update()
     {
-        if (isLocal && !PhotonNetwork.LocalPlayer.IsLocal) return;
+        if (localOnly) return;
 
         Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
         RaycastHit hit;
