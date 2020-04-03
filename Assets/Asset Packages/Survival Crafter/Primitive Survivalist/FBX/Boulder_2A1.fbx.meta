@@ -1,0 +1,205 @@
+fileFormatVersion: 2
+guid: f000b51b03bd45947bfd5fa8a9bd3071
+timeCreated: 1509835470
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Boulder_2A1
+    100004: Boulder_2A2
+    100006: Boulder_2A3
+    100008: Boulder_2A4
+    100010: Boulder_Large_2A1
+    100012: Boulder_Large_2A2
+    100014: Boulder_Large_2A3
+    100016: Boulder_Large_2A4
+    100018: Boulder_Large_2A5
+    100020: Boulder_Small_2A1
+    100022: Boulder_Small_2A2
+    100024: Boulder_Small_2A3
+    100026: Boulder_Small_2A4
+    100028: Boulder_Small_2A5
+    100030: Boulder_Small_2A6
+    100032: Boulder_Tiny_2A1
+    100034: Boulder_Tiny_2A2
+    100036: Boulder_Tiny_2A3
+    100038: Boulder_Tiny_2A4
+    100040: Boulder_Tiny_2A5
+    100042: Boulder_Tiny_2A6
+    400000: //RootNode
+    400002: Boulder_2A1
+    400004: Boulder_2A2
+    400006: Boulder_2A3
+    400008: Boulder_2A4
+    400010: Boulder_Large_2A1
+    400012: Boulder_Large_2A2
+    400014: Boulder_Large_2A3
+    400016: Boulder_Large_2A4
+    400018: Boulder_Large_2A5
+    400020: Boulder_Small_2A1
+    400022: Boulder_Small_2A2
+    400024: Boulder_Small_2A3
+    400026: Boulder_Small_2A4
+    400028: Boulder_Small_2A5
+    400030: Boulder_Small_2A6
+    400032: Boulder_Tiny_2A1
+    400034: Boulder_Tiny_2A2
+    400036: Boulder_Tiny_2A3
+    400038: Boulder_Tiny_2A4
+    400040: Boulder_Tiny_2A5
+    400042: Boulder_Tiny_2A6
+    2300000: Boulder_2A1
+    2300002: Boulder_2A2
+    2300004: Boulder_2A3
+    2300006: Boulder_2A4
+    2300008: Boulder_Large_2A1
+    2300010: Boulder_Large_2A2
+    2300012: Boulder_Large_2A3
+    2300014: Boulder_Large_2A4
+    2300016: Boulder_Large_2A5
+    2300018: Boulder_Small_2A1
+    2300020: Boulder_Small_2A2
+    2300022: Boulder_Small_2A3
+    2300024: Boulder_Small_2A4
+    2300026: Boulder_Small_2A5
+    2300028: Boulder_Small_2A6
+    2300030: Boulder_Tiny_2A1
+    2300032: Boulder_Tiny_2A2
+    2300034: Boulder_Tiny_2A3
+    2300036: Boulder_Tiny_2A4
+    2300038: Boulder_Tiny_2A5
+    2300040: Boulder_Tiny_2A6
+    3300000: Boulder_2A1
+    3300002: Boulder_2A2
+    3300004: Boulder_2A3
+    3300006: Boulder_2A4
+    3300008: Boulder_Large_2A1
+    3300010: Boulder_Large_2A2
+    3300012: Boulder_Large_2A3
+    3300014: Boulder_Large_2A4
+    3300016: Boulder_Large_2A5
+    3300018: Boulder_Small_2A1
+    3300020: Boulder_Small_2A2
+    3300022: Boulder_Small_2A3
+    3300024: Boulder_Small_2A4
+    3300026: Boulder_Small_2A5
+    3300028: Boulder_Small_2A6
+    3300030: Boulder_Tiny_2A1
+    3300032: Boulder_Tiny_2A2
+    3300034: Boulder_Tiny_2A3
+    3300036: Boulder_Tiny_2A4
+    3300038: Boulder_Tiny_2A5
+    3300040: Boulder_Tiny_2A6
+    4300000: Boulder_Large_2A3
+    4300002: Boulder_Large_2A2
+    4300004: Boulder_Large_2A1
+    4300006: Boulder_Large_2A4
+    4300008: Boulder_Large_2A5
+    4300010: Boulder_Tiny_2A5
+    4300012: Boulder_Tiny_2A6
+    4300014: Boulder_Small_2A6
+    4300016: Boulder_Small_2A5
+    4300018: Boulder_Tiny_2A2
+    4300020: Boulder_Tiny_2A4
+    4300022: Boulder_Tiny_2A1
+    4300024: Boulder_Tiny_2A3
+    4300026: Boulder_Small_2A3
+    4300028: Boulder_Small_2A1
+    4300030: Boulder_Small_2A4
+    4300032: Boulder_Small_2A2
+    4300034: Boulder_2A2
+    4300036: Boulder_2A4
+    4300038: Boulder_2A1
+    4300040: Boulder_2A3
+    6400000: Boulder_2A1
+    6400002: Boulder_2A2
+    6400004: Boulder_2A3
+    6400006: Boulder_2A4
+    6400008: Boulder_Large_2A1
+    6400010: Boulder_Large_2A2
+    6400012: Boulder_Large_2A3
+    6400014: Boulder_Large_2A4
+    6400016: Boulder_Large_2A5
+    6400018: Boulder_Small_2A1
+    6400020: Boulder_Small_2A2
+    6400022: Boulder_Small_2A3
+    6400024: Boulder_Small_2A4
+    6400026: Boulder_Small_2A5
+    6400028: Boulder_Small_2A6
+    6400030: Boulder_Tiny_2A1
+    6400032: Boulder_Tiny_2A2
+    6400034: Boulder_Tiny_2A3
+    6400036: Boulder_Tiny_2A4
+    6400038: Boulder_Tiny_2A5
+    6400040: Boulder_Tiny_2A6
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
