@@ -8,7 +8,7 @@ using Foresight.Utilities;
 public class Museum : MonoBehaviour
 {
     public CauseTag causeTag;
-    public List<Image> placements;
+    public List<ArtistCanvas> artistCanvases;
     List<Artist> artists;
 
     private void Start()
@@ -17,9 +17,10 @@ public class Museum : MonoBehaviour
 
         int artistIndex = 0;
 
-        foreach (Image place in placements)
+        foreach (ArtistCanvas artistCanvas in artistCanvases)
         {
-            place.sprite = artists[artistIndex].GetNextArt().artImage;
+            Artist artist = artists[artistIndex];
+            artistCanvas.SetArtistCanvasInfo(artist.artPieces[0], artist.name, artist.artistImage, artist.description, artist.artPieces);
             artistIndex = MathUtilities.IncrementLoop(artistIndex, artists.Count - 1);
         }        
     }
