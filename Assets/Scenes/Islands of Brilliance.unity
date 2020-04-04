@@ -3144,7 +3144,7 @@ MeshRenderer:
   m_GameObject: {fileID: 443768895}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -53925,17 +53925,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 656e63ff00eb192488e4bf28d81603fe,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 82.47
+      value: 82.781
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 656e63ff00eb192488e4bf28d81603fe,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 656e63ff00eb192488e4bf28d81603fe,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 50
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 656e63ff00eb192488e4bf28d81603fe,
         type: 3}
@@ -53980,17 +53980,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 656e63ff00eb192488e4bf28d81603fe,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 34.794823
+      value: 43.229088
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 656e63ff00eb192488e4bf28d81603fe,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 34.794823
+      value: 59.007706
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 656e63ff00eb192488e4bf28d81603fe,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 34.794823
+      value: 43.229088
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 656e63ff00eb192488e4bf28d81603fe,
         type: 3}
@@ -99314,7 +99314,7 @@ MeshRenderer:
   m_GameObject: {fileID: 4407600907592850375}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
