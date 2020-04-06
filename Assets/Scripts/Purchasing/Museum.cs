@@ -9,7 +9,7 @@ public class Museum : MonoBehaviour
 {
     public CauseTag causeTag;
     public List<ArtistCanvas> artistCanvases;
-    List<Artist> artists;
+    List<Artist> artists = new List<Artist>();
 
     private void Start()
     {

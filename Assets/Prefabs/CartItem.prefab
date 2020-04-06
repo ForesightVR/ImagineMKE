@@ -938,6 +938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a8efdabd957634c9fd1b08187ae0d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  artistName: {fileID: 3159016725979774826}
   itemImage: {fileID: 3159016727003743748}
   productID: {fileID: 3159016726698820792}
   itemCountText: {fileID: 3159016725720332519}

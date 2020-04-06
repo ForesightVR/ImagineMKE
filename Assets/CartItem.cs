@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CartItem : MonoBehaviour
 {
+    public TextMeshProUGUI artistName;
     public Image itemImage;
     public TextMeshProUGUI productID;
     public TextMeshProUGUI itemCountText;
@@ -20,6 +21,7 @@ public class CartItem : MonoBehaviour
         this.cart = cart;
         Art = art;
 
+        artistName.text = Art.artist.name;
         itemImage.sprite = art.artImage;
         productID.text = "Product ID: " + art.productID;
     }

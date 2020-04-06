@@ -100,7 +100,7 @@ public static class MuseumBank
             string tag = (string)data["tags"][0]["name"];
             Debug.Log("Cause: " + tag);
 
-            Art art = new Art((int)data["id"], new List<int>(intList), data["name"].ToString(), StripHTML(data["description"].ToString()), tag);
+            Art art = new Art(artist, (int)data["id"], new List<int>(intList), data["name"].ToString(), StripHTML(data["description"].ToString()), tag);
 
             CoroutineUtility.instance.StartCoroutine(GetImage(art, (string)data["images"][0]["src"]));
             artist.artPieces.Add(art);

@@ -10,9 +10,11 @@ public class Art
     public string description;
     public string cause;
     public Sprite artImage;
+    public Artist artist;
 
-    public Art (int productID, List<int> variationIDs, string name, string description, string cause)
+    public Art (Artist artist, int productID, List<int> variationIDs, string name, string description, string cause)
     {
+        this.artist = artist;
         this.productID = productID;
         this.variationIDs = variationIDs;
         this.name = name;
