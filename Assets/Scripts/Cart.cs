@@ -20,20 +20,7 @@ public class Cart : MonoBehaviour
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.C))
-        {
             cart.SetActive(!cart.activeSelf);
-
-            if (cart.activeInHierarchy == true)
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-        }
     }
 
     public void AddToCart(Art art)

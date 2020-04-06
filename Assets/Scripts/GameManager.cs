@@ -74,9 +74,20 @@ public class GameManager : MonoBehaviourPunCallbacks
         MenuState(false);
     }
 
-    public void MenuState(bool state)
+    void MenuState(bool state)
     {
         MenuOpen = state;
+
+        if(MenuOpen)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
