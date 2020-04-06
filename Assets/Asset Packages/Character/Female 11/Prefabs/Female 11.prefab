@@ -1,0 +1,231 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4677865527924180296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6985329239975380464}
+  - component: {fileID: 864011838496460546}
+  m_Layer: 0
+  m_Name: Young African American Girl Short Hair_LODGroup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6985329239975380464
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4677865527924180296}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1721961212098144255}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &864011838496460546
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4677865527924180296}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.00029420853, y: 0.7460181, z: 0.00041168928}
+  m_Size: 1.6271456
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.5
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 6194042416291329872}
+    - renderer: {fileID: 8641703665577758840}
+    - renderer: {fileID: 8563425045683788708}
+    - renderer: {fileID: 8216815831952355258}
+    - renderer: {fileID: 3042443126766919532}
+    - renderer: {fileID: 194215086665220084}
+    - renderer: {fileID: 8572247228208856148}
+  - screenRelativeHeight: 0.33333334
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 4162476234841260753}
+  - screenRelativeHeight: 0.25
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 3750414975056472619}
+  - screenRelativeHeight: 0.02
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 6751469011489761230}
+  m_Enabled: 1
+--- !u!1001 &5953501799041584357
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6985329239975380464}
+    m_Modifications:
+    - target: {fileID: -6057140222963153312, guid: 129847a75ff1f9645ab59c69034ace77,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8ff29f215f5eccb498211de29144434d, type: 2}
+    - target: {fileID: -5295231113293630770, guid: 129847a75ff1f9645ab59c69034ace77,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 129847a75ff1f9645ab59c69034ace77,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 129847a75ff1f9645ab59c69034ace77,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 129847a75ff1f9645ab59c69034ace77,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 129847a75ff1f9645ab59c69034ace77,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 129847a75ff1f9645ab59c69034ace77,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 129847a75ff1f9645ab59c69034ace77,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 129847a75ff1f9645ab59c69034ace77,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 129847a75ff1f9645ab59c69034ace77,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 129847a75ff1f9645ab59c69034ace77,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 129847a75ff1f9645ab59c69034ace77,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 129847a75ff1f9645ab59c69034ace77,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 129847a75ff1f9645ab59c69034ace77,
+        type: 3}
+      propertyPath: m_Name
+      value: Young African American Girl Short Hair_LODGroup
+      objectReference: {fileID: 0}
+    - target: {fileID: 5777814583963448081, guid: 129847a75ff1f9645ab59c69034ace77,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5777814583963448081, guid: 129847a75ff1f9645ab59c69034ace77,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5777814583963448081, guid: 129847a75ff1f9645ab59c69034ace77,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 129847a75ff1f9645ab59c69034ace77, type: 3}
+--- !u!4 &1721961212098144255 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 129847a75ff1f9645ab59c69034ace77,
+    type: 3}
+  m_PrefabInstance: {fileID: 5953501799041584357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4162476234841260753 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1487594963377205708, guid: 129847a75ff1f9645ab59c69034ace77,
+    type: 3}
+  m_PrefabInstance: {fileID: 5953501799041584357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &3750414975056472619 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1832066905162242354, guid: 129847a75ff1f9645ab59c69034ace77,
+    type: 3}
+  m_PrefabInstance: {fileID: 5953501799041584357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &6751469011489761230 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -8129807545865704661, guid: 129847a75ff1f9645ab59c69034ace77,
+    type: 3}
+  m_PrefabInstance: {fileID: 5953501799041584357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &6194042416291329872 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -8688922982703498315, guid: 129847a75ff1f9645ab59c69034ace77,
+    type: 3}
+  m_PrefabInstance: {fileID: 5953501799041584357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8641703665577758840 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2698335560718736541, guid: 129847a75ff1f9645ab59c69034ace77,
+    type: 3}
+  m_PrefabInstance: {fileID: 5953501799041584357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8563425045683788708 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6608905036096366783, guid: 129847a75ff1f9645ab59c69034ace77,
+    type: 3}
+  m_PrefabInstance: {fileID: 5953501799041584357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8216815831952355258 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2348882434874319711, guid: 129847a75ff1f9645ab59c69034ace77,
+    type: 3}
+  m_PrefabInstance: {fileID: 5953501799041584357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &3042443126766919532 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -529177695146175607, guid: 129847a75ff1f9645ab59c69034ace77,
+    type: 3}
+  m_PrefabInstance: {fileID: 5953501799041584357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &194215086665220084 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5777814583963448081, guid: 129847a75ff1f9645ab59c69034ace77,
+    type: 3}
+  m_PrefabInstance: {fileID: 5953501799041584357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8572247228208856148 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6599555520154898255, guid: 129847a75ff1f9645ab59c69034ace77,
+    type: 3}
+  m_PrefabInstance: {fileID: 5953501799041584357}
+  m_PrefabAsset: {fileID: 0}
