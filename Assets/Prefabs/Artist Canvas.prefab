@@ -43,7 +43,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   methodArray:
   - TriggerEvent
-  chosenMethod: 
+  chosenMethod: TriggerEvent
   unityEvent:
     m_PersistentCalls:
       m_Calls:
@@ -365,6 +365,48 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!65 &8656204699276845095
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9211903234903966641}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.2, z: 0.05}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3124725920254845805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9211903234903966641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d58c4951e9439f4fbbd8436e534c2e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  methodArray:
+  - TriggerEvent
+  chosenMethod: 
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3411860911866197738}
+        m_MethodName: AddToCart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &387769669963448992
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1050,6 +1092,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8842504896984809745, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 9144227181913145861, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1166,6 +1213,12 @@ RectTransform:
 --- !u!1 &2772399456784383782 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2528816168300051846, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+    type: 3}
+  m_PrefabInstance: {fileID: 387769669963448992}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9211903234903966641 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8842504896984809745, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
     type: 3}
   m_PrefabInstance: {fileID: 387769669963448992}
   m_PrefabAsset: {fileID: 0}

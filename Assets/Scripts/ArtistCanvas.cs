@@ -15,9 +15,13 @@ public class ArtistCanvas : MonoBehaviour
     public Transform artistPiecesList;
     public Image artPieceDisplay;
 
-    public void SetArtistCanvasInfo(Art artPiece, string artistName, Sprite artistProfilePicture, string artistBio, List<Art> extraArt)
+    Artist currentArtist;
+    Art currentArtPiece;
+
+    public void SetArtistCanvasInfo(Artist artist, Art artPiece, string artistName, Sprite artistProfilePicture, string artistBio, List<Art> extraArt)
     {
-        this.artPiece.sprite = artPiece.artImage;
+        SetArtist(artist);
+        SetArt(artPiece);
         this.artistName.text = artistName;
         this.extendedArtistName.text = artistName;
         this.artistProfilePicture.sprite = artistProfilePicture;
@@ -27,8 +31,24 @@ public class ArtistCanvas : MonoBehaviour
         foreach (Art art in extraArt)
         {
             Image displayImage = Instantiate(artPieceDisplay, artistPiecesList);
-            displayImage.GetComponent<ChangeArtEffect>().SetArtistCanvas(this);
+            displayImage.GetComponent<ChangeArtEffect>().SetInfo(this, art);
             displayImage.sprite = art.artImage;
         }
+    }
+
+    public void SetArtist(Artist artist)
+    {
+        currentArtist = artist;
+    }
+
+    public void SetArt(Art art)
+    {
+        currentArtPiece = art;
+        artPiece.sprite = currentArtPiece.artImage;
+    }
+
+    public void AddToCart()
+    {
+        Cart.Instance.AddToCart(currentArtPiece);
     }
 }

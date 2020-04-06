@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public Player playerPrefab;
     public string menuSceneName;
+
+    public GameObject[] menus;
     public bool MenuOpen { get; private set; }
 
     RoomMembership roomMembership;
@@ -56,6 +58,20 @@ public class GameManager : MonoBehaviourPunCallbacks
             PhotonNetwork.Instantiate(playerPrefab.gameObject.name, Vector3.zero, Quaternion.identity);
             PhotonNetwork.LocalPlayer.SetAdminStatus(NetworkConnectionManager.Instance.IsAdmin);
         }
+    }
+
+    private void Update()
+    {
+        foreach(GameObject go in menus)
+        {
+            if (go.activeInHierarchy)
+            {
+                MenuState(true);
+                return;
+            }
+        }
+
+        MenuState(false);
     }
 
     public void MenuState(bool state)
