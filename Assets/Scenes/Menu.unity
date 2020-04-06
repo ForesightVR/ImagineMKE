@@ -7118,6 +7118,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1046456094}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1046456096 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4803240613631753764, guid: 7fe4b23d0586c8140a1cac2ff29960d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1046456094}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1056384356
 GameObject:
   m_ObjectHideFlags: 0
@@ -13149,6 +13155,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2000316776}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2000316778 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8051629164924194499, guid: c94ed672aac17f049bff8e004215e50c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2000316776}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2001348999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13915,20 +13927,35 @@ MonoBehaviour:
   cameraFacingBillboard: {fileID: 6502591699063586694}
   characterOptions:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 23137935}
+  - {fileID: 696251208}
+  - {fileID: 1814090774}
+  - {fileID: 1694000225}
+  - {fileID: 1783490770}
+  - {fileID: 145372184}
+  - {fileID: 1610998338}
+  - {fileID: 2000316778}
+  - {fileID: 1046456096}
+  - {fileID: 1499389034}
+  - {fileID: 759097742}
+  - {fileID: 924528547}
+  - {fileID: 1870171745}
+  - {fileID: 253025756}
+  - {fileID: 1932290686}
+  - {fileID: 2001349001}
+  - {fileID: 1687585043}
+  - {fileID: 60741414}
+  - {fileID: 1503896549}
+  - {fileID: 799113865}
+  - {fileID: 787067213}
+  - {fileID: 2044728227}
+  - {fileID: 2044275757}
+  - {fileID: 212163838}
+  - {fileID: 2096941047}
+  - {fileID: 535358315}
+  - {fileID: 168832661}
+  - {fileID: 145489164}
+  - {fileID: 1127574414}
   cam: {fileID: 0}
 --- !u!4 &2111548299608638743
 Transform:
