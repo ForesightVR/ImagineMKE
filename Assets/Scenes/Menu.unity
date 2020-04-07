@@ -1852,6 +1852,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 14468675091121910, guid: 4944b45c40ec8dd478519453222a0f01,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc45977baa20e7f4593413199ec73b68, type: 2}
     - target: {fileID: 161344359765605258, guid: 4944b45c40ec8dd478519453222a0f01,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1912,6 +1917,81 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character Staging Area
       objectReference: {fileID: 0}
+    - target: {fileID: 1819392146219221538, guid: 4944b45c40ec8dd478519453222a0f01,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc45977baa20e7f4593413199ec73b68, type: 2}
+    - target: {fileID: 3647120306090516608, guid: 4944b45c40ec8dd478519453222a0f01,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc45977baa20e7f4593413199ec73b68, type: 2}
+    - target: {fileID: 4087461919704717677, guid: 4944b45c40ec8dd478519453222a0f01,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc45977baa20e7f4593413199ec73b68, type: 2}
+    - target: {fileID: 4699689028889056844, guid: 4944b45c40ec8dd478519453222a0f01,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc45977baa20e7f4593413199ec73b68, type: 2}
+    - target: {fileID: 5102296360788114370, guid: 4944b45c40ec8dd478519453222a0f01,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5358066375377347894, guid: 4944b45c40ec8dd478519453222a0f01,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc45977baa20e7f4593413199ec73b68, type: 2}
+    - target: {fileID: 5450873555803059353, guid: 4944b45c40ec8dd478519453222a0f01,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc45977baa20e7f4593413199ec73b68, type: 2}
+    - target: {fileID: 5533625642311432906, guid: 4944b45c40ec8dd478519453222a0f01,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc45977baa20e7f4593413199ec73b68, type: 2}
+    - target: {fileID: 5888433132621541545, guid: 4944b45c40ec8dd478519453222a0f01,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc45977baa20e7f4593413199ec73b68, type: 2}
+    - target: {fileID: 7069803826067536704, guid: 4944b45c40ec8dd478519453222a0f01,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc45977baa20e7f4593413199ec73b68, type: 2}
+    - target: {fileID: 7094244938481155969, guid: 4944b45c40ec8dd478519453222a0f01,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc45977baa20e7f4593413199ec73b68, type: 2}
+    - target: {fileID: 7286169458519434926, guid: 4944b45c40ec8dd478519453222a0f01,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc45977baa20e7f4593413199ec73b68, type: 2}
+    - target: {fileID: 7492356440464358813, guid: 4944b45c40ec8dd478519453222a0f01,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc45977baa20e7f4593413199ec73b68, type: 2}
+    - target: {fileID: 7861357537470714920, guid: 4944b45c40ec8dd478519453222a0f01,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc45977baa20e7f4593413199ec73b68, type: 2}
+    - target: {fileID: 8626495814203726173, guid: 4944b45c40ec8dd478519453222a0f01,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fc45977baa20e7f4593413199ec73b68, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4944b45c40ec8dd478519453222a0f01, type: 3}
 --- !u!1 &648471452 stripped

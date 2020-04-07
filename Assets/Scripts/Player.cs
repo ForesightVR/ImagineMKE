@@ -87,6 +87,8 @@ namespace Foresight
             if (GameManager.Instance && GameManager.Instance.MenuOpen) return;
             Move();
             Rotate();
+
+           
         }
 
         void Move()
