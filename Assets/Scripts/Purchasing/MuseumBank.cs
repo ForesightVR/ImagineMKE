@@ -1,11 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Networking;
 using Valve.Newtonsoft.Json.Linq;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System;
 
 public static class MuseumBank
 {
@@ -91,20 +91,75 @@ public static class MuseumBank
             if (artist.vendorId == 0)
             {
                 Debug.LogError("There was no matching vendor for " + data["name"].ToString());
-            }
-            //create new art
-            //add it to the list of vendor
-
-            var intList = data["variations"]?.Select(x => (int)x).ToList() ?? new List<int>();
+            }            
 
             string tag = (string)data["tags"][0]["name"];
             Debug.Log("Cause: " + tag);
 
-            Art art = new Art(artist, (int)data["id"], new List<int>(intList), data["name"].ToString(), StripHTML(data["description"].ToString()), tag);
+            Art art = new Art(artist, (int)data["id"], data["name"].ToString(), StripHTML(data["description"].ToString()), tag);
 
             CoroutineUtility.instance.StartCoroutine(GetImage(art, (string)data["images"][0]["src"]));
             artist.artPieces.Add(art);
+
+            var variationIdList = data["variations"]?.Select(x => (int)x).ToList() ?? new List<int>();
+
+            CoroutineUtility.instance.StartCoroutine(GetAllVariationByProduct(variationIdList, art));
         }
+    }
+
+    static IEnumerator GetAllVariationByProduct(List<int> variationIds, Art product)
+    {
+        foreach (int id in variationIds)
+        {
+            var request = CreateGetRequest($"{productsApiString}/{product.productID}/variations/{id}");
+
+            yield return request.SendWebRequest();
+
+            if (request.isNetworkError)
+                throw new System.Exception(request.error);
+            else
+            {
+                var jobj = JObject.Parse(request.downloadHandler.text);
+                CreateVariation(jobj, product);
+            }
+        }
+    }
+
+    static void CreateVariation(JObject jObject, Art product)
+    {
+        Debug.Log($"Creating Variations for {product.productID}");
+
+        JObject data = JObject.Parse(jObject.ToString());
+
+        if (product.productID == 0)
+        {
+            Debug.LogError("There was no matching product for " + data["name"].ToString());
+        }
+
+        if ((bool)data["purchasable"])
+        {
+            int varId = (int)data["id"];
+            float price = (float)data["price"];
+
+            var attributes = data["attributes"]; //need to loop through and get them all
+
+            JArray jsonArray = JArray.Parse(attributes.ToString());
+
+            string attName = "";
+
+            foreach (JObject jobj in jsonArray)
+            {
+                attName += $"{jobj["option"]} ";
+            }
+
+            Debug.Log($"{attName} for {product.name}");
+
+            var variation = new Variation(varId, attName, price);
+
+            product.variations.Add(variation);
+        }
+
+       
     }
 
     static UnityWebRequest CreateGetRequest(string apiString)
