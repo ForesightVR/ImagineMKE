@@ -11,11 +11,12 @@ public class TriggerEnterCause : Cause
 
     private void OnTriggerEnter(Collider other)
     {
-        if (isLocal && causeTag == "Player")
+        if (isLocal)
         {
             if(other.tag.Equals(causeTag))
             {
-                if (!other.GetComponent<PhotonView>().IsMine)
+                PhotonView photonView = causeTag == "Player" ? other.GetComponent<PhotonView>() : other.GetComponentInParent<PhotonView>();
+                if (!photonView.IsMine)
                     return;
             }
         }
