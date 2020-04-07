@@ -231,7 +231,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   isLocal: 1
-  causeTag: Player
+  causeTag: Art Canvas Trigger
 --- !u!114 &682143572132681777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +270,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   isLocal: 1
-  causeTag: Player
+  causeTag: Art Canvas Trigger
 --- !u!114 &3411860911866197738
 MonoBehaviour:
   m_ObjectHideFlags: 0
