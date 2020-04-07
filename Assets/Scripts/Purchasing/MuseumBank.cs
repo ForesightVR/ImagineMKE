@@ -15,7 +15,7 @@ public static class MuseumBank
     static string vendorsApiString = "/wp-json/wcmp/v1/vendors";
     static string productsApiString = "/wp-json/wc/v3/products";
 
-    static string websiteRoot = "https://outsidersvr.com";
+    public static string websiteRoot = "https://outsidersvr.com";
 
     public static List<Artist> artists = new List<Artist>();
 

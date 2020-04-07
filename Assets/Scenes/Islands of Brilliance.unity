@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.23236844, g: 0.23554417, b: 0.27230176, a: 1}
+  m_IndirectSpecularColor: {r: 0.29535794, g: 0.28946158, b: 0.31123054, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -44332,6 +44332,18 @@ PrefabInstance:
       propertyPath: addToCartMessage
       value: 
       objectReference: {fileID: 390400502}
+    - target: {fileID: 865190361, guid: 5a5f9da7bfb6c1f4eba1851a38beb1bd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 865190361, guid: 5a5f9da7bfb6c1f4eba1851a38beb1bd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 865190361, guid: 5a5f9da7bfb6c1f4eba1851a38beb1bd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4785366548573626508, guid: 5a5f9da7bfb6c1f4eba1851a38beb1bd,
         type: 3}
       propertyPath: m_RaycastTarget

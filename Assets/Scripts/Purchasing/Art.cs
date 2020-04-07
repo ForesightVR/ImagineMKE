@@ -21,4 +21,9 @@ public class Art
         this.description = description;
         this.cause = cause;
     }
+
+    public Variation GetDefaultVariation()
+    {
+        return variations[0];
+    }
 }

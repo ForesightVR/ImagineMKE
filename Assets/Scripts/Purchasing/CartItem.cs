@@ -66,8 +66,6 @@ public class CartItem : MonoBehaviour
 
     public void OnDropdownChange()
     {
-        Debug.Log(variantDropDown.value);
-
         Variation = Art.variations[variantDropDown.value];
         UpdateText();
     }

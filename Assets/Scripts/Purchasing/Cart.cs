@@ -28,7 +28,7 @@ public class Cart : MonoBehaviour
         addToCartMessage.SetActive(true);
         foreach (CartItem _cartItem in artInCart) //Check if the item is in the cart. If it is add another one and return.
         {
-            if (_cartItem.Art == art)
+            if (_cartItem.Art == art && _cartItem.Variation == art.GetDefaultVariation())
             {
                 _cartItem.AddCount();
                 return;

@@ -22,7 +22,6 @@ public class Museum : MonoBehaviour
             Artist artist = artists[artistIndex];
             artistCanvas.SetArtistCanvasInfo(artist, artist.GetNextArt(), artist.name, artist.artistImage, artist.description, artist.artPieces);
             artistIndex = MathUtilities.IncrementLoop(artistIndex, artists.Count - 1);
-            Debug.Log("INDEX: " + artistIndex);
         }        
     }
 }

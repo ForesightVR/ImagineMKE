@@ -579,7 +579,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 865190360}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5712293133478939789}
+        m_MethodName: PerformCheckout
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &865190360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2102,6 +2113,7 @@ GameObject:
   - component: {fileID: 4785366549610364643}
   - component: {fileID: 4785366549610364647}
   - component: {fileID: 449551932}
+  - component: {fileID: 5712293133478939789}
   m_Layer: 5
   m_Name: Menu Canvas
   m_TagString: Untagged
@@ -2225,6 +2237,19 @@ MonoBehaviour:
     type: 3}
   cartItemList: {fileID: 1027199765}
   artInCart: []
+  addToCartMessage: {fileID: 0}
+--- !u!114 &5712293133478939789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4785366549610364640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3627e73aeb603534c80761b6ff4b2618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4785366549686159945
 GameObject:
   m_ObjectHideFlags: 0
