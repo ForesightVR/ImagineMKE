@@ -18,7 +18,10 @@ public class EmoteManager : MonoBehaviour
     private void Start()
     {
         if (!transform.root.GetComponent<PhotonView>().IsMine)
+        {
             enabled = false;
+            return;
+        }
 
         Initialize();
 
