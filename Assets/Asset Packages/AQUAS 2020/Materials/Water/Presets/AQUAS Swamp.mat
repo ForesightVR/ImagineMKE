@@ -123,7 +123,7 @@ Material:
     - _DepthFade: 1
     - _DepthTransparency: 0.2
     - _DistanceFade: 0.5
-    - _Distortion: 0
+    - _Distortion: 0.3
     - _EdgeLength: 15
     - _EnableProbeRelfections: 1
     - _EnableRealtimeReflections: 1
@@ -161,7 +161,7 @@ Material:
     - _MediumTilingDistance: 173.8
     - _MediumTilingFade: 1
     - _NormalStrength: 0.71
-    - _NormalTiling: 0.93
+    - _NormalTiling: 0.26
     - _ObjectRotation: 0
     - _PhysicalNormalStrength: 0
     - _ProbeReflectionIntensity: 1
