@@ -34,12 +34,12 @@ public class Emote : MonoBehaviour
         if (!Active) return;
 
         if(Input.GetKeyDown(inputKey))
-        {
-            animator.ResetTrigger(emoteName.text);
             animator.SetTrigger(emoteName.text);
-        }
-        
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        else if(Input.GetKeyUp(inputKey))
+            animator.ResetTrigger(emoteName.text);
+
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Active = false;
             emoteCategory.CloseEmoteCategory();
