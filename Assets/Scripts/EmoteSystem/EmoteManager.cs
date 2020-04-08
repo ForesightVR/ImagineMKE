@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Foresight;
+using Photon.Pun;
 
 public class EmoteManager : MonoBehaviour
 {
@@ -15,6 +17,9 @@ public class EmoteManager : MonoBehaviour
 
     private void Start()
     {
+        if (!transform.root.GetComponent<PhotonView>().IsMine)
+            enabled = false;
+
         Initialize();
 
         foreach (EmoteCategory category in emoteCategories)
