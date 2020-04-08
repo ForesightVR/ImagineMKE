@@ -31,7 +31,8 @@ namespace Foresight
 
         [HideInInspector]
         public Camera cam;
-        Animator animator;
+
+        public Animator Animator { get; private set; }
         CharacterController cc;
 
         float horizontal;
@@ -77,9 +78,9 @@ namespace Foresight
         void RPCSelectCharacter(byte index)
         {
             characterOptions[index].SetActive(true);
-            animator = GetComponentInChildren<Animator>();
-            animator.Rebind();
-            GetComponent<PhotonAnimatorView>().SetAnimator(animator);
+            Animator = GetComponentInChildren<Animator>();
+            Animator.Rebind();
+            GetComponent<PhotonAnimatorView>().SetAnimator(Animator);
         }
 
         private void Update()
@@ -105,12 +106,12 @@ namespace Foresight
             Vector3 move = new Vector3(horizontal, 0, vertical);
             float currentSpeed = 0;
 
-            animator.speed = leftShift ? sprintAnimatorSpeed : baseAnimatorSpeed;
-            animator.SetFloat("Horizontal", move.x, animationSmoothTime, Time.deltaTime);
-            animator.SetFloat("Vertical", move.z, animationSmoothTime, Time.deltaTime);
+            Animator.speed = leftShift ? sprintAnimatorSpeed : baseAnimatorSpeed;
+            Animator.SetFloat("Horizontal", move.x, animationSmoothTime, Time.deltaTime);
+            Animator.SetFloat("Vertical", move.z, animationSmoothTime, Time.deltaTime);
 
-            animator.SetBool("Move", move == Vector3.zero ? false : true);
-            animator.SetBool("Run", leftShift ? true : false);
+            Animator.SetBool("Move", move == Vector3.zero ? false : true);
+            Animator.SetBool("Run", leftShift ? true : false);
 
             if (leftShift) //IsSprinting
                 currentSpeed = runSpeed;
@@ -134,7 +135,7 @@ namespace Foresight
                 mouseY += Input.GetAxis("Mouse Y");
             }
 
-            animator.SetFloat("MouseX", Input.GetAxisRaw("Mouse X"), .1f, Time.deltaTime);
+            Animator.SetFloat("MouseX", Input.GetAxisRaw("Mouse X"), .1f, Time.deltaTime);
 
             mouseX *= rotationSpeed;
             mouseY *= rotationSpeed;
