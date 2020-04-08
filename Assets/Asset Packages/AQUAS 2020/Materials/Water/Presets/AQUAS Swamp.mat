@@ -118,17 +118,17 @@ Material:
     m_Floats:
     - _Choppiness: 0.0024
     - _ChromaticAberration: 0
-    - _Density: 1
+    - _Density: 0.234
     - _Depth: 1
     - _DepthFade: 1
-    - _DepthTransparency: 1.12
+    - _DepthTransparency: 0.2
     - _DistanceFade: 0.5
     - _Distortion: 0
     - _EdgeLength: 15
     - _EnableProbeRelfections: 1
     - _EnableRealtimeReflections: 1
     - _EnableReflections: 1
-    - _Fade: 3.86
+    - _Fade: 8.34
     - _FarTilingDistance: 992.3
     - _FarTilingFade: 1
     - _Float0: 180
@@ -141,9 +141,9 @@ Material:
     - _Float6: 0
     - _Float7: 0.744
     - _Float8: 0.1
-    - _FlowSpeed: 4
+    - _FlowSpeed: 5
     - _FoamBlend: 0.2
-    - _FoamContrast: 0
+    - _FoamContrast: 0.306
     - _FoamDepth: 0
     - _FoamFalloff: 0
     - _FoamIntensity: 1.92
@@ -151,7 +151,7 @@ Material:
     - _FoamTiling: 1.019
     - _FoamVisibility: 1
     - _Frequency: 5
-    - _Gloss: 390.7
+    - _Gloss: 0.8
     - _GlossyReflections: 1
     - _Height: 0.002
     - _LightWrapping: 2
@@ -160,15 +160,15 @@ Material:
     - _MediumDistanceFalloff: 2.56
     - _MediumTilingDistance: 173.8
     - _MediumTilingFade: 1
-    - _NormalStrength: 1.61
-    - _NormalTiling: 0.11
+    - _NormalStrength: 0.71
+    - _NormalTiling: 0.93
     - _ObjectRotation: 0
     - _PhysicalNormalStrength: 0
-    - _ProbeReflectionIntensity: 0.62
+    - _ProbeReflectionIntensity: 1
     - _ProjectGrid: 0
-    - _RealtimeReflectionIntensity: 0.48
+    - _RealtimeReflectionIntensity: 0.55
     - _ReflectionIntensity: 0.546
-    - _Refraction: 1
+    - _Refraction: 0.404
     - _Refraction2: 0
     - _RippleStrength: 0.1
     - _Scale0: 0
@@ -181,7 +181,7 @@ Material:
     - _ShorelineFrequency: 6.2
     - _ShorelineNormalStrength: 0
     - _ShorelineSpeed: 0
-    - _Specular: 17.57
+    - _Specular: 0.7
     - _SpecularHighlights: 1
     - _Speculari: 1.12
     - _Speed: 0.1
@@ -197,12 +197,12 @@ Material:
     - _TransScattering: 1
     - _TransShadow: 0
     - _Translucency: 0
-    - _TransparencyFade: 36.58
+    - _TransparencyFade: 1
     - _UsingLinearColorSpace: 0
     - _WaterDepth: 6.47
     - _WaterFalloff: 2.4
     - _Wave: 0
-    - _WaveSpeed: 0.22
+    - _WaveSpeed: 0.01
     - _XOffset0: 0
     - _XOffset1: 0
     - _XOffset2: 0
@@ -218,9 +218,9 @@ Material:
     - _Color0: {r: 0.14901961, g: 0.23529412, b: 0.32941177, a: 0}
     - _Color1: {r: 0.8207547, g: 0, b: 0, a: 0}
     - _DeepColor: {r: 0, g: 0, b: 0, a: 0}
-    - _DeepWaterColor: {r: 0.3781595, g: 0.4622642, b: 0.1678978, a: 0}
-    - _FoamColor: {r: 0.9178228, g: 1, b: 0.6650944, a: 0}
-    - _MainColor: {r: 1, g: 0.8803855, b: 0.4198113, a: 0}
+    - _DeepWaterColor: {r: 0.4056604, g: 0.28800875, b: 0.18943574, a: 0}
+    - _FoamColor: {r: 0.9884053, g: 1, b: 0.6666667, a: 0}
+    - _MainColor: {r: 0.5454343, g: 0.9716981, b: 0.95040596, a: 0}
     - _ObjectScale: {r: 0, g: 0, b: 0, a: 0}
     - _RangeVector: {r: 0, g: 0, b: 0, a: 0}
     - _ShalowColor: {r: 1, g: 1, b: 1, a: 0}
