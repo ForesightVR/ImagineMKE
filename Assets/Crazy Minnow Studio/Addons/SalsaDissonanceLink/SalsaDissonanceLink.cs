@@ -61,7 +61,7 @@ namespace CrazyMinnow.SALSA.DissonanceLink
             // link up required components
             salsa = GetComponent<Salsa>();
 
-            dissonancePlayer = GetComponent<IDissonancePlayer>();
+            dissonancePlayer = transform.root.GetComponent<IDissonancePlayer>();
             dissonanceComms = FindObjectOfType<DissonanceComms>();
 
             if ( !salsa )
