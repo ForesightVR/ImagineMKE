@@ -34,9 +34,9 @@ public class Emote : MonoBehaviour
         if (!Active) return;
 
         if(Input.GetKeyDown(inputKey))
-            animator.SetTrigger(emoteName.text);
+            animator.SetBool(emoteName.text, true);
         else if(Input.GetKeyUp(inputKey))
-            animator.ResetTrigger(emoteName.text);
+            animator.SetBool(emoteName.text, false);
 
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
