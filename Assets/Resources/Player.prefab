@@ -6203,31 +6203,31 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: Run
   - Type: 9
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: Talk
   - Type: 9
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: Greet
   - Type: 9
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: Yes
   - Type: 9
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: No
   - Type: 9
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: Laugh
   - Type: 9
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: Happy
   - Type: 9
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: Angry
   - Type: 9
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: Cry
   - Type: 9
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: Dance
   m_SynchronizeLayers:
   - SynchronizeType: 2
