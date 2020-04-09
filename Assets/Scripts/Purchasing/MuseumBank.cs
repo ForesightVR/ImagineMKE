@@ -18,12 +18,20 @@ public static class MuseumBank
     public static string websiteRoot = "https://outsidersvr.com";
 
     public static List<Artist> artists = new List<Artist>();
+    static List<Art> arts = new List<Art>();
 
-    public static void CallGet()
+    public static IEnumerator CallGet()
     {
-        CoroutineUtility.instance.StartCoroutine(GetAllVendors());
-    }
+        yield return GetAllVendors();
+        yield return GetAllProducts();
 
+        foreach (Art art in arts)
+        {
+            art.artist = artists.FirstOrDefault(x => x.vendorId == art.vendorId);
+            CoroutineUtility.instance.StartCoroutine(VariationRequest(art));
+        }
+    }
+       
     static IEnumerator GetAllVendors()
     {
         Debug.Log("GetAllVendors");
@@ -32,13 +40,31 @@ public static class MuseumBank
 
         yield return request.SendWebRequest();
 
-        if (request.isNetworkError)
+        if (request.isNetworkError || request.isHttpError)
             throw new System.Exception(request.error);
         else
         {
-            Debug.Log(request.downloadHandler.text);
+            Debug.Log($"Vendors: {request.downloadHandler.text}");
             JArray jsonArray = JArray.Parse(request.downloadHandler.text);
-            CreateArtists(jsonArray);   
+            CreateArtists(jsonArray);
+        }
+    }
+
+    static IEnumerator GetAllProducts()
+    {
+        Debug.Log("GetAllProducts");
+
+        var request = CreateGetRequest("/wp-json/wc/v2/products", new List<string> {"vendor=20"});
+
+        yield return request.SendWebRequest();
+
+        if (request.isNetworkError || request.isHttpError)
+            throw new System.Exception(request.error);
+        else
+        {
+            Debug.Log($"Products: {request.downloadHandler.text}");
+            JArray jsonArray = JArray.Parse(request.downloadHandler.text);
+            CreateArt(jsonArray);   
         }
     }
 
@@ -47,119 +73,141 @@ public static class MuseumBank
         foreach (JObject jObject in jArray)
         {
             JObject data = JObject.Parse(jObject.ToString());
-            Artist artist = new Artist((int)data["id"], $"{data["first_name"]} {data["last_name"]}", StripHTML((string)data["shop"]["description"]));
+            Artist artist = new Artist((int)data["id"], data["display_name"].ToString(), StripHTML((string)data["shop"]["description"]));
 
             string artistImageString = GetImageLink((string)data["shop"]["description"]);
 
             if (artistImageString.Length > 0)
             {
                 CoroutineUtility.instance.StartCoroutine(GetImage(artist, artistImageString));
-            }            
+            }
 
+            Debug.Log($"Adding {artist.name}");
             artists.Add(artist);
+
+            //if (artist.artPieces.Count > 0)
+            //GetAllProductsByVendor(artist);
+            //yield return new WaitForSecondsRealtime(1f);
         }
 
-        CoroutineUtility.instance.StartCoroutine(GetAllProductsByVendor());
+        //CoroutineUtility.instance.StartCoroutine(GetAllProductsByVendor());
+        //GetAllProductsByVendor();
     }
-
-    static IEnumerator GetAllProductsByVendor()
+    static void CreateArt(JArray jArray)
     {
-        foreach (Artist artist in artists)
-        {
-            var request = CreateGetRequest(productsApiString, new List<string>() { $"vendor={artist.vendorId}"});
-
-            yield return request.SendWebRequest();
-
-            if (request.isNetworkError)
-                throw new System.Exception(request.error);
-            else
-            {
-                JArray jsonArray = JArray.Parse(request.downloadHandler.text);
-                CreateArt(jsonArray, artist);
-                //CreateArtists(jsonArray);
-            }
-        }        
-    }
-
-    static void CreateArt(JArray jArray, Artist artist)
-    {
-        Debug.Log("Creating Art...");
         foreach (JObject jObject in jArray)
         {
             JObject data = JObject.Parse(jObject.ToString());
 
-            if (artist.vendorId == 0)
-            {
-                Debug.LogError("There was no matching vendor for " + data["name"].ToString());
-            }            
-
             string tag = (string)data["tags"][0]["name"];
             Debug.Log("Cause: " + tag);
 
-            Art art = new Art(artist, (int)data["id"], data["name"].ToString(), StripHTML(data["description"].ToString()), tag);
+            var vendorId = data["vendor"];
+
+            Debug.Log(vendorId);
+
+            Art art = new Art(0, (int)data["id"], data["name"].ToString(), StripHTML(data["description"].ToString()), tag);
 
             CoroutineUtility.instance.StartCoroutine(GetImage(art, (string)data["images"][0]["src"]));
-            artist.artPieces.Add(art);
 
-            var variationIdList = data["variations"]?.Select(x => (int)x).ToList() ?? new List<int>();
+            arts.Add(art);
 
-            CoroutineUtility.instance.StartCoroutine(GetAllVariationByProduct(variationIdList, art));
+            //var variationIdList = data["variations"]?.Select(x => (int)x).ToList() ?? new List<int>();
+
+            //GetAllVariationByProduct(variationIdList, art);
+            //CoroutineUtility.instance.StartCoroutine(GetAllVariationsByProduct(art));
         }
     }
 
-    static IEnumerator GetAllVariationByProduct(List<int> variationIds, Art product)
+    /*static void GetAllProductsByVendor(Artist artist)
+    {       
+        CoroutineUtility.instance.StartCoroutine(ArtRequest(artist));       
+    }*/
+
+    /*static IEnumerator ArtRequest(Artist artist)
     {
-        foreach (int id in variationIds)
+        var request = CreateGetRequest(productsApiString);
+        Debug.Log($"Request URL for {artist.name} is {request.url}");
+        yield return request.SendWebRequest();
+
+        if (request.isNetworkError || request.isHttpError)
+        {            
+            Debug.LogWarning($"Failed to connect for {artist.name} with {request.error}");
+            yield return new WaitForSecondsRealtime(2f);
+            //CoroutineUtility.instance.StartCoroutine(ArtRequest(artist));
+        }
+            
+        else
         {
-            var request = CreateGetRequest($"{productsApiString}/{product.productID}/variations/{id}");
+            Debug.Log($"Succesfully connected for {artist.name}");
+            Debug.Log($"{artist.name}'s products: {request.downloadHandler.text}");
+            JArray jsonArray = JArray.Parse(request.downloadHandler.text);
+            
+            if (jsonArray.Count > 0)
+                CreateArt(jsonArray, artist);
+        }
+    }*/    
 
-            yield return request.SendWebRequest();
+    /*static IEnumerator GetAllVariationsByProduct(Art product)
+    {
+        CoroutineUtility.instance.StartCoroutine(VariationRequest(product));
+    }*/
 
-            if (request.isNetworkError)
-                throw new System.Exception(request.error);
-            else
-            {
-                var jobj = JObject.Parse(request.downloadHandler.text);
-                CreateVariation(jobj, product);
-            }
+    static IEnumerator VariationRequest(Art product)
+    {
+        UnityWebRequest request = CreateGetRequest($"{productsApiString}/{product.productId}/variations");
+        yield return request.SendWebRequest();
+
+        if (request.isNetworkError || request.isHttpError)
+        {
+            Debug.LogWarning($"Failed to connect for {product.name} with {request.error}");            
+            //CoroutineUtility.instance.StartCoroutine(VariationRequest(product));
+        }
+            
+        else
+        {
+            Debug.Log($"Succesfully connected for {product.name}");
+            var jArray = JArray.Parse(request.downloadHandler.text);
+            CreateVariations(jArray, product);
         }
     }
 
-    static void CreateVariation(JObject jObject, Art product)
+    static void CreateVariations(JArray jArray, Art product)
     {
-        Debug.Log($"Creating Variations for {product.productID}");
+        Debug.Log($"Creating Variations for {product.productId}");
 
-        JObject data = JObject.Parse(jObject.ToString());
-
-        if (product.productID == 0)
+        foreach (JObject jObject in jArray)
         {
-            Debug.LogError("There was no matching product for " + data["name"].ToString());
-        }
+            JObject data = JObject.Parse(jObject.ToString());
 
-        if ((bool)data["purchasable"])
-        {
-            int varId = (int)data["id"];
-            float price = (float)data["price"];
-
-            var attributes = data["attributes"]; //need to loop through and get them all
-
-            JArray jsonArray = JArray.Parse(attributes.ToString());
-
-            string attName = "";
-
-            foreach (JObject jobj in jsonArray)
+            if (product.productId == 0)
             {
-                attName += $"{jobj["option"]} ";
+                Debug.LogError("There was no matching product for " + data["name"].ToString());
             }
 
-            Debug.Log($"{attName} for {product.name}");
+            if ((bool)data["purchasable"])
+            {
+                int varId = (int)data["id"];
+                float price = (float)data["price"];
 
-            var variation = new Variation(varId, attName, price);
+                var attributes = data["attributes"]; //need to loop through and get them all
 
-            product.variations.Add(variation);
-        }
+                JArray jsonArray = JArray.Parse(attributes.ToString());
 
-       
+                string attName = "";
+
+                foreach (JObject jobj in jsonArray)
+                {
+                    attName += $"{jobj["option"]} ";
+                }
+
+                Debug.Log($"{attName} for {product.name}");
+
+                var variation = new Variation(varId, attName, price);
+
+                product.variations.Add(variation);
+            }
+        }       
     }
 
     static UnityWebRequest CreateGetRequest(string apiString)

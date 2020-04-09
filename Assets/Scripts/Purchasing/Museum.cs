@@ -31,5 +31,6 @@ public enum CauseTag
     IslandsOfBrilliance,
     TrueSkool,
     Oneida,
-    Military
+    Military,
+    GalleryNight
 }

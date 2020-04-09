@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Foresight.Utilities;
 
-
 public class Artist
 {
     public int vendorId;
