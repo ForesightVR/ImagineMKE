@@ -100,7 +100,7 @@ public static class MuseumBank
 
             if (artistImageString.Length > 0)
             {
-                CoroutineUtility.instance.StartCoroutine(GetImage(artist, artistImageString));
+                CoroutineUtility.instance.StartCoroutine(GetArtistImage(artist, artistImageString));
             }
 
             Debug.Log($"Adding {artist.name}");
@@ -128,9 +128,11 @@ public static class MuseumBank
 
             var variationIdList = data["variations"]?.Select(x => (int)x).ToList() ?? new List<int>();
 
-            Art art = new Art(vendorId, (int)data["id"], variationIdList, data["name"].ToString(), StripHTML(data["description"].ToString()), tag);
+            Art art = new Art(vendorId, (int)data["id"], data["name"].ToString(), StripHTML(data["description"].ToString()), tag);
 
-            CoroutineUtility.instance.StartCoroutine(GetImage(art, (string)data["images"][0]["src"]));
+            CoroutineUtility.instance.StartCoroutine(GetArtImage(art, (string)data["images"][0]["src"]));
+
+            art.variations = art.CreateBaseVariations(variationIdList);
 
             arts.Add(art);                      
 
@@ -227,7 +229,7 @@ public static class MuseumBank
         return requestURL;
     }
 
-    static IEnumerator GetImage(Artist artist, string imagePath)
+    static IEnumerator GetArtistImage(Artist artist, string imagePath)
     {
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(imagePath);
 
@@ -244,7 +246,7 @@ public static class MuseumBank
         }
     }
 
-    static IEnumerator GetImage(Art art, string imagePath)
+    static IEnumerator GetArtImage(Art art, string imagePath)
     {
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(imagePath);
         yield return www.SendWebRequest();
