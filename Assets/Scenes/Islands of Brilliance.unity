@@ -1322,7 +1322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26f1f489daa5054eb428e2902997c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  causeTag: 1
+  causeTag: 4
   artistCanvases:
   - {fileID: 7602793563562404065}
   - {fileID: 1306294922}

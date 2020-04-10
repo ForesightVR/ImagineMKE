@@ -13,30 +13,49 @@ public static class MuseumBank
     static string oauth_consumerSecret = "cs_e65a26fd8ece512d02363359388e863f2eedc598";
 
     static string vendorsApiString = "/wp-json/wcmp/v1/vendors";
-    static string productsApiString = "/wp-json/wc/v3/products";
+    static string productsApiString = "/wp-json/wc/v2/products";
 
     public static string websiteRoot = "https://outsidersvr.com";
 
     public static List<Artist> artists = new List<Artist>();
     static List<Art> arts = new List<Art>();
 
+    static int piecesCompleted = 0;
+
     public static IEnumerator CallGet()
     {
+        Debug.Log(Time.time);
         yield return GetAllVendors();
-        yield return GetAllProducts();
+        yield return GetAllProducts();       
 
-        foreach (Art art in arts)
+        foreach (Artist artist in artists)
         {
-            art.artist = artists.FirstOrDefault(x => x.vendorId == art.vendorId);
-            CoroutineUtility.instance.StartCoroutine(VariationRequest(art));
+            var pieces = arts.Where(x => x.vendorId == artist.vendorId).ToList();
+
+            foreach (Art art in pieces)
+            {
+                artist.artPieces.Add(art);
+                art.artist = artist;
+                CoroutineUtility.instance.StartCoroutine(VariationRequest(art));
+            }
         }
+
+        yield return new WaitUntil(GotAllVariations);
+        Debug.Log("FINISHED!");
+        Debug.Log(Time.time);
+    }
+
+    static bool GotAllVariations()
+    {
+        Debug.Log($"We're at {piecesCompleted} out of {arts.Count}");
+        return (piecesCompleted == arts.Count);
     }
        
     static IEnumerator GetAllVendors()
     {
         Debug.Log("GetAllVendors");
 
-        var request = CreateGetRequest(vendorsApiString);
+        var request = CreateGetRequest(vendorsApiString, new List<string> {"per_page=100"});
 
         yield return request.SendWebRequest();
 
@@ -54,7 +73,7 @@ public static class MuseumBank
     {
         Debug.Log("GetAllProducts");
 
-        var request = CreateGetRequest("/wp-json/wc/v2/products", new List<string> {"vendor=20"});
+        var request = CreateGetRequest(productsApiString, new List<string> {"per_page=100"});
 
         yield return request.SendWebRequest();
 
@@ -84,33 +103,35 @@ public static class MuseumBank
 
             Debug.Log($"Adding {artist.name}");
             artists.Add(artist);
-
-            //if (artist.artPieces.Count > 0)
-            //GetAllProductsByVendor(artist);
-            //yield return new WaitForSecondsRealtime(1f);
         }
-
-        //CoroutineUtility.instance.StartCoroutine(GetAllProductsByVendor());
-        //GetAllProductsByVendor();
     }
+   
     static void CreateArt(JArray jArray)
     {
         foreach (JObject jObject in jArray)
         {
+            Debug.Log("Creating art!");
             JObject data = JObject.Parse(jObject.ToString());
 
             string tag = (string)data["tags"][0]["name"];
             Debug.Log("Cause: " + tag);
 
-            var vendorId = data["vendor"];
+            var vendorJObj = data["vendor"];
 
-            Debug.Log(vendorId);
+            Debug.Log(vendorJObj);
 
-            Art art = new Art(0, (int)data["id"], data["name"].ToString(), StripHTML(data["description"].ToString()), tag);
+            int vendorId = 0;
+
+            if (vendorJObj == null)
+                continue; // if no one can sell it, why have it in the museum?
+            else
+                vendorId = (int)vendorJObj;
+
+            Art art = new Art(vendorId, (int)data["id"], data["name"].ToString(), StripHTML(data["description"].ToString()), tag);
 
             CoroutineUtility.instance.StartCoroutine(GetImage(art, (string)data["images"][0]["src"]));
 
-            arts.Add(art);
+            arts.Add(art);           
 
             //var variationIdList = data["variations"]?.Select(x => (int)x).ToList() ?? new List<int>();
 
@@ -119,40 +140,6 @@ public static class MuseumBank
         }
     }
 
-    /*static void GetAllProductsByVendor(Artist artist)
-    {       
-        CoroutineUtility.instance.StartCoroutine(ArtRequest(artist));       
-    }*/
-
-    /*static IEnumerator ArtRequest(Artist artist)
-    {
-        var request = CreateGetRequest(productsApiString);
-        Debug.Log($"Request URL for {artist.name} is {request.url}");
-        yield return request.SendWebRequest();
-
-        if (request.isNetworkError || request.isHttpError)
-        {            
-            Debug.LogWarning($"Failed to connect for {artist.name} with {request.error}");
-            yield return new WaitForSecondsRealtime(2f);
-            //CoroutineUtility.instance.StartCoroutine(ArtRequest(artist));
-        }
-            
-        else
-        {
-            Debug.Log($"Succesfully connected for {artist.name}");
-            Debug.Log($"{artist.name}'s products: {request.downloadHandler.text}");
-            JArray jsonArray = JArray.Parse(request.downloadHandler.text);
-            
-            if (jsonArray.Count > 0)
-                CreateArt(jsonArray, artist);
-        }
-    }*/    
-
-    /*static IEnumerator GetAllVariationsByProduct(Art product)
-    {
-        CoroutineUtility.instance.StartCoroutine(VariationRequest(product));
-    }*/
-
     static IEnumerator VariationRequest(Art product)
     {
         UnityWebRequest request = CreateGetRequest($"{productsApiString}/{product.productId}/variations");
@@ -160,15 +147,16 @@ public static class MuseumBank
 
         if (request.isNetworkError || request.isHttpError)
         {
-            Debug.LogWarning($"Failed to connect for {product.name} with {request.error}");            
-            //CoroutineUtility.instance.StartCoroutine(VariationRequest(product));
-        }
-            
+            Debug.LogWarning($"Failed to connect for variations of {product.name} with {request.error}");
+            yield return new WaitForSecondsRealtime(.5f);
+            CoroutineUtility.instance.StartCoroutine(VariationRequest(product));           
+        }            
         else
         {
             Debug.Log($"Succesfully connected for {product.name}");
             var jArray = JArray.Parse(request.downloadHandler.text);
             CreateVariations(jArray, product);
+            piecesCompleted++;
         }
     }
 
@@ -207,7 +195,7 @@ public static class MuseumBank
 
                 product.variations.Add(variation);
             }
-        }       
+        }        
     }
 
     static UnityWebRequest CreateGetRequest(string apiString)
