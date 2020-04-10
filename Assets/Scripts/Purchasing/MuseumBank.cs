@@ -36,20 +36,20 @@ public static class MuseumBank
             {
                 artist.artPieces.Add(art);
                 art.artist = artist;
-                CoroutineUtility.instance.StartCoroutine(VariationRequest(art));
+                //CoroutineUtility.instance.StartCoroutine(VariationRequest(art));
             }
         }
 
-        yield return new WaitUntil(GotAllVariations);
+        //yield return new WaitUntil(GotAllVariations);
         Debug.Log("FINISHED!");
         Debug.Log(Time.time);
     }
 
-    static bool GotAllVariations()
+    /*static bool GotAllVariations()
     {
         Debug.Log($"We're at {piecesCompleted} out of {arts.Count}");
         return (piecesCompleted == arts.Count);
-    }
+    }*/
        
     static IEnumerator GetAllVendors()
     {
@@ -94,6 +94,8 @@ public static class MuseumBank
             JObject data = JObject.Parse(jObject.ToString());
             Artist artist = new Artist((int)data["id"], data["display_name"].ToString(), StripHTML((string)data["shop"]["description"]));
 
+            //Debug.Log($"Image for {data["display_name"].ToString()} possibly {data["shop"]["image"]}");
+
             string artistImageString = GetImageLink((string)data["shop"]["description"]);
 
             if (artistImageString.Length > 0)
@@ -110,37 +112,34 @@ public static class MuseumBank
     {
         foreach (JObject jObject in jArray)
         {
-            Debug.Log("Creating art!");
+            //Debug.Log("Creating art!");
             JObject data = JObject.Parse(jObject.ToString());
 
-            string tag = (string)data["tags"][0]["name"];
-            Debug.Log("Cause: " + tag);
+            string tag = "";
+            int vendorId = 0;        
 
-            var vendorJObj = data["vendor"];
+            var vendorJObj = data["vendor"];            
 
-            Debug.Log(vendorJObj);
-
-            int vendorId = 0;
-
-            if (vendorJObj == null)
+            if (vendorJObj == null || data["tags"].Count() == 0)
                 continue; // if no one can sell it, why have it in the museum?
-            else
-                vendorId = (int)vendorJObj;
+            
+            vendorId = (int)vendorJObj;
+            tag = (string)data["tags"][0]["name"];
 
-            Art art = new Art(vendorId, (int)data["id"], data["name"].ToString(), StripHTML(data["description"].ToString()), tag);
+            var variationIdList = data["variations"]?.Select(x => (int)x).ToList() ?? new List<int>();
+
+            Art art = new Art(vendorId, (int)data["id"], variationIdList, data["name"].ToString(), StripHTML(data["description"].ToString()), tag);
 
             CoroutineUtility.instance.StartCoroutine(GetImage(art, (string)data["images"][0]["src"]));
 
-            arts.Add(art);           
-
-            //var variationIdList = data["variations"]?.Select(x => (int)x).ToList() ?? new List<int>();
+            arts.Add(art);                      
 
             //GetAllVariationByProduct(variationIdList, art);
             //CoroutineUtility.instance.StartCoroutine(GetAllVariationsByProduct(art));
         }
     }
 
-    static IEnumerator VariationRequest(Art product)
+    /*static IEnumerator VariationRequest(Art product)
     {
         UnityWebRequest request = CreateGetRequest($"{productsApiString}/{product.productId}/variations");
         yield return request.SendWebRequest();
@@ -196,7 +195,7 @@ public static class MuseumBank
                 product.variations.Add(variation);
             }
         }        
-    }
+    }*/
 
     static UnityWebRequest CreateGetRequest(string apiString)
     {

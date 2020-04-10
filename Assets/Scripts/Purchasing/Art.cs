@@ -13,11 +13,11 @@ public class Art
     public Artist artist;
     public int vendorId;
 
-    public Art(int vendorId, int productID, string name, string description, string cause)
+    public Art(int vendorId, int productID, List<int> variationIds, string name, string description, string cause)
     {
         this.vendorId = vendorId;
         this.productId = productID;
-        this.variations = new List<Variation>();
+        this.variations = CreateBaseVariations(variationIds);
         this.name = name;
         this.description = description;
         this.cause = cause;
@@ -37,4 +37,28 @@ public class Art
     {
         return variations[0];
     }
+
+    public List<Variation> CreateBaseVariations(List<int> variationIds)
+    {
+        var variations = new List<Variation>();
+
+        var categories = new string[] { "Archival Gloss", "Archival Matte", "Regular Gloss", "Regular Matte" };
+        var sizes = new string[] { "5 x 7", "8 x 10", "11 x 14", "18 x 24" };
+        var prices = new int[] { 20, 80, 120, 300 };
+
+        int variationIndex = 0;// we always start with the orginial
+
+        variations.Add(new Variation(variationIds[variationIndex], "Original", 0));
+
+        foreach (string cat in categories)
+        {
+            for(int index = 0; index < sizes.Length; index++)
+            {
+                variations.Add(new Variation(variationIds[variationIndex], $"{cat} {sizes[index]}", cat.Contains("Archival") ? prices[index] * 2 : prices[index]));
+            }
+        }
+
+        return variations;
+    }
+
 }

@@ -35,6 +35,8 @@ public class CartItem : MonoBehaviour
         {
             variantDropDown.options.Add(new TMP_Dropdown.OptionData(art.variations[index].Name));
         }
+
+        UpdateText();
     }
 
     public void AddCount()
@@ -61,7 +63,11 @@ public class CartItem : MonoBehaviour
     void UpdateText()
     {
         itemCountText.text = ItemCount.ToString();
-        priceText.text = (Variation.Price * ItemCount).ToString("C");
+
+        if (Variation.Price != 0)
+            priceText.text = (Variation.Price * ItemCount).ToString("C");
+        else
+            priceText.text = "Check Online For Details";
     }
 
     public void OnDropdownChange()
@@ -69,6 +75,4 @@ public class CartItem : MonoBehaviour
         Variation = Art.variations[variantDropDown.value];
         UpdateText();
     }
-
-
 }
