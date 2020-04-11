@@ -2,16 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
+using Photon.Pun;
 
 public class CheckName : MonoBehaviour
 {
     public GameObject nameWarning;
+    public UnityEvent unityEvent;
 
     public void Enter(TMP_InputField inputField)
     {
-        if (inputField.text == "")
+        if (string.IsNullOrWhiteSpace(inputField.text))
             nameWarning.SetActive(true);
         else
-            NetworkConnectionManager.Instance.ConnectToMaster();
+        {
+            if (!PhotonNetwork.IsConnected)
+                NetworkConnectionManager.Instance.ConnectToMaster();
+            else
+                unityEvent?.Invoke();
+        }
     }
 }
