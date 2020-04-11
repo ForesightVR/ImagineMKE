@@ -56,11 +56,10 @@ public class Art
             for(int index = 0; index < sizes.Length; index++)
             {
                 variationIndex++;
-                variations.Add(new Variation(variationIds[variationIndex], $"{cat} {sizes[index]}", cat.Contains("Archival") ? prices[index] * 2 : prices[index]));                
+                if (variationIndex < variationIds.Count)
+                    variations.Add(new Variation(variationIds[variationIndex], $"{cat} {sizes[index]}", cat.Contains("Archival") ? prices[index] * 2 : prices[index]));                
             }
         }
-
-        
 
         return variations;
     }

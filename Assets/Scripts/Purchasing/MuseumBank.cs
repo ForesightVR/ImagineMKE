@@ -22,6 +22,9 @@ public static class MuseumBank
 
     static int piecesCompleted = 0;
 
+    public static int currentArtPieces;
+    public static int maxArtPieces;
+
     public static IEnumerator CallGet()
     {
         Debug.Log(Time.time);
@@ -40,17 +43,21 @@ public static class MuseumBank
             }
         }
 
-        //yield return new WaitUntil(GotAllVariations);
+        maxArtPieces = arts.Count;
+        yield return new WaitUntil(GotAllArtImages);
+
+        LoadManager.Instance.SetLoad(false);
         Debug.Log("FINISHED!");
         Debug.Log(Time.time);
     }
 
-    /*static bool GotAllVariations()
+    static bool GotAllArtImages()
     {
+        currentArtPieces = piecesCompleted;
         Debug.Log($"We're at {piecesCompleted} out of {arts.Count}");
         return (piecesCompleted == arts.Count);
-    }*/
-       
+    }
+
     static IEnumerator GetAllVendors()
     {
         Debug.Log("GetAllVendors");
@@ -72,19 +79,22 @@ public static class MuseumBank
     static IEnumerator GetAllProducts()
     {
         Debug.Log("GetAllProducts");
-
-        var request = CreateGetRequest(productsApiString, new List<string> {"per_page=100"});
-
-        yield return request.SendWebRequest();
-
-        if (request.isNetworkError || request.isHttpError)
-            throw new System.Exception(request.error);
-        else
+        for (int i = 1; i < 5; i++)
         {
-            Debug.Log($"Products: {request.downloadHandler.text}");
-            JArray jsonArray = JArray.Parse(request.downloadHandler.text);
-            CreateArt(jsonArray);   
+            var request = CreateGetRequest(productsApiString, new List<string> { "per_page=100", "page=" + i });
+            yield return request.SendWebRequest();
+
+            if (request.isNetworkError || request.isHttpError)
+                throw new System.Exception(request.error);
+            else
+            {
+                Debug.Log($"Products: {request.downloadHandler.text}");
+                JArray jsonArray = JArray.Parse(request.downloadHandler.text);
+                CreateArt(jsonArray);
+            }
         }
+
+       
     }
 
     static void CreateArtists(JArray jArray)
@@ -260,6 +270,7 @@ public static class MuseumBank
             Texture2D texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
             art.artImage = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
         }
+        piecesCompleted++;
     }
 
     static string GetImageLink(string data)
