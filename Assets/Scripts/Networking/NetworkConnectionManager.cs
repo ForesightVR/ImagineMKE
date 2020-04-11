@@ -11,6 +11,7 @@ using TMPro;
 public class NetworkConnectionManager : MonoBehaviourPunCallbacks
 {
     public static NetworkConnectionManager Instance;
+    public string sceneName = "Outsider's Gallery";
     public string roomName;
     public byte maxPlayers = 15;
     public byte CharacterSelected { get; private set; }
@@ -121,7 +122,7 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
-        SceneManager.LoadScene(roomName);
+        SceneManager.LoadScene(sceneName);
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
