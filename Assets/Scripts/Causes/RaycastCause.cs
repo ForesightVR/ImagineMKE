@@ -6,6 +6,7 @@ using Photon.Pun;
 public class RaycastCause : Cause
 {
     public LayerMask interactionLayer;
+    public bool requireClick;
     Camera mainCamera;
 
     bool localOnly;
@@ -27,10 +28,11 @@ public class RaycastCause : Cause
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100f, interactionLayer))
         {
-            if(Input.GetKeyDown(KeyCode.Mouse0))
-            {
+            if(requireClick && Input.GetKeyDown(KeyCode.Mouse0))
                 hit.transform.GetComponent<Effect>().InvokeEffect();
-            }
+            else if(!requireClick)
+                hit.transform.GetComponent<Effect>().InvokeEffect();
+
         }
     }
 }

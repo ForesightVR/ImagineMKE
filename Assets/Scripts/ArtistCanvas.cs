@@ -6,6 +6,7 @@ using TMPro;
 
 public class ArtistCanvas : MonoBehaviour
 {
+    public GameObject artInfoUI;
     public Image artPiece;
     public TextMeshProUGUI artistName;
     public TextMeshProUGUI extendedArtistName;
@@ -17,6 +18,24 @@ public class ArtistCanvas : MonoBehaviour
 
     Artist currentArtist;
     Art currentArtPiece;
+
+    bool nearby;
+
+    public void Nearby(bool state)
+    {
+        nearby = state;
+
+        if (!nearby)
+            artInfoUI.SetActive(false);
+    }
+
+    public void Interacting()
+    {
+        if (nearby)
+            artInfoUI.SetActive(true);
+        else
+            artInfoUI.SetActive(false);
+    }
 
     public void SetArtistCanvasInfo(Artist artist, Art artPiece, string artistName, Sprite artistProfilePicture, string artistBio, List<Art> extraArt)
     {
