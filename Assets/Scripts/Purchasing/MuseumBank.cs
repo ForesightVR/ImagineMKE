@@ -1,11 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Networking;
 using Valve.Newtonsoft.Json.Linq;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System;
 
 public static class MuseumBank
 {
@@ -13,32 +13,77 @@ public static class MuseumBank
     static string oauth_consumerSecret = "cs_e65a26fd8ece512d02363359388e863f2eedc598";
 
     static string vendorsApiString = "/wp-json/wcmp/v1/vendors";
-    static string productsApiString = "/wp-json/wc/v3/products";
+    static string productsApiString = "/wp-json/wc/v2/products";
 
-    static string websiteRoot = "https://outsidersvr.com";
+    public static string websiteRoot = "https://outsidersvr.com";
 
     public static List<Artist> artists = new List<Artist>();
+    static List<Art> arts = new List<Art>();
 
-    public static void CallGet()
+    static int piecesCompleted = 0;
+
+    public static IEnumerator CallGet()
     {
-        CoroutineUtility.instance.StartCoroutine(GetAllVendors());
+        Debug.Log(Time.time);
+        yield return GetAllVendors();
+        yield return GetAllProducts();       
+
+        foreach (Artist artist in artists)
+        {
+            var pieces = arts.Where(x => x.vendorId == artist.vendorId).ToList();
+
+            foreach (Art art in pieces)
+            {
+                artist.artPieces.Add(art);
+                art.artist = artist;
+                //CoroutineUtility.instance.StartCoroutine(VariationRequest(art));
+            }
+        }
+
+        //yield return new WaitUntil(GotAllVariations);
+        Debug.Log("FINISHED!");
+        Debug.Log(Time.time);
     }
 
+    /*static bool GotAllVariations()
+    {
+        Debug.Log($"We're at {piecesCompleted} out of {arts.Count}");
+        return (piecesCompleted == arts.Count);
+    }*/
+       
     static IEnumerator GetAllVendors()
     {
         Debug.Log("GetAllVendors");
 
-        var request = CreateGetRequest(vendorsApiString);
+        var request = CreateGetRequest(vendorsApiString, new List<string> {"per_page=100"});
 
         yield return request.SendWebRequest();
 
-        if (request.isNetworkError)
+        if (request.isNetworkError || request.isHttpError)
             throw new System.Exception(request.error);
         else
         {
-            Debug.Log(request.downloadHandler.text);
+            Debug.Log($"Vendors: {request.downloadHandler.text}");
             JArray jsonArray = JArray.Parse(request.downloadHandler.text);
-            CreateArtists(jsonArray);   
+            CreateArtists(jsonArray);
+        }
+    }
+
+    static IEnumerator GetAllProducts()
+    {
+        Debug.Log("GetAllProducts");
+
+        var request = CreateGetRequest(productsApiString, new List<string> {"per_page=100"});
+
+        yield return request.SendWebRequest();
+
+        if (request.isNetworkError || request.isHttpError)
+            throw new System.Exception(request.error);
+        else
+        {
+            Debug.Log($"Products: {request.downloadHandler.text}");
+            JArray jsonArray = JArray.Parse(request.downloadHandler.text);
+            CreateArt(jsonArray);   
         }
     }
 
@@ -47,65 +92,112 @@ public static class MuseumBank
         foreach (JObject jObject in jArray)
         {
             JObject data = JObject.Parse(jObject.ToString());
-            Artist artist = new Artist((int)data["id"], $"{data["first_name"]} {data["last_name"]}", StripHTML((string)data["shop"]["description"]));
+            Artist artist = new Artist((int)data["id"], data["display_name"].ToString(), StripHTML((string)data["shop"]["description"]));
+
+            //Debug.Log($"Image for {data["display_name"].ToString()} possibly {data["shop"]["image"]}");
 
             string artistImageString = GetImageLink((string)data["shop"]["description"]);
 
             if (artistImageString.Length > 0)
             {
-                CoroutineUtility.instance.StartCoroutine(GetImage(artist, artistImageString));
-            }            
+                CoroutineUtility.instance.StartCoroutine(GetArtistImage(artist, artistImageString));
+            }
 
+            Debug.Log($"Adding {artist.name}");
             artists.Add(artist);
         }
-
-        CoroutineUtility.instance.StartCoroutine(GetAllProductsByVendor());
     }
-
-    static IEnumerator GetAllProductsByVendor()
+   
+    static void CreateArt(JArray jArray)
     {
-        foreach (Artist artist in artists)
+        foreach (JObject jObject in jArray)
         {
-            var request = CreateGetRequest(productsApiString, new List<string>() { $"vendor={artist.vendorId}"});
+            //Debug.Log("Creating art!");
+            JObject data = JObject.Parse(jObject.ToString());
 
-            yield return request.SendWebRequest();
+            string tag = "";
+            int vendorId = 0;        
 
-            if (request.isNetworkError)
-                throw new System.Exception(request.error);
-            else
-            {
-                JArray jsonArray = JArray.Parse(request.downloadHandler.text);
-                CreateArt(jsonArray, artist);
-                //CreateArtists(jsonArray);
-            }
-        }        
+            var vendorJObj = data["vendor"];            
+
+            if (vendorJObj == null || data["tags"].Count() == 0)
+                continue; // if no one can sell it, why have it in the museum?
+            
+            vendorId = (int)vendorJObj;
+            tag = (string)data["tags"][0]["name"];
+
+            var variationIdList = data["variations"]?.Select(x => (int)x).ToList() ?? new List<int>();
+
+            Art art = new Art(vendorId, (int)data["id"], data["name"].ToString(), StripHTML(data["description"].ToString()), tag);
+
+            CoroutineUtility.instance.StartCoroutine(GetArtImage(art, (string)data["images"][0]["src"]));
+
+            art.variations = art.CreateBaseVariations(variationIdList);
+
+            arts.Add(art);                      
+
+            //GetAllVariationByProduct(variationIdList, art);
+            //CoroutineUtility.instance.StartCoroutine(GetAllVariationsByProduct(art));
+        }
     }
 
-    static void CreateArt(JArray jArray, Artist artist)
+    /*static IEnumerator VariationRequest(Art product)
     {
-        Debug.Log("Creating Art...");
+        UnityWebRequest request = CreateGetRequest($"{productsApiString}/{product.productId}/variations");
+        yield return request.SendWebRequest();
+
+        if (request.isNetworkError || request.isHttpError)
+        {
+            Debug.LogWarning($"Failed to connect for variations of {product.name} with {request.error}");
+            yield return new WaitForSecondsRealtime(.5f);
+            CoroutineUtility.instance.StartCoroutine(VariationRequest(product));           
+        }            
+        else
+        {
+            Debug.Log($"Succesfully connected for {product.name}");
+            var jArray = JArray.Parse(request.downloadHandler.text);
+            CreateVariations(jArray, product);
+            piecesCompleted++;
+        }
+    }
+
+    static void CreateVariations(JArray jArray, Art product)
+    {
+        Debug.Log($"Creating Variations for {product.productId}");
+
         foreach (JObject jObject in jArray)
         {
             JObject data = JObject.Parse(jObject.ToString());
 
-            if (artist.vendorId == 0)
+            if (product.productId == 0)
             {
-                Debug.LogError("There was no matching vendor for " + data["name"].ToString());
+                Debug.LogError("There was no matching product for " + data["name"].ToString());
             }
-            //create new art
-            //add it to the list of vendor
 
-            var intList = data["variations"]?.Select(x => (int)x).ToList() ?? new List<int>();
+            if ((bool)data["purchasable"])
+            {
+                int varId = (int)data["id"];
+                float price = (float)data["price"];
 
-            string tag = (string)data["tags"][0]["name"];
-            Debug.Log("Cause: " + tag);
+                var attributes = data["attributes"]; //need to loop through and get them all
 
-            Art art = new Art((int)data["id"], new List<int>(intList), data["name"].ToString(), StripHTML(data["description"].ToString()), tag);
+                JArray jsonArray = JArray.Parse(attributes.ToString());
 
-            CoroutineUtility.instance.StartCoroutine(GetImage(art, (string)data["images"][0]["src"]));
-            artist.artPieces.Add(art);
-        }
-    }
+                string attName = "";
+
+                foreach (JObject jobj in jsonArray)
+                {
+                    attName += $"{jobj["option"]} ";
+                }
+
+                Debug.Log($"{attName} for {product.name}");
+
+                var variation = new Variation(varId, attName, price);
+
+                product.variations.Add(variation);
+            }
+        }        
+    }*/
 
     static UnityWebRequest CreateGetRequest(string apiString)
     {
@@ -137,7 +229,7 @@ public static class MuseumBank
         return requestURL;
     }
 
-    static IEnumerator GetImage(Artist artist, string imagePath)
+    static IEnumerator GetArtistImage(Artist artist, string imagePath)
     {
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(imagePath);
 
@@ -154,7 +246,7 @@ public static class MuseumBank
         }
     }
 
-    static IEnumerator GetImage(Art art, string imagePath)
+    static IEnumerator GetArtImage(Art art, string imagePath)
     {
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(imagePath);
         yield return www.SendWebRequest();

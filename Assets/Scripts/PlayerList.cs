@@ -20,23 +20,12 @@ public class PlayerList : MonoBehaviourPunCallbacks
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             TogglePlayerList(!playerList.activeSelf);
-
-        GameManager.Instance.MenuState(playerList.activeSelf || chatInput.activeSelf);
     }
 
     public void TogglePlayerList(bool activeState)
     {
         if(activeState == true)
-        {
             UpdatePlayerList();
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
 
         playerList.SetActive(activeState);
     }

@@ -8,6 +8,7 @@ public class ChangeArtEffect : Effect
 {
     Image image;
     ArtistCanvas artistCanvas;
+    Art art;
 
     void Awake()
     {
@@ -15,13 +16,14 @@ public class ChangeArtEffect : Effect
         image = GetComponent<Image>();
     }
 
-    public void SetArtistCanvas(ArtistCanvas canvas)
+    public void SetInfo(ArtistCanvas canvas, Art art)
     {
         artistCanvas = canvas;
+        this.art = art;
     }
 
     public void ChangeArt()
     {
-        artistCanvas.artPiece.sprite = image.sprite;
+        artistCanvas.SetArt(art);
     }
 }

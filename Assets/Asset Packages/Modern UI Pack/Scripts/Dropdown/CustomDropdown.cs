@@ -151,6 +151,8 @@ namespace Michsky.UI.ModernUIPack
 
         public void ChangeDropdownInfo(int itemIndex)
         {
+            Debug.Log("Change Drop Down Info: " + itemIndex);
+
             if (selectedImage != null)
                 selectedImage.sprite = dropdownItems[itemIndex].itemIcon;
 

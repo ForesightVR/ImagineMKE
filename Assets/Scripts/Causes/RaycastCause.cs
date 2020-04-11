@@ -15,12 +15,13 @@ public class RaycastCause : Cause
         mainCamera = transform.root.GetComponentInChildren<Camera>();
 
         if(isLocal)
-        localOnly = !transform.root.GetComponent<PhotonView>().IsMine;
+            localOnly = !transform.root.GetComponent<PhotonView>().IsMine;
     }
 
     void Update()
     {
         if (localOnly) return;
+        if (GameManager.Instance.MenuOpen) return;
 
         Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
         RaycastHit hit;

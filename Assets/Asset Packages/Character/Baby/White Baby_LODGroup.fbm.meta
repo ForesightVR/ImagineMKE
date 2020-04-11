@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Asset Packages/Character/Baby/White Baby_LODGroup.fbm.meta
 guid: 24dad6a77278f9f48a0210a87c89b404
 folderAsset: yes
 DefaultImporter:
+=======
+guid: c8515e2399fb31f4bb5d9340ca96806c
+PrefabImporter:
+>>>>>>> Cart:Assets/Prefabs/Added to Cart.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

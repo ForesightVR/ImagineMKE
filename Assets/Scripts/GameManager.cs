@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public Player playerPrefab;
     public string menuSceneName;
+
+    public GameObject[] menus;
     public bool MenuOpen { get; private set; }
 
     RoomMembership roomMembership;
@@ -58,9 +60,34 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
-    public void MenuState(bool state)
+    private void Update()
+    {
+        foreach(GameObject go in menus)
+        {
+            if (go.activeInHierarchy)
+            {
+                MenuState(true);
+                return;
+            }
+        }
+
+        MenuState(false);
+    }
+
+    void MenuState(bool state)
     {
         MenuOpen = state;
+
+        if(MenuOpen)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
