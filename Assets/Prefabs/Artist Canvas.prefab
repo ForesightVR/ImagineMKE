@@ -355,7 +355,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 19f8bf926ba6f5a4ca7c3fadede96e35, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 49702278c78c41648bcf38cd04605d4f, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -444,10 +444,35 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1490554091382281719, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4292927712
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490554091382281719, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.8784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490554091382281719, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.8784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490554091382281719, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.8784314
+      objectReference: {fileID: 0}
     - target: {fileID: 1540523030030872338, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
         type: 3}
       propertyPath: m_Name
       value: ArtPieceDisplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 1685262662987387231, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.85882354
       objectReference: {fileID: 0}
     - target: {fileID: 1976346766229895670, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
         type: 3}
@@ -482,50 +507,57 @@ PrefabInstance:
     - target: {fileID: 2526465205504756916, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
         type: 3}
       propertyPath: m_text
-      value: "Fidel Verdin is an award-winning visionary who is an influencer in
-        transformative Hip Hop Education and also cultural community activation.
-        He has two decades of experience as an independent teaching artist and social
-        entrepreneur. Fidel also is trained in group facilitation, strategic graphic
-        communications and conflict resolution. \u200B Born and raised in Milwaukee,
-        WI, he developed two former vacant lots into award winning community garden
-        and public art spaces, received the' Most Creative use of Space' award from
-        Groundworks Milwaukee Chapter. Known for his strong focus on team building
-        and sustainability, he specializes in collective impact, social engagement
-        strategies and raising funds. Fidel has received State and Citywide proclamations,
-        awards and acknowledgments for launching 'Summer of Peace' a city wide youth
-        rally promoting community unity and positive edutainment. In addition to
-        maintaining several of his own personal media and art related projects, Fidel
-        Verdin serves as Co-Executive Director at the TRUE Skool, Milwaukee's Center
-        for Transformational Creative Arts and Hip Hop Culture. \u200B He is a writer,
-        producer, recording and performing Hip Hop artist known professionally as
-        'Viva Fidel' and has releases available on all digital streaming services.
-        Fidel has hosted his own talk radio and online shows with over 50,000 downloads
-        and has performed with major artists nationally. \u200B His visual art has
-        been exhibited in galleries in Milwaukee as well as Chicago. He is the recipient
-        of a 'Best Experimental Short Film' award from\_<span class=\"il\">New</span>\_York
-        International Film Fest and the Wisconsin Giraffe Award given to those that
-        stick their necks out for children in need. Fidel is also the proud Father
-        of two amazing little ones!"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2526465205504756916, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 1769
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2526465205504756916, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 269
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2526465205504756916, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 271
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2526465205504756916, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 23
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526465205504756916, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 2.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526465205504756916, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 2.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526465205504756916, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526465205504756916, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_fontSizeMin
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526465205504756916, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_fontSizeMax
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526465205504756916, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2543743358789286847, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
         type: 3}
@@ -720,7 +752,32 @@ PrefabInstance:
     - target: {fileID: 4002334557062540225, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 2.75
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002334557062540225, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00000008940697
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002334557062540225, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002334557062540225, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002334557062540225, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002334557062540225, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4520500551630539281, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
         type: 3}
@@ -752,6 +809,12 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5658498468769713654, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 97864ba350feec64fa6c57bf67225c53,
+        type: 3}
     - target: {fileID: 5942831029148591940, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
         type: 3}
       propertyPath: m_Layer
@@ -907,6 +970,31 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7846165566768795178, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846165566768795178, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846165566768795178, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846165566768795179, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7846165567855698970, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.85882354
+      objectReference: {fileID: 0}
     - target: {fileID: 7846165568286109770, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -981,6 +1069,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153604495219048976, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153604495219048976, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.24705882
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153604495219048976, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.24705882
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153604495219048976, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.24705882
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153604495219048976, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.85882354
       objectReference: {fileID: 0}
     - target: {fileID: 8420408317792302467, guid: 8b9f1064b0b1eb24b8aecce6e2de2028,
         type: 3}

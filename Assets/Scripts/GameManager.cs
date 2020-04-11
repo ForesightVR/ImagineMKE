@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         ReturnToMenu();
     }
 
-    public void ReturnToMenu()
+    void ReturnToMenu()
     {
         SceneManager.LoadScene(menuSceneName);
     }

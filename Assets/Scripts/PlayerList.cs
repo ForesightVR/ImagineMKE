@@ -36,7 +36,7 @@ public class PlayerList : MonoBehaviourPunCallbacks
         {
             PlayerInfo playerInfo = playerInfos.FirstOrDefault(x => x.playerName.text == player.NickName);
 
-            if (playerInfo == null)
+            if (playerInfo == null && player != PhotonNetwork.LocalPlayer)
             {
                 PlayerInfo newPlayerInfo = Instantiate(playerInfoPrefab, playerInfoHolder.transform);
                 newPlayerInfo.SetInfo(player);
