@@ -31,6 +31,7 @@ namespace Foresight
 
         [HideInInspector]
         public Camera cam;
+        public CameraControl cameraControl;
 
         public Animator Animator { get; private set; }
         CharacterController cc;
@@ -88,8 +89,6 @@ namespace Foresight
             if (GameManager.Instance && GameManager.Instance.MenuOpen) return;
             Move();
             Rotate();
-
-           
         }
 
         void Move()
@@ -105,6 +104,9 @@ namespace Foresight
 
             Vector3 move = new Vector3(horizontal, 0, vertical);
             float currentSpeed = 0;
+
+            if (move.magnitude > 0)
+                cameraControl.thirdPersonActive = false;
 
             Animator.speed = leftShift ? sprintAnimatorSpeed : baseAnimatorSpeed;
             Animator.SetFloat("Horizontal", move.x, animationSmoothTime, Time.deltaTime);
@@ -128,22 +130,33 @@ namespace Foresight
 
         void Rotate()
         {
+            //if (Input.GetKeyDown(KeyCode.Tab))
+            //    cameraControl.thirdPersonActive = !cameraControl.thirdPersonActive;
 
-            if (photonView.IsMine)
-            {
-                mouseX += Input.GetAxis("Mouse X");
-                mouseY += Input.GetAxis("Mouse Y");
-            }
+            if (cameraControl.thirdPersonActive) return;
+            //if (cameraControl.thirdPersonActive)
+            //{
+            //    if(cc.velocity != Vector3.zero)
+            //        transform.rotation = Quaternion.RotateTowards(transform.rotation,  Quaternion.LookRotation(cam.transform.forward), 250 * Time.deltaTime);
+            //}
+            //else
+            //{
+                if (photonView.IsMine)
+                {
+                    mouseX += Input.GetAxis("Mouse X");
+                    mouseY += Input.GetAxis("Mouse Y");
+                }
 
-            Animator.SetFloat("MouseX", Input.GetAxisRaw("Mouse X"), .1f, Time.deltaTime);
+                Animator.SetFloat("MouseX", Input.GetAxisRaw("Mouse X"), .1f, Time.deltaTime);
 
-            mouseX *= rotationSpeed;
-            mouseY *= rotationSpeed;
+                mouseX *= rotationSpeed;
+                mouseY *= rotationSpeed;
 
-            mouseY = Mathf.Clamp(mouseY, -60f, 90f);
+                mouseY = Mathf.Clamp(mouseY, -60f, 90f);
 
-            transform.rotation = Quaternion.Euler(0, mouseX, 0);
-            cam.transform.localRotation = Quaternion.Euler(-mouseY, 0, 0);
+                transform.rotation = Quaternion.Euler(0, mouseX, 0);
+                cam.transform.localRotation = Quaternion.Euler(-mouseY, 0, 0);
+          //  }
         }
     }
 }

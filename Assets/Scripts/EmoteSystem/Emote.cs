@@ -14,9 +14,13 @@ public class Emote : MonoBehaviour
 
     EmoteCategory emoteCategory;
     Animator animator;
+    CameraControl cameraControl;
 
     public void Initialize(EmoteCategory emoteCategory)
     {
+        if (Player.LocalPlayerInstance)
+            cameraControl = Player.LocalPlayerInstance.GetComponentInChildren<CameraControl>();
+
         this.emoteCategory = emoteCategory;
         emoteInputKey.text = "(" + inputKey + ")";
         emoteName.text = transform.name;
@@ -34,7 +38,12 @@ public class Emote : MonoBehaviour
         if (!Active) return;
 
         if(Input.GetKeyDown(inputKey))
+        {
             animator.SetBool(emoteName.text, true);
+
+            if (cameraControl)
+                cameraControl.thirdPersonActive = true;
+        }
         else if(Input.GetKeyUp(inputKey))
             animator.SetBool(emoteName.text, false);
 
