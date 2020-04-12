@@ -389,8 +389,8 @@ MonoBehaviour:
   roomSelection: {fileID: 2095934706}
   roomCounter: {fileID: 1943693192}
   roomName: Outsider's Gallery 1
-  roomDescription: Islands of Brilliance (IOB) is a learning experience developed
-    specifically for children and young adults on the autism spectrum.
+  roomDescription: The escape key on your keyboard will show and hide your audio
+    options. You will have the option  to mute or turn down the audio of others.
 --- !u!1 &98194662
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,7 +1444,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: e5c756f58fe444b41a389fec782f372f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8414,7 +8414,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
