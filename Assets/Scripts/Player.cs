@@ -105,8 +105,7 @@ namespace Foresight
             Vector3 move = new Vector3(horizontal, 0, vertical);
             float currentSpeed = 0;
 
-            if (move.magnitude > 0)
-                cameraControl.thirdPersonActive = false;
+       
 
             Animator.speed = leftShift ? sprintAnimatorSpeed : baseAnimatorSpeed;
             Animator.SetFloat("Horizontal", move.x, animationSmoothTime, Time.deltaTime);
@@ -114,6 +113,9 @@ namespace Foresight
 
             Animator.SetBool("Move", move == Vector3.zero ? false : true);
             Animator.SetBool("Run", leftShift ? true : false);
+
+            if (move.magnitude > 0)
+                cameraControl.thirdPersonActive = false;
 
             if (leftShift) //IsSprinting
                 currentSpeed = runSpeed;

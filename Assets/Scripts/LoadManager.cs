@@ -14,6 +14,12 @@ public class LoadManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        if (MuseumBank.isDone)
+            SetLoad(false);
+    }
+
     private void Update()
     {
         if (!loadScreen.activeInHierarchy) return;

@@ -8,10 +8,11 @@ public class SoundManager : MonoBehaviour
 {
     public AudioMixer mixer;
     public GameObject volumeCanvas;
+    public bool ignoreInput;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !ignoreInput)
             volumeCanvas.SetActive(!volumeCanvas.activeInHierarchy);
     }
 

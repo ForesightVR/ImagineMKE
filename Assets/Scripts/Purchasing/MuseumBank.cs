@@ -24,6 +24,7 @@ public static class MuseumBank
 
     public static int currentArtPieces;
     public static int maxArtPieces;
+    public static bool isDone;
 
     public static IEnumerator CallGet()
     {
@@ -46,6 +47,7 @@ public static class MuseumBank
         maxArtPieces = arts.Count;
         yield return new WaitUntil(GotAllArtImages);
 
+        isDone = true;
         LoadManager.Instance.SetLoad(false);
         Debug.Log("FINISHED!");
         Debug.Log(Time.time);
