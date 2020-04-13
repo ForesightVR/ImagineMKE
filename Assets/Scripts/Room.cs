@@ -7,7 +7,8 @@ using Photon.Pun;
 public class Room : MonoBehaviour
 {
     public RoomSelection roomSelection;
-    public TextMeshProUGUI roomCounter;
+    public TextMeshProUGUI roomCounter; 
+    public TextMeshProUGUI roomNameDisplay;
     public string roomName;
     [TextArea]
     public string roomDescription;
@@ -17,8 +18,9 @@ public class Room : MonoBehaviour
         roomSelection.UpdateRoomInfo(roomName, roomDescription);
     }
 
-    public void UpdateRoomCounter(int currentCount, int maxCount)
+    public void UpdateRoomCounter(string roomName, int currentCount, int maxCount)
     {
+        roomNameDisplay.text = $"{roomName}";
         roomCounter.text = $"{currentCount} / {maxCount}";
     }
 }

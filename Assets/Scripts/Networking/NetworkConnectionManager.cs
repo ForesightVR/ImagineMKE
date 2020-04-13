@@ -22,6 +22,8 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     public bool IsAdmin { get; private set; }
     public PhotonDissonanceBridge bridge;
 
+    List<RoomInfo> roomList = new List<RoomInfo>();
+
     private void Awake()
     {
         if (Instance == null)
@@ -33,7 +35,6 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
             Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
-        roomName = RoomSelection.Instance.rooms[0].roomName;
     }
 
     public void SetCharacter(byte characterIndex)
@@ -44,6 +45,11 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     public void ChangeRoomName(Room room)
     {
         roomName = room.roomName;
+    }
+
+    public void CreateNewRoomName()
+    {
+        roomName = "";
     }
 
     public void SetNickName(TMP_InputField inputField)
@@ -74,7 +80,18 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
             return;
         }
 
-        PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayers , PublishUserId = true}, typedLobby);
+        PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayers, PublishUserId = true }, typedLobby);
+    }
+
+    public void ConnectToRandomRoom()
+    {
+        if (!PhotonNetwork.IsConnected)
+        {
+            Debug.LogError("Not Connected To Photon Network!");
+            return;
+        }
+
+        PhotonNetwork.JoinRandomRoom();
     }
 
     public override void OnConnectedToMaster()
@@ -102,22 +119,42 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
         base.OnRoomListUpdate(roomList);
-        RoomSelection.Instance.rooms.ForEach(x =>
+
+        if (roomList.Count == 0)
+            RoomSelection.Instance.ClearRooms();
+        else
         {
-            if (roomList.Count > 0)
+            //check every room in roomList
+            roomList.ForEach(x =>
             {
-                var room = roomList.FirstOrDefault(y => y.Name == x.roomName);
+                //if you have a UI with the same name
+                var roomUI = RoomSelection.Instance.roomUIs.FirstOrDefault(ui => ui.roomName == x.Name);
 
-                if (room != null && room.MaxPlayers > 0)
+                if (roomUI != null)
                 {
-                    x.UpdateRoomCounter(room.PlayerCount, room.MaxPlayers);
-                    return;
-                }                    
-            }
+                    if (x.PlayerCount > 0) //and if the room has people in it, update it
+                    {
+                        roomUI.UpdateRoomCounter(x.Name, x.PlayerCount, x.MaxPlayers);
+                        return;
+                    }
+                    else //if not, delete it and return the name
+                    {
+                        RoomSelection.Instance.RemoveRoomUI(roomUI);
+                    }
+                }
+                else //if you don't
+                {
+                    //create a new UI with the room info
+                    var room = RoomSelection.Instance.CreateNewRoomUI();
+                    room.UpdateRoomCounter(x.Name, x.PlayerCount, x.MaxPlayers);
+                }
+            });
+        }
 
-            x.UpdateRoomCounter(0, maxPlayers);
-        });
+        this.roomList = roomList;
     }
+
+    public List<RoomInfo> GetRoomList() { return roomList; }
 
     public override void OnJoinedRoom()
     {
@@ -130,7 +167,7 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
         base.OnJoinRandomFailed(returnCode, message);
         Debug.Log("No Room Available! Creating new room...");
 
-        //PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 10 });
+        PhotonNetwork.CreateRoom(RoomSelection.Instance.GetNewRoomName(), new RoomOptions { MaxPlayers = maxPlayers, PublishUserId = true }, typedLobby);
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)

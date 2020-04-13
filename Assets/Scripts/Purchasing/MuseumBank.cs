@@ -29,27 +29,31 @@ public static class MuseumBank
     public static float downloadProgress;
 
     static bool retrying;
+    static bool isTesting = true;
 
     public static IEnumerator CallGet()
     {
-        Debug.Log(Time.time);
-        yield return GetAllVendors();
-        yield return GetAllProducts();       
-
-        foreach (Artist artist in artists)
+        if (!isTesting)
         {
-            var pieces = arts.Where(x => x.vendorId == artist.vendorId).ToList();
+            Debug.Log(Time.time);
+            yield return GetAllVendors();
+            yield return GetAllProducts();
 
-            foreach (Art art in pieces)
+            foreach (Artist artist in artists)
             {
-                artist.artPieces.Add(art);
-                art.artist = artist;
-                //CoroutineUtility.instance.StartCoroutine(VariationRequest(art));
-            }
-        }
+                var pieces = arts.Where(x => x.vendorId == artist.vendorId).ToList();
 
-        maxArtPieces = arts.Count;
-        yield return new WaitUntil(GotAllArtImages);
+                foreach (Art art in pieces)
+                {
+                    artist.artPieces.Add(art);
+                    art.artist = artist;
+                    //CoroutineUtility.instance.StartCoroutine(VariationRequest(art));
+                }
+            }
+
+            maxArtPieces = arts.Count;
+            yield return new WaitUntil(GotAllArtImages);
+        }
 
         isDone = true;
         LoadManager.Instance.SetLoad(false);
@@ -96,7 +100,7 @@ public static class MuseumBank
         Debug.Log("GetAllProducts");
         for (int i = 1; i < 5; i++)
         {
-            var request = CreateGetRequest(productsApiString, new List<string> { "per_page=100", "page=" + i });
+            var request = CreateGetRequest(productsApiString, new List<string> { "per_page=100", "page=" + i});
             request.SendWebRequest();
 
             while (!request.isDone)

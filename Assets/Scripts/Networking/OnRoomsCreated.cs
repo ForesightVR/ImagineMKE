@@ -15,7 +15,7 @@ public class OnRoomsCreated : MonoBehaviourPunCallbacks
         base.OnCreatedRoom();
 
         numberOfRooms++;
-        if (numberOfRooms >= RoomSelection.Instance.rooms.Count)
+        if (numberOfRooms >= RoomSelection.Instance.roomUIs.Count)
         {
             unityEvent?.Invoke();
             numberOfRooms = 0;
