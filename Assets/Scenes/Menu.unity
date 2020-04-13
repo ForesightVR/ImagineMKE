@@ -1442,9 +1442,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4382557539292162312, guid: 8c69a18f84c680a42a2f87121ae165d3,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: f8d3672d8abb31c43b26f4663d18406c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e5c756f58fe444b41a389fec782f372f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2780,12 +2780,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 648471451}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &648471460 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5987465187352181488, guid: 4944b45c40ec8dd478519453222a0f01,
-    type: 3}
-  m_PrefabInstance: {fileID: 648471451}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &648471461 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2876201752392892941, guid: 4944b45c40ec8dd478519453222a0f01,
@@ -2828,12 +2822,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 648471451}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &648471468 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 959676973116557435, guid: 4944b45c40ec8dd478519453222a0f01,
-    type: 3}
-  m_PrefabInstance: {fileID: 648471451}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &648471469 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4758401590401838028, guid: 4944b45c40ec8dd478519453222a0f01,
@@ -2849,12 +2837,6 @@ GameObject:
 --- !u!1 &648471471 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7349131060067253132, guid: 4944b45c40ec8dd478519453222a0f01,
-    type: 3}
-  m_PrefabInstance: {fileID: 648471451}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &648471472 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4653832724972159573, guid: 4944b45c40ec8dd478519453222a0f01,
     type: 3}
   m_PrefabInstance: {fileID: 648471451}
   m_PrefabAsset: {fileID: 0}
@@ -8695,16 +8677,12 @@ MonoBehaviour:
     characterImage: {fileID: 21300000, guid: 71142066697b5344da633352766862f7, type: 3}
   - character: {fileID: 648471473}
     characterImage: {fileID: 21300000, guid: ee48ad26d207a654ca7e5cc9a4980321, type: 3}
-  - character: {fileID: 648471472}
-    characterImage: {fileID: 21300000, guid: d4602d8fd7230c549a5aac03269cfaaa, type: 3}
   - character: {fileID: 648471471}
     characterImage: {fileID: 21300000, guid: 1e5afba0b7ef27644a8a06a3e6305ecc, type: 3}
   - character: {fileID: 648471470}
     characterImage: {fileID: 21300000, guid: 56bcf3f712a912d41aa1da47a01636d5, type: 3}
   - character: {fileID: 648471469}
     characterImage: {fileID: 21300000, guid: 7e9d53646bd059042911c0d5ea8c7040, type: 3}
-  - character: {fileID: 648471468}
-    characterImage: {fileID: 21300000, guid: 9feb9cf8ad665bb4cabb13c72475758e, type: 3}
   - character: {fileID: 648471467}
     characterImage: {fileID: 21300000, guid: 400d81efcb054a34bae998a7d53dac3a, type: 3}
   - character: {fileID: 648471466}
@@ -8719,8 +8697,6 @@ MonoBehaviour:
     characterImage: {fileID: 21300000, guid: a505f03f59ff70645aee124bfb70461d, type: 3}
   - character: {fileID: 648471461}
     characterImage: {fileID: 21300000, guid: 73e16f5e7de5a4849926f1d77b69408e, type: 3}
-  - character: {fileID: 648471460}
-    characterImage: {fileID: 21300000, guid: 82f98b021d8ab854284783f71fd3cd9c, type: 3}
   - character: {fileID: 648471459}
     characterImage: {fileID: 21300000, guid: 9f05d4087bc447e4fb07f8b8b2621eeb, type: 3}
   - character: {fileID: 648471458}
