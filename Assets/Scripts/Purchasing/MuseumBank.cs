@@ -180,10 +180,12 @@ public static class MuseumBank
             
             vendorId = (int)vendorJObj;
 
-            var priceObj = data["regular_price"];
+            var priceObj = (string)data["short_description"];
 
-            if (priceObj != null)
-                price = (int)priceObj;
+            string priceString = new string(priceObj.Where(char.IsDigit).ToArray());
+
+            if (priceString.Count() > 0)
+                Int32.TryParse(priceString, out price);
 
             tag = (string)data["tags"][0]["name"];
 
