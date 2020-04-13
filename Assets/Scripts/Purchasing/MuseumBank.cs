@@ -166,7 +166,8 @@ public static class MuseumBank
             JObject data = JObject.Parse(jObject.ToString());
 
             string tag = "";
-            int vendorId = 0;        
+            int vendorId = 0;
+            int price = 0;
 
             var vendorJObj = data["vendor"];            
 
@@ -174,11 +175,17 @@ public static class MuseumBank
                 continue; // if no one can sell it, why have it in the museum?
             
             vendorId = (int)vendorJObj;
+
+            var priceObj = data["regular_price"];
+
+            if (priceObj != null)
+                price = (int)priceObj;
+
             tag = (string)data["tags"][0]["name"];
 
             var variationIdList = data["variations"]?.Select(x => (int)x).ToList() ?? new List<int>();
 
-            Art art = new Art(vendorId, (int)data["id"], data["name"].ToString(), StripHTML(data["description"].ToString()), tag);
+            Art art = new Art(vendorId, (int)data["id"], data["name"].ToString(), StripHTML(data["description"].ToString()), tag, price);
 
             CoroutineUtility.instance.StartCoroutine(GetArtImage(art, (string)data["images"][0]["src"]));
 

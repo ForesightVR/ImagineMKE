@@ -13,7 +13,11 @@ public class Art
     public Artist artist;
     public int vendorId;
 
-    public Art(int vendorId, int productID, string name, string description, string cause)
+    int originalPrice;
+
+    string[] sizes = new string[] { "5 x 7", "8 x 10", "11 x 14", "18 x 24" };
+
+    public Art(int vendorId, int productID, string name, string description, string cause, int originalPrice)
     {
         this.vendorId = vendorId;
         this.productId = productID;
@@ -21,6 +25,7 @@ public class Art
         this.name = name;
         this.description = description;
         this.cause = cause;
+        this.originalPrice = originalPrice;
     }
 
     public Art (Artist artist, int productID, string name, string description, string cause)
@@ -40,26 +45,27 @@ public class Art
 
     public List<Variation> CreateBaseVariations(List<int> variationIds)
     {
-        float start = Time.time;
+        //float start = Time.time;
         var variations = new List<Variation>();
 
-        var categories = new string[] { "Archival Gloss", "Archival Matte", "Regular Gloss", "Regular Matte" };
-        var sizes = new string[] { "5 x 7", "8 x 10", "11 x 14", "18 x 24" };
-        var prices = new int[] { 20, 80, 120, 300 };
+        //var categories = new string[] { "Archival Gloss", "Archival Matte", "Regular Gloss", "Regular Matte" };
+        
+        var prices = new int[] { 5, 15, 30, 120 };
 
         int variationIndex = 0;// we always start with the orginial
 
-        variations.Add(new Variation(variationIds[variationIndex], "Original", 0));
-
-        foreach (string cat in categories)
+        //foreach (string cat in categories)
+        //{
+        for(int index = 0; index < sizes.Length; index++)
         {
-            for(int index = 0; index < sizes.Length; index++)
-            {
-                variationIndex++;
-                if (variationIndex < variationIds.Count)
-                    variations.Add(new Variation(variationIds[variationIndex], $"{cat} {sizes[index]}", cat.Contains("Archival") ? prices[index] * 2 : prices[index]));                
-            }
+            variationIndex++;
+            if (variationIndex < variationIds.Count)
+                variations.Add(new Variation(variationIds[variationIndex], $"{sizes[index]}", prices[index]));                
         }
+        //}
+
+        if (originalPrice != 0)
+            variations.Add(new Variation(variationIds[variationIndex], "Original", originalPrice));
 
         return variations;
     }
