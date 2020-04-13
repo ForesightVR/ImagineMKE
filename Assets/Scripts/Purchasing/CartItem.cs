@@ -26,7 +26,7 @@ public class CartItem : MonoBehaviour
         Art = art;
 
         artistName.text = Art.artist.name;
-        itemImage.sprite = art.artImage;
+        itemImage.sprite = art.artSprite;
 
         Variation = art.variations[0];
 

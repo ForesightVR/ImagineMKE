@@ -24,7 +24,14 @@ public class LoadManager : MonoBehaviour
     {
         if (!loadScreen.activeInHierarchy) return;
 
-        loadbar.fillAmount = MuseumBank.downloadProgress;
+        if (MuseumBank.stateProgress == 0)
+            loadbar.fillAmount = MuseumBank.vendorDownloadProgress;
+        else if (MuseumBank.stateProgress == 1)
+            loadbar.fillAmount = MuseumBank.artDownloadProgress;
+        else
+            loadbar.fillAmount = MuseumBank.imageDownloadProgress;
+
+        Debug.Log($"Fill amount {loadbar.fillAmount} at {Time.time} for {MuseumBank.stateProgress}");
     }
 
     public void SetLoad(bool state)

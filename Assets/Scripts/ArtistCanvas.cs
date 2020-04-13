@@ -39,6 +39,9 @@ public class ArtistCanvas : MonoBehaviour
 
     public void SetArtistCanvasInfo(Artist artist, Art artPiece, string artistName, Sprite artistProfilePicture, string artistBio, List<Art> extraArt)
     {
+        if (artPiece.artSprite == null)
+            
+        
         SetArtist(artist);
         SetArt(artPiece);
         this.artistName.text = artistName;
@@ -51,7 +54,7 @@ public class ArtistCanvas : MonoBehaviour
         {
             Image displayImage = Instantiate(artPieceDisplay, artistPiecesList);
             displayImage.GetComponent<ChangeArtEffect>().SetInfo(this, art);
-            displayImage.sprite = art.artImage;
+            displayImage.sprite = artPiece.artSprite;
         }
     }
 
@@ -63,7 +66,7 @@ public class ArtistCanvas : MonoBehaviour
     public void SetArt(Art art)
     {
         currentArtPiece = art;
-        artPiece.sprite = currentArtPiece.artImage;
+        artPiece.sprite = art.artSprite;
     }
 
     public void AddToCart()

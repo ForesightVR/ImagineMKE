@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class Art
 {
@@ -9,9 +11,23 @@ public class Art
     public string name;
     public string description;
     public string cause;
-    public Sprite artImage;
+    public Texture2D artImage;
+    public Sprite artSprite {
+        get
+        {
+            if (artSprite == null)
+            {
+                artSprite = Sprite.Create(artImage, new Rect(0, 0, artImage.width, artImage.height), Vector2.zero);
+                return artSprite;
+            }
+            else
+                return artSprite;
+        } set { }
+    }
     public Artist artist;
     public int vendorId;
+
+    public static int artPiecesLoaded;
 
     public Art(int vendorId, int productID, string name, string description, string cause)
     {
@@ -21,17 +37,9 @@ public class Art
         this.name = name;
         this.description = description;
         this.cause = cause;
+        //GetRemoteTexture(imageURL);
     }
 
-    public Art (Artist artist, int productID, string name, string description, string cause)
-    {
-        this.artist = artist;
-        this.productId = productID;
-        this.variations = new List<Variation>();
-        this.name = name;
-        this.description = description;
-        this.cause = cause;
-    }
 
     public Variation GetDefaultVariation()
     {
@@ -64,4 +72,36 @@ public class Art
         return variations;
     }
 
+    async Task<Texture2D> GetRemoteTexture(string url)
+    {
+        //using UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
+        using (UnityWebRequest www = UnityWebRequestTexture.GetTexture(url))
+        {
+            //begin requenst:
+            var asyncOp = www.SendWebRequest();
+
+            //await until it's done: 
+            while (asyncOp.isDone == false)
+            {
+                await Task.Delay(1000 / 30);//30 hertz
+            }
+
+            //read results:
+            if (www.isNetworkError || www.isHttpError)
+            {
+                //log error:
+                Debug.Log($"{ www.error }, URL:{ www.url }");
+                //nothing to return on error:
+                return null;
+            }
+            else
+            {
+                //return valid results:
+                artPiecesLoaded++;
+                artImage = DownloadHandlerTexture.GetContent(www);
+                return null;
+                //return DownloadHandlerTexture.GetContent(www);
+            }
+        }
+    }
 }

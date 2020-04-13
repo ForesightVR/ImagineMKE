@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 using Valve.Newtonsoft.Json.Linq;
@@ -26,13 +27,16 @@ public static class MuseumBank
     public static int maxArtPieces;
     public static bool isDone;
 
-    public static float downloadProgress;
+    public static float vendorDownloadProgress;
+    public static float artDownloadProgress;
+    public static float imageDownloadProgress;
+    public static int stateProgress;
 
     static bool retrying;
 
     public static IEnumerator CallGet()
     {
-        Debug.Log(Time.time);
+        Debug.Log(Time.realtimeSinceStartup);
         yield return GetAllVendors();
         yield return GetAllProducts();       
 
@@ -54,7 +58,7 @@ public static class MuseumBank
         isDone = true;
         LoadManager.Instance.SetLoad(false);
         Debug.Log("FINISHED!");
-        Debug.Log(Time.time);
+        Debug.Log(Time.realtimeSinceStartup);
     }
 
     static bool GotAllArtImages()
@@ -68,27 +72,34 @@ public static class MuseumBank
     {
         Debug.Log("GetAllVendors");
 
-        var request = CreateGetRequest(vendorsApiString, new List<string> {"per_page=100"});
-        request.SendWebRequest();
+        if (artists.Count == 0) //if we have gotten artists, there's no need to call this again
+        {
+            var request = CreateGetRequest(vendorsApiString, new List<string> { "per_page=100" });
+            request.SendWebRequest();
 
-        while (!request.isDone)
-        {
-            float progress = request.downloadProgress * 100;
-            downloadProgress = progress / 100;
-            yield return null;
+            while (!request.isDone)
+            {
+                float progress = request.downloadProgress * 100;
+                vendorDownloadProgress = progress / 100;
+                yield return null;
+            }
+
+            if (request.isNetworkError || request.isHttpError)
+            {
+                Retry();
+                Debug.LogWarning($"Retrieved error {request.error}. Attempting to retry.");
+            }
+            else
+            {
+                Debug.Log($"Vendors: {request.downloadHandler.text}");
+                JArray jsonArray = JArray.Parse(request.downloadHandler.text);
+                CreateArtists(jsonArray);
+            }
+
+            stateProgress = 1;
         }
 
-        if (request.isNetworkError || request.isHttpError)
-        {
-            Retry();
-            throw new System.Exception(request.error);
-        }
-        else
-        {
-            Debug.Log($"Vendors: {request.downloadHandler.text}");
-            JArray jsonArray = JArray.Parse(request.downloadHandler.text);
-            CreateArtists(jsonArray);
-        }
+        
     }
 
     static IEnumerator GetAllProducts()
@@ -101,15 +112,15 @@ public static class MuseumBank
 
             while (!request.isDone)
             {
-                float progress = request.downloadProgress * 100;
-                downloadProgress = progress / 100;
+                float progress = (request.downloadProgress * 100) + ((i - 1) * 100);
+                artDownloadProgress = progress / 100 * i;
                 yield return null;
             }
 
             if (request.isNetworkError || request.isHttpError)
             {
-                Retry();
-                throw new System.Exception(request.error);
+                //Retry();
+                Debug.LogWarning($"Retrieved error {request.error}. Attempting to retry.");
             }
             else
             {
@@ -118,6 +129,8 @@ public static class MuseumBank
                 CreateArt(jsonArray);
             }
         }
+
+        stateProgress = 2;
     }
 
     static void Retry()
@@ -191,64 +204,6 @@ public static class MuseumBank
         }
     }
 
-    /*static IEnumerator VariationRequest(Art product)
-    {
-        UnityWebRequest request = CreateGetRequest($"{productsApiString}/{product.productId}/variations");
-        yield return request.SendWebRequest();
-
-        if (request.isNetworkError || request.isHttpError)
-        {
-            Debug.LogWarning($"Failed to connect for variations of {product.name} with {request.error}");
-            yield return new WaitForSecondsRealtime(.5f);
-            CoroutineUtility.instance.StartCoroutine(VariationRequest(product));           
-        }            
-        else
-        {
-            Debug.Log($"Succesfully connected for {product.name}");
-            var jArray = JArray.Parse(request.downloadHandler.text);
-            CreateVariations(jArray, product);
-            piecesCompleted++;
-        }
-    }
-
-    static void CreateVariations(JArray jArray, Art product)
-    {
-        Debug.Log($"Creating Variations for {product.productId}");
-
-        foreach (JObject jObject in jArray)
-        {
-            JObject data = JObject.Parse(jObject.ToString());
-
-            if (product.productId == 0)
-            {
-                Debug.LogError("There was no matching product for " + data["name"].ToString());
-            }
-
-            if ((bool)data["purchasable"])
-            {
-                int varId = (int)data["id"];
-                float price = (float)data["price"];
-
-                var attributes = data["attributes"]; //need to loop through and get them all
-
-                JArray jsonArray = JArray.Parse(attributes.ToString());
-
-                string attName = "";
-
-                foreach (JObject jobj in jsonArray)
-                {
-                    attName += $"{jobj["option"]} ";
-                }
-
-                Debug.Log($"{attName} for {product.name}");
-
-                var variation = new Variation(varId, attName, price);
-
-                product.variations.Add(variation);
-            }
-        }        
-    }*/
-
     static UnityWebRequest CreateGetRequest(string apiString)
     {
         string url = GenerateRequestURL(websiteRoot + apiString);
@@ -287,7 +242,7 @@ public static class MuseumBank
         while (!www.isDone)
         {
             float progress = www.downloadProgress * 100;
-            downloadProgress = progress / 100;
+            vendorDownloadProgress = progress / 100;
             yield return null;
         }
 
@@ -309,20 +264,24 @@ public static class MuseumBank
 
         while (!www.isDone)
         {
-            float progress = www.downloadProgress * 100;
-            downloadProgress = progress / 100;
+            float progress = www.downloadProgress;
+            imageDownloadProgress = (progress + piecesCompleted) / arts.Count;
+            Debug.Log($"DownloadProcess: {imageDownloadProgress} at number {piecesCompleted}");
             yield return null;
         }
 
         if (www.isNetworkError || www.isHttpError)
         {
             Debug.Log(www.error);
+            yield return new WaitForSeconds(1f);
+            CoroutineUtility.instance.StartCoroutine(GetArtImage(art, imagePath));
         }
         else
         {
-            Texture2D texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
-            art.artImage = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
+            art.artImage = ((DownloadHandlerTexture)www.downloadHandler).texture;
+            //art.artImage = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
         }
+        Debug.Log($"{art.name} finished at {Time.realtimeSinceStartup} for number {piecesCompleted}");
         piecesCompleted++;
     }
 

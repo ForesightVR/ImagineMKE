@@ -21,7 +21,7 @@ public class GetImage : MonoBehaviour
             if (MuseumBank.artists.Count <= 0 || MuseumBank.artists[0].artPieces.Count <= 0)
                 return;
 
-            Sprite newSprite = MuseumBank.artists[0].artPieces[0].artImage;
+            Sprite newSprite = MuseumBank.artists[0].artPieces[0].artSprite;
 
             if (newSprite)
                 image.sprite = newSprite;
