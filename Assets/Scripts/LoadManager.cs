@@ -24,7 +24,7 @@ public class LoadManager : MonoBehaviour
     {
         if (!loadScreen.activeInHierarchy) return;
 
-        loadbar.fillAmount = (float)MuseumBank.currentArtPieces / MuseumBank.maxArtPieces;
+        loadbar.fillAmount = MuseumBank.downloadProgress;
     }
 
     public void SetLoad(bool state)

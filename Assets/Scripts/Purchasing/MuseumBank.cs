@@ -26,6 +26,10 @@ public static class MuseumBank
     public static int maxArtPieces;
     public static bool isDone;
 
+    public static float downloadProgress;
+
+    static bool retrying;
+
     public static IEnumerator CallGet()
     {
         Debug.Log(Time.time);
@@ -65,11 +69,20 @@ public static class MuseumBank
         Debug.Log("GetAllVendors");
 
         var request = CreateGetRequest(vendorsApiString, new List<string> {"per_page=100"});
+        request.SendWebRequest();
 
-        yield return request.SendWebRequest();
+        while (!request.isDone)
+        {
+            float progress = request.downloadProgress * 100;
+            downloadProgress = progress / 100;
+            yield return null;
+        }
 
         if (request.isNetworkError || request.isHttpError)
+        {
+            Retry();
             throw new System.Exception(request.error);
+        }
         else
         {
             Debug.Log($"Vendors: {request.downloadHandler.text}");
@@ -84,10 +97,20 @@ public static class MuseumBank
         for (int i = 1; i < 5; i++)
         {
             var request = CreateGetRequest(productsApiString, new List<string> { "per_page=100", "page=" + i });
-            yield return request.SendWebRequest();
+            request.SendWebRequest();
+
+            while (!request.isDone)
+            {
+                float progress = request.downloadProgress * 100;
+                downloadProgress = progress / 100;
+                yield return null;
+            }
 
             if (request.isNetworkError || request.isHttpError)
+            {
+                Retry();
                 throw new System.Exception(request.error);
+            }
             else
             {
                 Debug.Log($"Products: {request.downloadHandler.text}");
@@ -95,8 +118,23 @@ public static class MuseumBank
                 CreateArt(jsonArray);
             }
         }
+    }
 
-       
+    static void Retry()
+    {
+        if(!retrying)
+        {
+            retrying = true;
+            Debug.Log("Retrying..");
+            CoroutineUtility.instance.StartCoroutine(WaitForRetry());
+        }
+    }
+
+    static IEnumerator WaitForRetry()
+    {
+        yield return new WaitForSeconds(3);
+        retrying = false;
+        CallGet();
     }
 
     static void CreateArtists(JArray jArray)
@@ -244,8 +282,14 @@ public static class MuseumBank
     static IEnumerator GetArtistImage(Artist artist, string imagePath)
     {
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(imagePath);
+        www.SendWebRequest();
 
-        yield return www.SendWebRequest();
+        while (!www.isDone)
+        {
+            float progress = www.downloadProgress * 100;
+            downloadProgress = progress / 100;
+            yield return null;
+        }
 
         if (www.isNetworkError || www.isHttpError)
         {
@@ -261,7 +305,14 @@ public static class MuseumBank
     static IEnumerator GetArtImage(Art art, string imagePath)
     {
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(imagePath);
-        yield return www.SendWebRequest();
+        www.SendWebRequest();
+
+        while (!www.isDone)
+        {
+            float progress = www.downloadProgress * 100;
+            downloadProgress = progress / 100;
+            yield return null;
+        }
 
         if (www.isNetworkError || www.isHttpError)
         {
