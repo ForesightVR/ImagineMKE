@@ -21,6 +21,7 @@ public class Room : MonoBehaviour
 
     public void UpdateRoomCounter(string roomName, int currentCount, int maxCount)
     {
+        this.roomName = roomName;
         roomNameDisplay.text = $"{roomName}";
         roomCounter.text = $"{currentCount} / {maxCount}";
     }
