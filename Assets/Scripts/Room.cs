@@ -16,6 +16,7 @@ public class Room : MonoBehaviour
     public void UpdateRoomInfo()
     {
         roomSelection.UpdateRoomInfo(roomName, roomDescription);
+        NetworkConnectionManager.Instance.ChangeRoomName(this);
     }
 
     public void UpdateRoomCounter(string roomName, int currentCount, int maxCount)

@@ -11,6 +11,7 @@ public class RoomSelection : MonoBehaviour
     public GameObject roomPrefab;
     public List<Room> roomUIs;
     public List<string> possibleRoomNames;
+    
     Stack<string> namesToUse;
     int maxNumName;
     int nameLoop = 0;
@@ -18,6 +19,7 @@ public class RoomSelection : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI roomName;
     public TextMeshProUGUI roomDescription;
+    public TextMeshProUGUI roomWarning;
 
     private void Awake()
     {
@@ -63,11 +65,11 @@ public class RoomSelection : MonoBehaviour
             namesToUse.Push(baseName);
         }
     }
-
     public Room CreateNewRoomUI()
     {
         Room room = Instantiate(roomPrefab, roomSpawner.transform).GetComponent<Room>();
         roomUIs.Add(room);
+        roomWarning.gameObject.SetActive(false);
         room.roomSelection = this;
         return room;
     }
@@ -76,6 +78,9 @@ public class RoomSelection : MonoBehaviour
         roomUIs.Remove(room);
         ReturnRoomName(room.roomName);
         Destroy(room);
+
+        if (roomUIs.Count == 0)
+            roomWarning.gameObject.SetActive(true);
     }
     void ResetNames()
     {
@@ -93,9 +98,9 @@ public class RoomSelection : MonoBehaviour
         if (namesToUse.Count == 0)
             ResetNames();
     }
-
     public void ClearRooms()
     {
+        roomWarning.gameObject.SetActive(true);
         for (int i = roomUIs.Count; i > 0; i--)
         {
             RemoveRoomUI(roomUIs[i]);
