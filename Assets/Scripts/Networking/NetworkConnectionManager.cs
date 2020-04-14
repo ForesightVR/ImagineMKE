@@ -98,7 +98,6 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     {
         base.OnConnectedToMaster();
         PhotonNetwork.JoinLobby(typedLobby);
-        bridge.SetPlayerId();
     }
 
     public override void OnDisconnected(DisconnectCause cause)
@@ -159,6 +158,7 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
+        bridge.SetPlayerId();
         SceneManager.LoadScene(sceneName);
     }
 
@@ -167,7 +167,8 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
         base.OnJoinRandomFailed(returnCode, message);
         Debug.Log("No Room Available! Creating new room...");
 
-        PhotonNetwork.CreateRoom(RoomSelection.Instance.GetNewRoomName(), new RoomOptions { MaxPlayers = maxPlayers, PublishUserId = true }, typedLobby);
+        roomName = RoomSelection.Instance.GetNewRoomName();
+        PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayers, PublishUserId = true }, typedLobby);
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
