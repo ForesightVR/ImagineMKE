@@ -24,7 +24,7 @@ namespace Foresight
 
         public bool hideCursor = true;
 
-        public static GameObject LocalPlayerInstance;
+        public static Player LocalPlayerInstance;
 
         public CameraFacingBillboard cameraFacingBillboard;
         public List<GameObject> characterOptions;
@@ -34,6 +34,7 @@ namespace Foresight
         public CameraControl cameraControl;
 
         public Animator Animator { get; private set; }
+        public GameObject characterSelected;
         CharacterController cc;
 
         float horizontal;
@@ -58,7 +59,7 @@ namespace Foresight
             else
             {
                 photonView.RPC("RPCSelectCharacter", RpcTarget.AllBuffered, NetworkConnectionManager.Instance.CharacterSelected);
-                LocalPlayerInstance = this.gameObject;
+                LocalPlayerInstance = this;
                 cam.gameObject.SetActive(true);
             }
 
@@ -78,7 +79,9 @@ namespace Foresight
         [PunRPC]
         void RPCSelectCharacter(byte index)
         {
-            characterOptions[index].SetActive(true);
+            characterSelected = characterOptions[index];
+            characterSelected.SetActive(true);
+            characterSelected.layer = LayerMask.NameToLayer("FirstPerson");
             Animator = GetComponentInChildren<Animator>();
             Animator.Rebind();
             GetComponent<PhotonAnimatorView>().SetAnimator(Animator);

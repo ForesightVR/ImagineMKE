@@ -27,6 +27,8 @@ public class CameraControl : MonoBehaviour
     {
         //character.SetActive(thirdPersonActive ? true : false);
 
+        Player.LocalPlayerInstance.characterSelected.layer = thirdPersonActive ? LayerMask.NameToLayer("Default") : LayerMask.NameToLayer("FirstPerson");
+
         if (thirdPersonActive)
         {
             thirdPerson = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * turnSpeed, Vector3.up) * thirdPerson;
