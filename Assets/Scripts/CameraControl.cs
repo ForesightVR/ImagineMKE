@@ -25,7 +25,7 @@ public class CameraControl : MonoBehaviour
 
     public void LateUpdate()
     {
-        character.SetActive(thirdPersonActive ? true : false);
+        //character.SetActive(thirdPersonActive ? true : false);
 
         if (thirdPersonActive)
         {
