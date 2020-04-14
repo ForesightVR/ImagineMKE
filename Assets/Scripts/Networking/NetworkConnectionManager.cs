@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Foresight.Utilities;
 
 public class NetworkConnectionManager : MonoBehaviourPunCallbacks
 {
@@ -158,6 +159,7 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
+        roomName = PhotonNetwork.CurrentRoom.Name;
         bridge.SetPlayerId();
         SceneManager.LoadScene(sceneName);
     }
@@ -168,6 +170,7 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
         Debug.Log("No Room Available! Creating new room...");
 
         roomName = RoomSelection.Instance.GetNewRoomName();
+        bridge.SetPlayerId();
         PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayers, PublishUserId = true }, typedLobby);
     }
 
