@@ -59,11 +59,11 @@ namespace Dissonance.Demo
         /// <param name="message"></param>
         private void OnMessageReceived(TextMessage message)
         {
+            Debug.Log($"Message: {message.Sender} {message.Message} to {message.Recipient}");
+
             //Ignore your own messages coming back from the server
             if (Comms != null && message.Sender == Comms.LocalPlayerName)
-                return;
-
-            Debug.Log($"Message: {message.Sender} {message.Message}");
+                return;            
 
             //Decide what we're going to print
             var msg = string.Format("{0} ({1}): {2}",

@@ -33,7 +33,6 @@ public class RoomSelection : MonoBehaviour
         roomName.text = _roomName;
         roomDescription.text = _roomDescription;
     }
-
     public string GetNewRoomName()
     {
         if (namesToUse.Count == 0)

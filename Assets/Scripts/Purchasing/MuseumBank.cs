@@ -21,6 +21,7 @@ public static class MuseumBank
     static List<Art> arts = new List<Art>();
 
     static int piecesCompleted = 0;
+    static string artPieceCurrent;
 
     public static int currentArtPieces;
     public static int maxArtPieces;
@@ -37,7 +38,11 @@ public static class MuseumBank
         {
             Debug.Log(Time.time);
             yield return GetAllVendors();
-            yield return GetAllProducts();
+            //yield return GetAllProducts(3);
+            for (int i = 0; i < 2; i++)
+            {
+                yield return GetAllProducts(i);               
+            }
 
             foreach (Artist artist in artists)
             {
@@ -53,24 +58,30 @@ public static class MuseumBank
 
             maxArtPieces = arts.Count;
             yield return new WaitUntil(GotAllArtImages);
+            //yield return GetAllProducts(3);
+            //yield return new WaitUntil(GotAllArtImages);
         }
 
         isDone = true;
         LoadManager.Instance.SetLoad(false);
         Debug.Log("FINISHED!");
-        Debug.Log(Time.time);
+        Debug.Log(Time.realtimeSinceStartup);
     }
 
     static bool GotAllArtImages()
     {
         currentArtPieces = piecesCompleted;
-        Debug.Log($"We're at {piecesCompleted} out of {arts.Count}");
-        return (piecesCompleted == arts.Count);
+        Debug.Log($"We're at {piecesCompleted} out of {arts.Count}. Last piece was {artPieceCurrent}");
+        return (piecesCompleted >= arts.Count);//arts.Count
     }
 
     static IEnumerator GetAllVendors()
     {
-        Debug.Log("GetAllVendors");
+        Debug.Log($"Vendors: {MuesumJSONs.instance.vendorJSON}");
+        JArray jsonArray = JArray.Parse(MuesumJSONs.instance.vendorJSON);
+        CreateArtists(jsonArray);
+        yield return new WaitForSeconds(1f);
+        /*Debug.Log("GetAllVendors");
 
         var request = CreateGetRequest(vendorsApiString, new List<string> {"per_page=100"});
         request.SendWebRequest();
@@ -94,38 +105,41 @@ public static class MuseumBank
             Debug.Log($"Vendors: {request.downloadHandler.text}");
             JArray jsonArray = JArray.Parse(request.downloadHandler.text);
             CreateArtists(jsonArray);
-        }
+            yield return new WaitForSeconds(3);
+        }*/
     }
 
-    static IEnumerator GetAllProducts()
+    static IEnumerator GetAllProducts(int pageIndex)
     {
-        Debug.Log("GetAllProducts");
-        for (int i = 1; i < 5; i++)
+        Debug.Log($"Products: {MuesumJSONs.instance.productJSONs[pageIndex]}");
+        JArray jsonArray = JArray.Parse(MuesumJSONs.instance.productJSONs[pageIndex]);
+        CreateArt(jsonArray);
+        yield return new WaitForSeconds(1);
+
+        /*
+        var request = CreateGetRequest(productsApiString, new List<string> { "per_page=100", "page=" + pageIndex });
+        request.SendWebRequest();
+
+        while (!request.isDone)
         {
-            var request = CreateGetRequest(productsApiString, new List<string> { "per_page=100", "page=" + i});
-            request.SendWebRequest();
-
-            while (!request.isDone)
-            {
-                float progress = request.downloadProgress * 100;
-                downloadProgress = progress / 100;
-                yield return null;
-            }
-
-            if (request.isNetworkError || request.isHttpError)
-            {
-                Debug.Log(request.error);
-                Debug.Log("Retrying..");
-                yield return new WaitForSeconds(3);
-                CoroutineUtility.instance.StartCoroutine(GetAllProducts());
-            }
-            else
-            {
-                Debug.Log($"Products: {request.downloadHandler.text}");
-                JArray jsonArray = JArray.Parse(request.downloadHandler.text);
-                CreateArt(jsonArray);
-            }
+            float progress = request.downloadProgress * 100;
+            downloadProgress = progress / 100;
+            yield return null;
         }
+
+        if (request.isNetworkError || request.isHttpError)
+        {
+            Debug.Log(request.error);
+            Debug.Log($"Retrying Products {pageIndex}");
+            yield return new WaitForSeconds(3);
+            CoroutineUtility.instance.StartCoroutine(GetAllProducts(pageIndex));
+        }
+        else
+        {
+            Debug.Log($"Products: {request.downloadHandler.text}");
+            JArray jsonArray = JArray.Parse(request.downloadHandler.text);
+            CreateArt(jsonArray);
+        }*/
     }
 
     static void Retry()
@@ -311,7 +325,7 @@ public static class MuseumBank
         if (www.isNetworkError || www.isHttpError)
         {
             Debug.Log(www.error);
-            Debug.Log("Retrying..");
+            Debug.Log($"Retrying artists {artist.name}");
             yield return new WaitForSeconds(3);
             CoroutineUtility.instance.StartCoroutine(GetArtistImage(artist, imagePath));
         }
@@ -336,17 +350,20 @@ public static class MuseumBank
 
         if (www.isNetworkError || www.isHttpError)
         {
-            Debug.Log(www.error);
-            Debug.Log("Retrying..");
+            //Debug.Log(www.error);
+            Debug.Log($"Retrying art {art.name} due to {www.error}");
             yield return new WaitForSeconds(3);
             CoroutineUtility.instance.StartCoroutine(GetArtImage(art, imagePath));
         }
         else
         {
             Texture2D texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
-            art.artImage = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
+            art.artImage = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero); 
+            artPieceCurrent = art.name;
+            piecesCompleted++;
         }
-        piecesCompleted++;
+
+       
     }
 
     static string GetImageLink(string data)
