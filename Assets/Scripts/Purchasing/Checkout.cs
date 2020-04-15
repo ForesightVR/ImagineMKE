@@ -16,7 +16,9 @@ public class Checkout : MonoBehaviour
         {
             string link = $"{MuseumBank.websiteRoot}/checkout/?add-to-cart={item.Variation.Id}&quantity={item.ItemCount}";
             Debug.Log($"Link:{link}");
-            yield return StatePurchase(link);
+            //yield return StatePurchase(link);
+
+            Application.OpenURL(link);
         }
 
         yield return new WaitForSeconds(1f);

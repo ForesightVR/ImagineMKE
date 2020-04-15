@@ -485,7 +485,7 @@ MonoBehaviour:
     vendorID: 60
   - artistImage: {fileID: 21300000, guid: 1ba070c35becf1748a81ebbb8ad504b1, type: 3}
     vendorID: 61
-  - artistImage: {fileID: 21300000, guid: d6595aa1e7c6ae7448ea41d679758021, type: 3}
+  - artistImage: {fileID: 21300000, guid: c6840ac782d3b064481dc76846c84a04, type: 3}
     vendorID: 62
   - artistImage: {fileID: 21300000, guid: 35eda48fd278ad4488db2ba8473693dd, type: 3}
     vendorID: 63
@@ -509,6 +509,20 @@ MonoBehaviour:
     vendorID: 89
   - artistImage: {fileID: 21300000, guid: 724ab71baed7a6f4299e3f90943a5a99, type: 3}
     vendorID: 90
+  - artistImage: {fileID: 21300000, guid: 4df17f2b1af284d488efbdb5dd1e5810, type: 3}
+    vendorID: 23
+  - artistImage: {fileID: 21300000, guid: 3731aeceb79983f4695c882c7f376503, type: 3}
+    vendorID: 22
+  - artistImage: {fileID: 21300000, guid: c76ff94a06a51bc41b6db16e81554fea, type: 3}
+    vendorID: 82
+  - artistImage: {fileID: 21300000, guid: 4fa3d939f49d28b4a94c85f16c99e934, type: 3}
+    vendorID: 81
+  - artistImage: {fileID: 21300000, guid: 3ef987b2519d626458f06b535152cf7f, type: 3}
+    vendorID: 75
+  - artistImage: {fileID: 21300000, guid: 53ecf19fd9262084e859176c8d9128fa, type: 3}
+    vendorID: 73
+  - artistImage: {fileID: 21300000, guid: 89f074e4272d6124489d82c517d0e8c1, type: 3}
+    vendorID: 24
   artData:
   - artImage: {fileID: 21300000, guid: 698a51b2f8e67734ab51727e26bb38a2, type: 3}
     productID: 6821
@@ -1074,3 +1088,21 @@ MonoBehaviour:
     productID: 4938
   - artImage: {fileID: 21300000, guid: 5a83af5fed4e4da4294dd7f0c3e6dc2a, type: 3}
     productID: 4910
+  - artImage: {fileID: 21300000, guid: 37b3d71b299bd0747842820742a3bc4c, type: 3}
+    productID: 6737
+  - artImage: {fileID: 21300000, guid: c4463886c7222d64695596703a790dd8, type: 3}
+    productID: 5548
+  - artImage: {fileID: 21300000, guid: 896b1d89de2b3f94e93384671ff48943, type: 3}
+    productID: 5248
+  - artImage: {fileID: 21300000, guid: 9b737c35c3e4ae94eab9ab6f89f63090, type: 3}
+    productID: 5256
+  - artImage: {fileID: 21300000, guid: 8627b0c51e08a774da541098683be58d, type: 3}
+    productID: 5420
+  - artImage: {fileID: 21300000, guid: f42cf3c60051dd542a46065db61aa228, type: 3}
+    productID: 5408
+  - artImage: {fileID: 21300000, guid: 4ecb42a8e1b13d8439beb57f0b915fc8, type: 3}
+    productID: 5392
+  - artImage: {fileID: 21300000, guid: d6302d248e9654f469f9b5b1801f91d2, type: 3}
+    productID: 5604
+  - artImage: {fileID: 21300000, guid: 2dd3b320e528ce442ac7bb5f740da62b, type: 3}
+    productID: 5072

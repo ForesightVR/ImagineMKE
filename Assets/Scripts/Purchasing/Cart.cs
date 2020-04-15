@@ -19,7 +19,7 @@ public class Cart : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.C))
+        if(Input.GetKeyDown(KeyCode.C) && !GameManager.Instance.MenuOpen)
             cart.SetActive(!cart.activeSelf);
     }
 
