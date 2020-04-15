@@ -30,7 +30,7 @@ public static class MuseumBank
     public static float downloadProgress;
 
     static bool retrying;
-    static bool isTesting = false;
+    static bool isTesting = true;
 
     public static IEnumerator CallGet()
     {
@@ -77,8 +77,8 @@ public static class MuseumBank
 
     static IEnumerator GetAllVendors()
     {
-        Debug.Log($"Vendors: {MuesumJSONs.instance.vendorJSON}");
-        JArray jsonArray = JArray.Parse(MuesumJSONs.instance.vendorJSON);
+        Debug.Log($"Vendors: {MuseumJSONs.instance.vendorJSON}");
+        JArray jsonArray = JArray.Parse(MuseumJSONs.instance.vendorJSON);
         CreateArtists(jsonArray);
         yield return new WaitForSeconds(1f);
         /*Debug.Log("GetAllVendors");
@@ -111,8 +111,8 @@ public static class MuseumBank
 
     static IEnumerator GetAllProducts(int pageIndex)
     {
-        Debug.Log($"Products: {MuesumJSONs.instance.productJSONs[pageIndex]}");
-        JArray jsonArray = JArray.Parse(MuesumJSONs.instance.productJSONs[pageIndex]);
+        Debug.Log($"Products: {MuseumJSONs.instance.productJSONs[pageIndex]}");
+        JArray jsonArray = JArray.Parse(MuseumJSONs.instance.productJSONs[pageIndex]);
         CreateArt(jsonArray);
         yield return new WaitForSeconds(1);
 
@@ -366,7 +366,7 @@ public static class MuseumBank
        
     }
 
-    static string GetImageLink(string data)
+    public static string GetImageLink(string data)
     {
         string searchCharacters = "src=\"";
 

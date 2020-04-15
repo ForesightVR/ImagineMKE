@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using System.Text.RegularExpressions;
 
-public class MuesumJSONs : MonoBehaviour
+public class MuseumJSONs : MonoBehaviour
 {
     [TextArea]
     public string vendorJSON;
     [TextArea]
     public string[] productJSONs;
     // Start is called before the first frame update
-    public static MuesumJSONs instance;
+    public static MuseumJSONs instance;
     // Start is called before the first frame update
     void Awake()
     {
@@ -21,5 +22,10 @@ public class MuesumJSONs : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public static string StripHTML(string input)
+    {
+        return Regex.Replace(input, "<.*?>", String.Empty);
     }
 }
