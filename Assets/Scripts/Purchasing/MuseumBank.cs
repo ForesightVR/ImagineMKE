@@ -29,7 +29,7 @@ public static class MuseumBank
     public static float downloadProgress;
 
     static bool retrying;
-    static bool isTesting = true;
+    static bool isTesting = false;
 
     public static IEnumerator CallGet()
     {
@@ -84,8 +84,10 @@ public static class MuseumBank
 
         if (request.isNetworkError || request.isHttpError)
         {
-            Retry();
-            throw new System.Exception(request.error);
+            Debug.Log(request.error);
+            Debug.Log("Retrying..");
+            yield return new WaitForSeconds(3);
+            CoroutineUtility.instance.StartCoroutine(GetAllVendors());
         }
         else
         {
@@ -112,8 +114,10 @@ public static class MuseumBank
 
             if (request.isNetworkError || request.isHttpError)
             {
-                Retry();
-                throw new System.Exception(request.error);
+                Debug.Log(request.error);
+                Debug.Log("Retrying..");
+                yield return new WaitForSeconds(3);
+                CoroutineUtility.instance.StartCoroutine(GetAllProducts());
             }
             else
             {
@@ -307,6 +311,9 @@ public static class MuseumBank
         if (www.isNetworkError || www.isHttpError)
         {
             Debug.Log(www.error);
+            Debug.Log("Retrying..");
+            yield return new WaitForSeconds(3);
+            CoroutineUtility.instance.StartCoroutine(GetArtistImage(artist, imagePath));
         }
         else
         {
@@ -330,6 +337,9 @@ public static class MuseumBank
         if (www.isNetworkError || www.isHttpError)
         {
             Debug.Log(www.error);
+            Debug.Log("Retrying..");
+            yield return new WaitForSeconds(3);
+            CoroutineUtility.instance.StartCoroutine(GetArtImage(art, imagePath));
         }
         else
         {

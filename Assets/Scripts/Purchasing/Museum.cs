@@ -15,6 +15,7 @@ public class Museum : MonoBehaviour
     {
         artists = MuseumBank.artists.Where(x => x.GetCause() == causeTag.ToString()).ToList();
 
+        Debug.Log("Artist Count: "  + artists.Count);
         int artistIndex = 0;
 
         foreach (ArtistCanvas artistCanvas in artistCanvases)

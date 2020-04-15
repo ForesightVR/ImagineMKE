@@ -54,18 +54,18 @@ public class Art
 
         int variationIndex = 0;// we always start with the orginial
 
+        if (originalPrice != 0)
+            variations.Add(new Variation(variationIds[variationIndex], "Original", originalPrice));
+
         //foreach (string cat in categories)
         //{
-        for(int index = 0; index < sizes.Length; index++)
+        for (int index = 0; index < sizes.Length; index++)
         {
             variationIndex++;
             if (variationIndex < variationIds.Count)
                 variations.Add(new Variation(variationIds[variationIndex], $"{sizes[index]}", prices[index]));                
         }
         //}
-
-        if (originalPrice != 0)
-            variations.Add(new Variation(variationIds[variationIndex], "Original", originalPrice));
 
         return variations;
     }
