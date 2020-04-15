@@ -14,10 +14,12 @@ public class Checkout : MonoBehaviour
     {
         foreach (CartItem item in Cart.Instance.artInCart)
         {
-            string link = $"{MuseumBank.websiteRoot}/cart/?add-to-cart={item.Variation.Id}&quantity={item.ItemCount}";
+            string link = $"{MuseumBank.websiteRoot}/checkout/?add-to-cart={item.Variation.Id}&quantity={item.ItemCount}";
             Debug.Log($"Link:{link}");
             yield return StatePurchase(link);
         }
+
+        yield return new WaitForSeconds(1f);
 
         Application.OpenURL($"{MuseumBank.websiteRoot}/checkout");
     }
@@ -30,5 +32,10 @@ public class Checkout : MonoBehaviour
 
         if (request.isNetworkError)
             throw new System.Exception(request.error);
+        else
+        { 
+            Debug.Log($"{link} was successful!");
+        }
+            
     }
 }

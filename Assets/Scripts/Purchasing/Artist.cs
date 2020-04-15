@@ -18,6 +18,7 @@ public class Artist
         this.name = name;
         this.description = description;
         this.artPieces = new List<Art>();
+        this.artistImage = MuseumJSONs.instance.GetArtistSprite(vendorId);
     }
 
     public string GetCause()

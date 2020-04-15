@@ -26,6 +26,7 @@ public class Art
         this.description = description;
         this.cause = cause;
         this.originalPrice = originalPrice;
+        this.artImage = MuseumJSONs.instance.GetArtSprite(productID);
     }
 
     public Art (Artist artist, int productID, string name, string description, string cause)

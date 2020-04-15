@@ -2892,8 +2892,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 31674876}
   m_HandleRect: {fileID: 31674875}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.9998854
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10956,6 +10956,7 @@ MonoBehaviour:
     Standard Print","slug":"8x10-standard-print"},{"id":15,"name":"Standard Print","slug":"standard-print"}],"tags":[{"id":57,"name":"GalleryNight","slug":"gallerynight"}],"images":[{"id":4861,"date_created":"2020-04-13T14:15:39","date_created_gmt":"2020-04-13T14:15:39","date_modified":"2020-04-13T14:15:39","date_modified_gmt":"2020-04-13T14:15:39","src":"https:\/\/outsidersvr.com\/wp-content\/uploads\/2020\/04\/So-Fine-1.jpg","name":"So
     Fine","alt":"","position":0}],"attributes":[{"id":3,"name":"Sizes","position":0,"visible":true,"variation":true,"options":["Original","5x7","8x10","11x14","18x24"]}],"default_attributes":[{"id":3,"name":"Sizes","option":"original"}],"variations":[4918,4919,4920,4921,4922],"grouped_products":[],"menu_order":0,"meta_data":[{"id":95726,"key":"_commission_per_product","value":"60"},{"id":95727,"key":"_wcmp_cancallation_policy","value":""},{"id":95728,"key":"_wcmp_refund_policy","value":""},{"id":95729,"key":"_wcmp_shipping_policy","value":""},{"id":95888,"key":"_oembed_a34bd7d792e1397356a8edd86aecf8ce","value":"{{unknown}}"}],"vendor":"60","store_name":"Zakia
     Wells","_links":{"self":[{"href":"https:\/\/outsidersvr.com\/wp-json\/wc\/v2\/products\/4910"}],"collection":[{"href":"https:\/\/outsidersvr.com\/wp-json\/wc\/v2\/products"}]}}]'
+  database: {fileID: 11400000, guid: b18c07eda336b84409d8a22887b83f5a, type: 2}
 --- !u!1 &1805131297
 GameObject:
   m_ObjectHideFlags: 0
@@ -10990,7 +10991,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000057997782}
+  m_AnchoredPosition: {x: 0, y: -0.0000867235}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1805131299

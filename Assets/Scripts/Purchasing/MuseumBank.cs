@@ -30,7 +30,7 @@ public static class MuseumBank
     public static float downloadProgress;
 
     static bool retrying;
-    static bool isTesting = true;
+    static bool isTesting = false;
 
     public static IEnumerator CallGet()
     {
@@ -39,7 +39,7 @@ public static class MuseumBank
             Debug.Log(Time.time);
             yield return GetAllVendors();
             //yield return GetAllProducts(3);
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 3; i++)
             {
                 yield return GetAllProducts(i);               
             }
@@ -57,7 +57,7 @@ public static class MuseumBank
             }
 
             maxArtPieces = arts.Count;
-            yield return new WaitUntil(GotAllArtImages);
+            //yield return new WaitUntil(GotAllArtImages);
             //yield return GetAllProducts(3);
             //yield return new WaitUntil(GotAllArtImages);
         }
@@ -80,7 +80,7 @@ public static class MuseumBank
         Debug.Log($"Vendors: {MuseumJSONs.instance.vendorJSON}");
         JArray jsonArray = JArray.Parse(MuseumJSONs.instance.vendorJSON);
         CreateArtists(jsonArray);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.1f);
         /*Debug.Log("GetAllVendors");
 
         var request = CreateGetRequest(vendorsApiString, new List<string> {"per_page=100"});
@@ -114,7 +114,7 @@ public static class MuseumBank
         Debug.Log($"Products: {MuseumJSONs.instance.productJSONs[pageIndex]}");
         JArray jsonArray = JArray.Parse(MuseumJSONs.instance.productJSONs[pageIndex]);
         CreateArt(jsonArray);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.1f);
 
         /*
         var request = CreateGetRequest(productsApiString, new List<string> { "per_page=100", "page=" + pageIndex });
@@ -168,12 +168,12 @@ public static class MuseumBank
 
             //Debug.Log($"Image for {data["display_name"].ToString()} possibly {data["shop"]["image"]}");
 
-            string artistImageString = GetImageLink((string)data["shop"]["description"]);
+            /*string artistImageString = GetImageLink((string)data["shop"]["description"]);
 
             if (artistImageString.Length > 0)
             {
                 CoroutineUtility.instance.StartCoroutine(GetArtistImage(artist, artistImageString));
-            }
+            }*/
 
             Debug.Log($"Adding {artist.name}");
             artists.Add(artist);
@@ -211,7 +211,7 @@ public static class MuseumBank
 
             Art art = new Art(vendorId, (int)data["id"], data["name"].ToString(), StripHTML(data["description"].ToString()), tag, price);
 
-            CoroutineUtility.instance.StartCoroutine(GetArtImage(art, (string)data["images"][0]["src"]));
+            //CoroutineUtility.instance.StartCoroutine(GetArtImage(art, (string)data["images"][0]["src"]));
 
             art.variations = art.CreateBaseVariations(variationIdList);
 

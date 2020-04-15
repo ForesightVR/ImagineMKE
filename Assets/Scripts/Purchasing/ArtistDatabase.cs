@@ -54,8 +54,11 @@ public class ArtistDatabase : ScriptableObject
             //Converting Vendor Link into a Sprite Name
             //string imageLink = (string)data["images"][0]["src"];
             string imageLink = MuseumBank.GetImageLink((string)data["shop"]["description"]);
+            if (string.IsNullOrWhiteSpace(imageLink))
+                continue;
+            
             string filename = System.IO.Path.GetFileName(imageLink);
-            int index = filename.IndexOf(".");
+            int index = filename.LastIndexOf("-");
             string finalImageLink = filename.Substring(0, index);
 
             Sprite imageSpirte = images.FirstOrDefault(x => x.name == finalImageLink);
