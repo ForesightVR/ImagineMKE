@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         Comms = Comms != null ? Comms : FindObjectOfType<DissonanceComms>();
         roomMembership = Comms.Rooms.Join(NetworkConnectionManager.Instance.roomName);
-        Debug.Log(roomMembership.RoomName);
+       // Debug.Log(roomMembership.RoomName);
     }
 
     private void Start()

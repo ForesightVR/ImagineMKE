@@ -167,7 +167,7 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         base.OnJoinRandomFailed(returnCode, message);
-        Debug.Log("No Room Available! Creating new room...");
+        //Debug.Log("No Room Available! Creating new room...");
 
         roomName = RoomSelection.Instance.GetNewRoomName();
         bridge.SetPlayerId();

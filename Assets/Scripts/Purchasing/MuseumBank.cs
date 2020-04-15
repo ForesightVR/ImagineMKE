@@ -36,7 +36,7 @@ public static class MuseumBank
     {
         if (!isTesting && !isDone)
         {
-            Debug.Log(Time.time);
+            //Debug.Log(Time.time);
             yield return GetAllVendors();
             //yield return GetAllProducts(3);
             for (int i = 0; i < 3; i++)
@@ -170,7 +170,7 @@ public static class MuseumBank
                 CoroutineUtility.instance.StartCoroutine(GetArtistImage(artist, artistImageString));
             }*/
 
-            Debug.Log($"Adding {artist.name}");
+            //Debug.Log($"Adding {artist.name}");
             artists.Add(artist);
         }
     }

@@ -21,9 +21,9 @@ public class Checkout : MonoBehaviour
             Application.OpenURL(link);
         }
 
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1f);
 
-        //Application.OpenURL($"{MuseumBank.websiteRoot}/checkout");
+        Application.OpenURL($"{MuseumBank.websiteRoot}/checkout");
     }
 
     IEnumerator StatePurchase(string link)
