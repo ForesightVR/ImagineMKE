@@ -34,7 +34,7 @@ public static class MuseumBank
 
     public static IEnumerator CallGet()
     {
-        if (!isTesting)
+        if (!isTesting && !isDone)
         {
             Debug.Log(Time.time);
             yield return GetAllVendors();
@@ -61,23 +61,19 @@ public static class MuseumBank
             //yield return GetAllProducts(3);
             //yield return new WaitUntil(GotAllArtImages);
         }
-
-        isDone = true;
+        
         LoadManager.Instance.SetLoad(false);
-        Debug.Log("FINISHED!");
-        Debug.Log(Time.realtimeSinceStartup);
+        isDone = true;        
     }
 
     static bool GotAllArtImages()
     {
-        currentArtPieces = piecesCompleted;
-        Debug.Log($"We're at {piecesCompleted} out of {arts.Count}. Last piece was {artPieceCurrent}");
+        currentArtPieces = piecesCompleted;        
         return (piecesCompleted >= arts.Count);//arts.Count
     }
 
     static IEnumerator GetAllVendors()
     {
-        Debug.Log($"Vendors: {MuseumJSONs.instance.vendorJSON}");
         JArray jsonArray = JArray.Parse(MuseumJSONs.instance.vendorJSON);
         CreateArtists(jsonArray);
         yield return new WaitForSeconds(.1f);
@@ -111,7 +107,6 @@ public static class MuseumBank
 
     static IEnumerator GetAllProducts(int pageIndex)
     {
-        Debug.Log($"Products: {MuseumJSONs.instance.productJSONs[pageIndex]}");
         JArray jsonArray = JArray.Parse(MuseumJSONs.instance.productJSONs[pageIndex]);
         CreateArt(jsonArray);
         yield return new WaitForSeconds(.1f);
