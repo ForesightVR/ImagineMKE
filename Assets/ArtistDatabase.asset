@@ -1,0 +1,191 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eef3e447e5af034684f1f5438214c66, type: 3}
+  m_Name: ArtistDatabase
+  m_EditorClassIdentifier: 
+  artistData:
+  - aristName: Allison Westbrook
+    artData:
+    - artImage: {fileID: 21300000, guid: 406f49db5aeca10489a1316647496a43, type: 3}
+      productID: 5837
+    - artImage: {fileID: 21300000, guid: ac25787435fc45e48b581ffdd4338397, type: 3}
+      productID: 5841
+    - artImage: {fileID: 21300000, guid: d0cfb4de4a6a1464bb1ad29acf0f73d7, type: 3}
+      productID: 5800
+    - artImage: {fileID: 21300000, guid: 341665573da962243aeefa9ebf855846, type: 3}
+      productID: 5804
+    - artImage: {fileID: 21300000, guid: 7058127971be7564788ed752fa1f94b2, type: 3}
+      productID: 5809
+    - artImage: {fileID: 21300000, guid: 6bc472ee3571f8e45bbab8683182f804, type: 3}
+      productID: 5813
+    - artImage: {fileID: 21300000, guid: 715cc5bafab95e7419992016d3acfc9a, type: 3}
+      productID: 5817
+    - artImage: {fileID: 21300000, guid: bb130898e61150449976b74546066b71, type: 3}
+      productID: 5821
+    - artImage: {fileID: 21300000, guid: 6370ab5fc37131c4bbaa15fb88d2d616, type: 3}
+      productID: 5825
+    - artImage: {fileID: 21300000, guid: 0a6f59f14baeac448a35984fb2bb1c0b, type: 3}
+      productID: 5829
+    - artImage: {fileID: 21300000, guid: 9a42cc69162b0d146bc415f2bd752404, type: 3}
+      productID: 5833
+  - aristName: Amanda Rubi
+    artData:
+    - artImage: {fileID: 21300000, guid: 57471c9ead089be49a8c759d2a521179, type: 3}
+      productID: 6256
+    - artImage: {fileID: 21300000, guid: eb746724e56fc8a47bc1408711d989ea, type: 3}
+      productID: 5928
+    - artImage: {fileID: 21300000, guid: 90c6d323b4f6e1b408f9b453ce8e6196, type: 3}
+      productID: 5932
+    - artImage: {fileID: 21300000, guid: 91524257dabe47242a2dcce32302d8b2, type: 3}
+      productID: 5916
+    - artImage: {fileID: 21300000, guid: d1e7c7f1e1e58794f8ae3823b4e97efd, type: 3}
+      productID: 5920
+    - artImage: {fileID: 21300000, guid: 0c0b6e7538b420e4e9287bd44907ab98, type: 3}
+      productID: 5936
+    - artImage: {fileID: 21300000, guid: 43376d514d1bddc4790803314d148550, type: 3}
+      productID: 5939
+    - artImage: {fileID: 21300000, guid: 4bf95d128d0eaee4daf1e17339539f2e, type: 3}
+      productID: 6246
+    - artImage: {fileID: 21300000, guid: ea4f96fb5ed4afc45b84b6618485ccc8, type: 3}
+      productID: 5924
+    - artImage: {fileID: 21300000, guid: fc20dfb8e4c717e47b84f6118ec9feb2, type: 3}
+      productID: 6264
+    - artImage: {fileID: 21300000, guid: 7060ab19a0ad7664b8231a2748cb90c5, type: 3}
+      productID: 5901
+  - aristName: Ana Edwards
+    artData:
+    - artImage: {fileID: 21300000, guid: aa7f401a34b9cfa42988b7881de6f430, type: 3}
+      productID: 5456
+    - artImage: {fileID: 21300000, guid: dcfcf1adc426ac84cb5e8e73d5634353, type: 3}
+      productID: 5452
+    - artImage: {fileID: 21300000, guid: b7495053ee6a73d41999d9fd6e1b5923, type: 3}
+      productID: 5448
+    - artImage: {fileID: 21300000, guid: 0f05605f4c65ed941ab8cbea32bd3579, type: 3}
+      productID: 5444
+    - artImage: {fileID: 21300000, guid: 73478b7361a384747a21b7b3746657d7, type: 3}
+      productID: 5440
+  - aristName: Arts@Large
+    artData:
+    - artImage: {fileID: 21300000, guid: bbcff58332f766640aa4f8f94468bbc0, type: 3}
+      productID: 6830
+    - artImage: {fileID: 21300000, guid: c9f571221a1748c4a950edf20763384e, type: 3}
+      productID: 5500
+    - artImage: {fileID: 21300000, guid: 44fb7ce8128f69c4abf18c76e4155a8b, type: 3}
+      productID: 5496
+    - artImage: {fileID: 21300000, guid: 27640a24262012448a15efaf87e9a577, type: 3}
+      productID: 5492
+    - artImage: {fileID: 21300000, guid: 97e75d1d717806d47852ad00543bd396, type: 3}
+      productID: 5488
+    - artImage: {fileID: 21300000, guid: 50ad2db3c99573b49b0aeb31b84c81e0, type: 3}
+      productID: 5484
+    - artImage: {fileID: 21300000, guid: 30bc66e0d70b9c845814c3182027bbe9, type: 3}
+      productID: 5480
+    - artImage: {fileID: 21300000, guid: fab9678e527977f4497b4691099440ef, type: 3}
+      productID: 5476
+    - artImage: {fileID: 21300000, guid: c12dfbf2eee7a5e4f9e66903083346b8, type: 3}
+      productID: 5472
+    - artImage: {fileID: 21300000, guid: 7875e21ddf70b944b9d3f7cbda32424b, type: 3}
+      productID: 5468
+    - artImage: {fileID: 21300000, guid: 6b53bd70d51ef6e49a165d5f589c4b67, type: 3}
+      productID: 5464
+    - artImage: {fileID: 21300000, guid: 2129b5bdcd0f74a45a9503b787790ec4, type: 3}
+      productID: 5460
+  - aristName: Ashley Prosken
+    artData:
+    - artImage: {fileID: 21300000, guid: bb97265946b36e44c9d098126c32305e, type: 3}
+      productID: 6373
+    - artImage: {fileID: 21300000, guid: d8f3a4760c3ac634c9fa0260482b2a60, type: 3}
+      productID: 6367
+    - artImage: {fileID: 21300000, guid: ec571f921f4ec2442a55901ce770cabd, type: 3}
+      productID: 6360
+    - artImage: {fileID: 21300000, guid: 7463e1e6310449a4bad68ddd673fdba3, type: 3}
+      productID: 6351
+    - artImage: {fileID: 21300000, guid: b47bf7bcbe41b594a95d456cc10fba15, type: 3}
+      productID: 6341
+    - artImage: {fileID: 21300000, guid: 3880f6f4cae4a2d42836945d3f9f9797, type: 3}
+      productID: 6333
+    - artImage: {fileID: 21300000, guid: 79891b9453e60c846875a93ff5560d2d, type: 3}
+      productID: 6317
+    - artImage: {fileID: 21300000, guid: 6ae4a0609c059384191e82a7c55c3ab4, type: 3}
+      productID: 6311
+    - artImage: {fileID: 21300000, guid: 7c2bc2ed372f28847bd8b241d96d689c, type: 3}
+      productID: 6302
+    - artImage: {fileID: 21300000, guid: 04d3e761275675c44a4de9dde3347886, type: 3}
+      productID: 6273
+  - aristName: Blanche Brown
+    artData:
+    - artImage: {fileID: 21300000, guid: e76ee4f46f2fc054b834533fc2fbe9cd, type: 3}
+      productID: 6582
+    - artImage: {fileID: 21300000, guid: 8d5cc64f5040ab0449f3a335abe339cd, type: 3}
+      productID: 6576
+    - artImage: {fileID: 21300000, guid: bb46e65394634ea408c2cb55a01173ef, type: 3}
+      productID: 6570
+    - artImage: {fileID: 21300000, guid: d0741d4f2938a3b4390f367e06779592, type: 3}
+      productID: 6564
+    - artImage: {fileID: 21300000, guid: e29707251998ce24cbb8b14db4fd76df, type: 3}
+      productID: 6558
+    - artImage: {fileID: 21300000, guid: 0b9a453bcb9644244bcaab476fff90f7, type: 3}
+      productID: 5048
+    - artImage: {fileID: 21300000, guid: 9106ab4080acb064c8f559f1efe195fc, type: 3}
+      productID: 5041
+    - artImage: {fileID: 21300000, guid: 1f97cff1eb40f924cb638d40978c5548, type: 3}
+      productID: 5035
+    - artImage: {fileID: 21300000, guid: e630f9a2d182032459f802a0b0362371, type: 3}
+      productID: 5029
+    - artImage: {fileID: 21300000, guid: 6c3e5d454208abc468921e8a3d7a6581, type: 3}
+      productID: 5023
+    - artImage: {fileID: 21300000, guid: bf0ec21dd74ef5143993e2f9feef18b7, type: 3}
+      productID: 5017
+  - aristName: Byada Meredith
+    artData:
+    - artImage: {fileID: 21300000, guid: 121b7f836a3570d4b8320d7ac441b378, type: 3}
+      productID: 5540
+    - artImage: {fileID: 21300000, guid: 33c9963bf4493bc479ecb7512af783ea, type: 3}
+      productID: 5536
+    - artImage: {fileID: 21300000, guid: b47de440fc761ad499b5651f2dfd1092, type: 3}
+      productID: 5532
+    - artImage: {fileID: 21300000, guid: 9142af9d5cc46734c8e4fe1e7afe7093, type: 3}
+      productID: 5528
+    - artImage: {fileID: 21300000, guid: 25893222d3fc708489942e171cfa497f, type: 3}
+      productID: 5524
+    - artImage: {fileID: 21300000, guid: 1abbfd8527c757042ac104a08aa38c40, type: 3}
+      productID: 5520
+    - artImage: {fileID: 21300000, guid: f307f3fa44825aa42ace5e59156d14f4, type: 3}
+      productID: 5516
+    - artImage: {fileID: 21300000, guid: 16a0d000c67e9a6478e129c30feecf34, type: 3}
+      productID: 5512
+    - artImage: {fileID: 21300000, guid: 1a4e4f32d85dad148a14f9500f527c35, type: 3}
+      productID: 5508
+    - artImage: {fileID: 21300000, guid: 7556b0564912f95488abeaa838485851, type: 3}
+      productID: 5504
+  - aristName: Carley Knight
+    artData:
+    - artImage: {fileID: 21300000, guid: 6ce8ba13e50929948bb12a498c86b4cf, type: 3}
+      productID: 5126
+    - artImage: {fileID: 21300000, guid: d34c39038e7a2104e9a590f8b4b6b872, type: 3}
+      productID: 5120
+    - artImage: {fileID: 21300000, guid: d3db87cdf72f2904b8bc5a4fe634fcef, type: 3}
+      productID: 5114
+    - artImage: {fileID: 21300000, guid: 93d9d145a3f96b849af42d80ad655d2b, type: 3}
+      productID: 5102
+    - artImage: {fileID: 21300000, guid: f264cefb2cba6bc4087b5e0cc1575a5b, type: 3}
+      productID: 5096
+    - artImage: {fileID: 21300000, guid: 1308bfd638aeb8b488b5de87507df918, type: 3}
+      productID: 5090
+    - artImage: {fileID: 21300000, guid: 1b6fee4f567cf264aa79e2482213368e, type: 3}
+      productID: 5084
+    - artImage: {fileID: 21300000, guid: 77639dec48d781d4688a8cf1de2cca32, type: 3}
+      productID: 5078
+    - artImage: {fileID: 21300000, guid: 0dab597fbfab4494f8ed3e532a026bd4, type: 3}
+      productID: 5072
+    - artImage: {fileID: 21300000, guid: 403223c5a0ff619409c2ee84da91845c, type: 3}
+      productID: 5060
