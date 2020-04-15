@@ -26,14 +26,14 @@ public class Cart : MonoBehaviour
     public void AddToCart(Art art)
     {
         addToCartMessage.SetActive(true);
-        foreach (CartItem _cartItem in artInCart) //Check if the item is in the cart. If it is add another one and return.
+        /*foreach (CartItem _cartItem in artInCart) //Check if the item is in the cart. If it is add another one and return.
         {
             if (_cartItem.Art == art && _cartItem.Variation == art.GetDefaultVariation())
             {
                 _cartItem.AddCount();
                 return;
             }
-        }
+        }*/
 
         //If art is not in the cart, make a new CartItem for that art piece
 
@@ -41,6 +41,12 @@ public class Cart : MonoBehaviour
         newItem.SetArt(this, art);
         newItem.AddCount();
 
+        if (artInCart.Count > 0)
+        {
+            Destroy(artInCart[0].gameObject);
+            artInCart.Clear();
+        }
+        
         artInCart.Add(newItem);
     }
 

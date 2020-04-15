@@ -5,16 +5,25 @@ using UnityEngine;
 public class ConnectToRoom : MonoBehaviour
 {
     public bool isJoinRoomBtn;
+    public GameObject loadingScreen;
     public void ConnectPreset()
     {
         if (NetworkConnectionManager.Instance)
+        { 
             NetworkConnectionManager.Instance.ConnectToRoom();
+            loadingScreen.SetActive(true);
+        }
+            
     }
 
     public void ConnectRandom()
     {
         if (NetworkConnectionManager.Instance)
+        {
             NetworkConnectionManager.Instance.ConnectToRandomRoom();
+            loadingScreen.SetActive(true);
+        }
+            
     }
 
     private void Update()
