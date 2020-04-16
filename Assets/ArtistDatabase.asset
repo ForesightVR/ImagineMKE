@@ -670,7 +670,7 @@ MonoBehaviour:
     productID: 5928
   - artImage: {fileID: 21300000, guid: dabaaf4f399a93b4da4b5e5a30f47ef1, type: 3}
     productID: 5924
-  - artImage: {fileID: 21300000, guid: 1a661429160d63e4997f163aac8f8552, type: 3}
+  - artImage: {fileID: 21300000, guid: 13b8518ff8364f147ae5c582f2a77fc5, type: 3}
     productID: 5920
   - artImage: {fileID: 21300000, guid: d6f87ebdafe5b4a4d913643268b185c1, type: 3}
     productID: 5916

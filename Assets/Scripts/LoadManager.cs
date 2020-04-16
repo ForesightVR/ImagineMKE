@@ -22,6 +22,12 @@ public class LoadManager : MonoBehaviour
 
     private void Update()
     {
+        if(Cursor.visible == false)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
         if (!loadScreen.activeInHierarchy) return;
 
         loadbar.fillAmount = MuseumBank.downloadProgress;
