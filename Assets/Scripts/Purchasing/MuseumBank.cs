@@ -37,11 +37,10 @@ public static class MuseumBank
         if (!isTesting && !isDone)
         {
             //Debug.Log(Time.time);
-            yield return GetAllVendors();
-            //yield return GetAllProducts(3);
+            yield return ConvertAllVendors();
             for (int i = 0; i < 3; i++)
             {
-                yield return GetAllProducts(i);               
+                yield return ConvertAllProducts(i);               
             }
 
             foreach (Artist artist in artists)
@@ -58,10 +57,8 @@ public static class MuseumBank
 
             maxArtPieces = arts.Count;
             //yield return new WaitUntil(GotAllArtImages);
-            //yield return GetAllProducts(3);
-            //yield return new WaitUntil(GotAllArtImages);
         }
-        
+
         LoadManager.Instance.SetLoad(false);
         isDone = true;        
     }
@@ -72,12 +69,21 @@ public static class MuseumBank
         return (piecesCompleted >= arts.Count);//arts.Count
     }
 
-    static IEnumerator GetAllVendors()
+    static IEnumerator ConvertAllVendors()
     {
         JArray jsonArray = JArray.Parse(MuseumJSONs.instance.vendorJSON);
         CreateArtists(jsonArray);
-        yield return new WaitForSeconds(.1f);
-        /*Debug.Log("GetAllVendors");
+        yield return new WaitForSeconds(.1f);        
+    }
+    static IEnumerator ConvertAllProducts(int pageIndex)
+    {
+        JArray jsonArray = JArray.Parse(MuseumJSONs.instance.productJSONs[pageIndex]);
+        CreateArt(jsonArray);
+        yield return new WaitForSeconds(.1f);        
+    }
+    static IEnumerator GetAllVendors()
+    {
+        Debug.Log("GetAllVendors");
 
         var request = CreateGetRequest(vendorsApiString, new List<string> {"per_page=100"});
         request.SendWebRequest();
@@ -98,20 +104,16 @@ public static class MuseumBank
         }
         else
         {
-            Debug.Log($"Vendors: {request.downloadHandler.text}");
-            JArray jsonArray = JArray.Parse(request.downloadHandler.text);
-            CreateArtists(jsonArray);
-            yield return new WaitForSeconds(3);
-        }*/
+            string toCopy = request.downloadHandler.text;
+            Debug.Log($"Vendors: {toCopy}");
+            //JArray jsonArray = JArray.Parse(request.downloadHandler.text);
+            //CreateArtists(jsonArray);
+            //yield return new WaitForSeconds(3);
+        }
     }
 
     static IEnumerator GetAllProducts(int pageIndex)
-    {
-        JArray jsonArray = JArray.Parse(MuseumJSONs.instance.productJSONs[pageIndex]);
-        CreateArt(jsonArray);
-        yield return new WaitForSeconds(.1f);
-
-        /*
+    {        
         var request = CreateGetRequest(productsApiString, new List<string> { "per_page=100", "page=" + pageIndex });
         request.SendWebRequest();
 
@@ -131,11 +133,14 @@ public static class MuseumBank
         }
         else
         {
-            Debug.Log($"Products: {request.downloadHandler.text}");
-            JArray jsonArray = JArray.Parse(request.downloadHandler.text);
-            CreateArt(jsonArray);
-        }*/
+            string toCopy = request.downloadHandler.text;
+            Debug.Log($"Products: {toCopy}");
+            //Debug.Log($"Products: {request.downloadHandler.text}");
+           // JArray jsonArray = JArray.Parse(request.downloadHandler.text);
+            //CreateArt(jsonArray);
+        }
     }
+
 
     static void Retry()
     {
