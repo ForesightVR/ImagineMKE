@@ -455,7 +455,7 @@ MonoBehaviour:
     vendorID: 33
   - artistImage: {fileID: 21300000, guid: c4a7d8c8c830c0a429c70dc23022321b, type: 3}
     vendorID: 34
-  - artistImage: {fileID: 21300000, guid: c49018827ab3c17498f219758a09eeb3, type: 3}
+  - artistImage: {fileID: 21300000, guid: e27b6984ede083b4e9cccec044cac973, type: 3}
     vendorID: 37
   - artistImage: {fileID: 21300000, guid: f71cb5f9f037b8a479e276916b3e21cb, type: 3}
     vendorID: 42
@@ -1106,3 +1106,11 @@ MonoBehaviour:
     productID: 5604
   - artImage: {fileID: 21300000, guid: 2dd3b320e528ce442ac7bb5f740da62b, type: 3}
     productID: 5072
+  - artImage: {fileID: 21300000, guid: b9cd09e3eef21af4b9b6a396ac0c6599, type: 3}
+    productID: 6926
+  - artImage: {fileID: 21300000, guid: 24e6d0e9d999ab14f9a28c421e341aab, type: 3}
+    productID: 6917
+  - artImage: {fileID: 21300000, guid: daa7aee593f949a4ba9250f56beaea10, type: 3}
+    productID: 6905
+  - artImage: {fileID: 21300000, guid: a2099b47afbdb42458ce5a8ceec98d1f, type: 3}
+    productID: 6830
