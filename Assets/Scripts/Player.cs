@@ -51,6 +51,7 @@ namespace Foresight
             cam = GetComponentInChildren<Camera>();
             cam.gameObject.SetActive(false);
             nickName.text = photonView.Owner.NickName;
+            Debug.Log("NN: " + nickName.text);
 
             if (!photonView.IsMine)
             {
@@ -107,8 +108,6 @@ namespace Foresight
 
             Vector3 move = new Vector3(horizontal, 0, vertical);
             float currentSpeed = 0;
-
-       
 
             Animator.speed = leftShift ? sprintAnimatorSpeed : baseAnimatorSpeed;
             Animator.SetFloat("Horizontal", move.x, animationSmoothTime, Time.deltaTime);
