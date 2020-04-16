@@ -10,11 +10,11 @@ public class TriggerExitCuase : Cause
 
     private void OnTriggerExit(Collider other)
     {
-        if (isLocal && causeTag == "Player")
+        if (isLocal && causeTag == "Art Canvas Trigger")
         {
             if (other.tag.Equals(causeTag))
             {
-                if (!other.GetComponent<PhotonView>().IsMine)
+                if (!other.GetComponentInParent<PhotonView>().IsMine)
                     return;
             }
         }
