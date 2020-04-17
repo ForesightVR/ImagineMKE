@@ -24,9 +24,12 @@ public class PhotonDissonanceBridge
 
     public void SetPlayerId()
     {
-        //Debug.Log("RoomName: " + NetworkConnectionManager.Instance.roomName);
-        dissonance.LocalPlayerName = PhotonNetwork.LocalPlayer.UserId;
-        dissonance.roomName = NetworkConnectionManager.Instance.roomName;
-        dissonance.enabled = true;
+        if (dissonance != null)
+        {
+            //Debug.Log("RoomName: " + NetworkConnectionManager.Instance.roomName);
+            dissonance.LocalPlayerName = PhotonNetwork.LocalPlayer.UserId;
+            dissonance.roomName = NetworkConnectionManager.Instance.roomName;
+            dissonance.enabled = true;
+        }        
     }
 }

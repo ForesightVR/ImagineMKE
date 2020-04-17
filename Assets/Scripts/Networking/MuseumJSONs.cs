@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 public class MuseumJSONs : MonoBehaviour
 {
-    [TextArea]
+    [TextArea(3, 20)]
     public string vendorJSON;
     [TextArea]
     public string[] productJSONs;
