@@ -16,8 +16,8 @@ public class ArtistCanvas : MonoBehaviour
     public Transform artistPiecesList;
     public Image artPieceDisplay;
 
-    Artist currentArtist;
-    Art currentArtPiece;
+    Vendor currentArtist;
+    Product currentArtPiece;
 
     bool nearby;
 
@@ -37,7 +37,7 @@ public class ArtistCanvas : MonoBehaviour
             artInfoUI.SetActive(false);
     }
 
-    public void SetArtistCanvasInfo(Artist artist, Art artPiece, string artistName, Sprite artistProfilePicture, string artistBio, List<Art> extraArt)
+    public void SetArtistCanvasInfo(Vendor artist, Product artPiece, string artistName, Sprite artistProfilePicture, string artistBio, List<Product> extraArt)
     {
         SetArtist(artist);
         SetArt(artPiece);
@@ -47,23 +47,23 @@ public class ArtistCanvas : MonoBehaviour
         this.artistBio.text = artistBio;
         this.extendedartistBio.text = artistBio;
 
-        foreach (Art art in extraArt)
+        foreach (Product art in extraArt)
         {
             Image displayImage = Instantiate(artPieceDisplay, artistPiecesList);
             displayImage.GetComponent<ChangeArtEffect>().SetInfo(this, art);
-            displayImage.sprite = art.artImage;
+            displayImage.sprite = art.image;
         }
     }
 
-    public void SetArtist(Artist artist)
+    public void SetArtist(Vendor artist)
     {
         currentArtist = artist;
     }
 
-    public void SetArt(Art art)
+    public void SetArt(Product art)
     {
         currentArtPiece = art;
-        artPiece.sprite = currentArtPiece.artImage;
+        artPiece.sprite = currentArtPiece.image;
     }
 
     public void AddToCart()

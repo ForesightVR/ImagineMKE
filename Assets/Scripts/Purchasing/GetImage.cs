@@ -18,10 +18,10 @@ public class GetImage : MonoBehaviour
     {
         if(image.sprite == sprite)
         {
-            if (MuseumBank.artists.Count <= 0 || MuseumBank.artists[0].artPieces.Count <= 0)
+            if (PullStorage.vendors.Count <= 0 || PullStorage.vendors[0].products.Count <= 0)
                 return;
 
-            Sprite newSprite = MuseumBank.artists[0].artPieces[0].artImage;
+            Sprite newSprite = PullStorage.vendors[0].products[0].image;
 
             if (newSprite)
                 image.sprite = newSprite;

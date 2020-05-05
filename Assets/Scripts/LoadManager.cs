@@ -16,7 +16,7 @@ public class LoadManager : MonoBehaviour
 
     private void Start()
     {
-        if (MuseumBank.isDone)
+        if (PullStorage.isDone)
             SetLoad(false);
     }
 
@@ -30,7 +30,7 @@ public class LoadManager : MonoBehaviour
 
         if (!loadScreen.activeInHierarchy) return;
 
-        loadbar.fillAmount = MuseumBank.downloadProgress;
+        loadbar.fillAmount = PullStorage.downloadProgress;
     }
 
     public void SetLoad(bool state)

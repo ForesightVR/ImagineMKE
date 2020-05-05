@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6184424408668312987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6184424408668312989}
+  - component: {fileID: 6184424408668312988}
+  - component: {fileID: 6184424408668312990}
+  - component: {fileID: 6184424408668312991}
+  m_Layer: 0
+  m_Name: NetworkConnectionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6184424408668312989
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6184424408668312987}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6184424408668312988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6184424408668312987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78de3f86121d79a49b97df21423b1c48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Outsider's Gallery
+  roomName: 
+  maxPlayers: 20
+  bridge: {fileID: 0}
+--- !u!114 &6184424408668312990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6184424408668312987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd61fca14f6b8b489292cf030375da3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6184424408668312991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6184424408668312987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 880da858b3a9fc645a50a4fb30bb2842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vendorJSON: {fileID: 4900000, guid: b5e48db9d681a6a4ebfb60f02ea50f5a, type: 3}
+  productJSONs:
+  - {fileID: 4900000, guid: 33cb04373af3daa40bdd9fe60bea48e6, type: 3}
+  - {fileID: 4900000, guid: 0b6b00db508856f4baa975e318833013, type: 3}
+  - {fileID: 4900000, guid: d72c9baafe0f9ea44b3dbe231fd36470, type: 3}
+  database: {fileID: 11400000, guid: b18c07eda336b84409d8a22887b83f5a, type: 2}

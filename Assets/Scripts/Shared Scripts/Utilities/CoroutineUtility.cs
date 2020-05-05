@@ -9,6 +9,6 @@ public class CoroutineUtility : MonoBehaviour
     void Awake()
     {
         instance = this;
-        StartCoroutine(MuseumBank.CallGet());
+        StartCoroutine(PullStorage.CallGet());
     }
 }

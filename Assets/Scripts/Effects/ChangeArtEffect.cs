@@ -8,7 +8,7 @@ public class ChangeArtEffect : Effect
 {
     Image image;
     ArtistCanvas artistCanvas;
-    Art art;
+    Product art;
 
     void Awake()
     {
@@ -16,7 +16,7 @@ public class ChangeArtEffect : Effect
         image = GetComponent<Image>();
     }
 
-    public void SetInfo(ArtistCanvas canvas, Art art)
+    public void SetInfo(ArtistCanvas canvas, Product art)
     {
         artistCanvas = canvas;
         this.art = art;

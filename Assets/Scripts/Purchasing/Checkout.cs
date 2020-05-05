@@ -14,7 +14,7 @@ public class Checkout : MonoBehaviour
     {
         foreach (CartItem item in Cart.Instance.artInCart)
         {
-            string link = $"{MuseumBank.websiteRoot}/cart/?add-to-cart={item.Variation.Id}&quantity={item.ItemCount}";
+            string link = $"{PullStorage.websiteRoot}/cart/?add-to-cart={item.Variation.Id}&quantity={item.ItemCount}";
             Debug.Log($"Link:{link}");
             //yield return StatePurchase(link);
 
@@ -23,7 +23,7 @@ public class Checkout : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        Application.OpenURL($"{MuseumBank.websiteRoot}/checkout");
+        Application.OpenURL($"{PullStorage.websiteRoot}/checkout");
     }
 
     IEnumerator StatePurchase(string link)
