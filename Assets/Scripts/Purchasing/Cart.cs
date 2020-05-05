@@ -23,7 +23,7 @@ public class Cart : MonoBehaviour
             cart.SetActive(!cart.activeSelf);
     }
 
-    public void AddToCart(Art art)
+    public void AddToCart(Product art)
     {
         addToCartMessage.SetActive(true);
         /*foreach (CartItem _cartItem in artInCart) //Check if the item is in the cart. If it is add another one and return.

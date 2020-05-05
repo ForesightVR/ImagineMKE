@@ -15,18 +15,18 @@ public class CartItem : MonoBehaviour
     public TextMeshProUGUI priceText;
 
     public int ItemCount { get; protected set; }
-    public Art Art { get; protected set; }
+    public Product Art { get; protected set; }
     public Variation Variation { get; protected set; }
 
     Cart cart;
 
-    public void SetArt(Cart cart, Art art)
+    public void SetArt(Cart cart, Product art)
     {
         this.cart = cart;
         Art = art;
 
-        artistName.text = Art.artist.name;
-        itemImage.sprite = art.artImage;
+        artistName.text = Art.owner.name;
+        itemImage.sprite = art.image;
 
         Variation = art.variations[0];
 
