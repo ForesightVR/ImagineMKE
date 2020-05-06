@@ -18,7 +18,7 @@ public class Vendor
         this.name = name;
         this.description = description;
         this.products = new List<Product>();
-        this.image = StoredJSONs.instance.GetVendorSprite(vendorId);
+        this.image = DataManager.instance.GetVendorSprite(vendorId);
     }
 
     public string GetCause()

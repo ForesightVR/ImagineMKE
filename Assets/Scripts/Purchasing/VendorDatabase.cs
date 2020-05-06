@@ -44,15 +44,13 @@ public class VendorDatabase : ScriptableObject
 
     public void CreateVendorDatabase()
     {
-        string vendorJSON = StoredJSONs.instance.vendorJSON.text;
+        string vendorJSON = DataManager.instance.GetVendorData();
         JArray vendorArray = JArray.Parse(vendorJSON);
-
-        dynamic array = JsonConvert.DeserializeObject(vendorJSON);
 
         foreach (JObject data in vendorArray)
         {
             //Get URL of the Image
-            string imageLink = PullStorage.GetImageLink((string)data["shop"]["description"]);
+            string imageLink = DataManager.instance.GetImageLink((string)data["shop"]["description"]);
             if (string.IsNullOrWhiteSpace(imageLink))
                 continue;
 
@@ -69,14 +67,10 @@ public class VendorDatabase : ScriptableObject
             }
         }
 
-        foreach (TextAsset JSON in StoredJSONs.instance.productJSONs)
+        foreach (string JSON in DataManager.instance.GetAllProductData())
         {
-            MatchProducts(JArray.Parse(JSON.text));
+            MatchProducts(JArray.Parse(JSON));
         }
-
-        /*MatchProducts(JArray.Parse(StoredJSONs.instance.productJSONs[0].text));
-        MatchProducts(JArray.Parse(StoredJSONs.instance.productJSONs[1].text));
-        MatchProducts(JArray.Parse(StoredJSONs.instance.productJSONs[2].text));*/
     }
 
     void MatchProducts(JArray jsonArray)
@@ -101,6 +95,4 @@ public class VendorDatabase : ScriptableObject
             }
         }
     }
-
-        
 }

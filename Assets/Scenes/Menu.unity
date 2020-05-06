@@ -8934,8 +8934,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1787138413}
-  - component: {fileID: 1787138412}
   - component: {fileID: 1787138414}
+  - component: {fileID: 1787138412}
   - component: {fileID: 1787138415}
   m_Layer: 0
   m_Name: NetworkConnectionManager
@@ -8983,9 +8983,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1787138411}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd61fca14f6b8b489292cf030375da3, type: 3}
+  m_Script: {fileID: 11500000, guid: 301b2b26a73fec449a07879e20935bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  database: {fileID: 11400000, guid: b18c07eda336b84409d8a22887b83f5a, type: 2}
+  storedJSONs: {fileID: 1787138415}
 --- !u!114 &1787138415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9003,7 +9005,6 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 33cb04373af3daa40bdd9fe60bea48e6, type: 3}
   - {fileID: 4900000, guid: 0b6b00db508856f4baa975e318833013, type: 3}
   - {fileID: 4900000, guid: d72c9baafe0f9ea44b3dbe231fd36470, type: 3}
-  database: {fileID: 11400000, guid: b18c07eda336b84409d8a22887b83f5a, type: 2}
 --- !u!1 &1804404231
 GameObject:
   m_ObjectHideFlags: 0

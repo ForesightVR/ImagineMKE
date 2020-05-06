@@ -26,17 +26,7 @@ public class Product
         this.description = description;
         this.cause = cause;
         this.originalPrice = originalPrice;
-        this.image = StoredJSONs.instance.GetProductSprite(productID);
-    }
-
-    public Product (Vendor artist, int productID, string name, string description, string cause)
-    {
-        this.owner = artist;
-        this.productId = productID;
-        this.variations = new List<Variation>();
-        this.name = name;
-        this.description = description;
-        this.cause = cause;
+        this.image = DataManager.instance.GetProductSprite(productID);
     }
 
     public Variation GetDefaultVariation()
@@ -44,6 +34,8 @@ public class Product
         return variations[0];
     }
 
+
+    //TODO: Find a way to remove variations from being hard-coded (from prices to included variations)
     public List<Variation> CreateBaseVariations(List<int> variationIds)
     {
         //float start = Time.time;
