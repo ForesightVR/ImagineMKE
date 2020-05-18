@@ -11,4 +11,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Outsider's Gallery.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/New World.unity
+    guid: 5bbe3e7938b58934d8f53816b0a1f9ec
+  - enabled: 1
+    path: Assets/Scenes/Island of Brilliance.unity
+    guid: 309a83aa25c4cde4495c6df08575d052
+  - enabled: 1
+    path: Assets/Scenes/Oneida.unity
+    guid: a91895479957ec34aa36ecbf9e65fa7a
+  - enabled: 1
+    path: Assets/Scenes/True Skool.unity
+    guid: 42630a41abef1be4db47f07ef1e60b7e
+  - enabled: 1
+    path: Assets/Scenes/Veterans.unity
+    guid: f6d6f53f6497d75418ce32e0e10ad630
   m_configObjects: {}
