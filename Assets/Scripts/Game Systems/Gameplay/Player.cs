@@ -35,6 +35,7 @@ namespace Foresight
 
         public Animator Animator { get; private set; }
         public GameObject characterSelected;
+        public GameObject levelSelection;
         CharacterController cc;
 
         float horizontal;
@@ -93,6 +94,9 @@ namespace Foresight
             if (GameManager.Instance && GameManager.Instance.MenuOpen) return;
             Move();
             Rotate();
+
+            if (Input.GetKeyDown(KeyCode.E))
+                levelSelection.SetActive(!levelSelection.activeSelf);
         }
 
         void Move()

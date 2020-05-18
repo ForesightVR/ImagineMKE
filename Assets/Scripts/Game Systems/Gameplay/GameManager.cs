@@ -51,6 +51,16 @@ public class GameManager : MonoBehaviourPunCallbacks
        // Debug.Log(roomMembership.RoomName);
     }
 
+    public void ChangeScene(int scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
+
+    public void ChangeScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
+
     private void Start()
     {
         if (Player.LocalPlayerInstance == null)
