@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using Foresight;
 
 public class YoutubeSimplified : MonoBehaviour
 {
@@ -12,11 +13,15 @@ public class YoutubeSimplified : MonoBehaviour
     public bool fullscreen = true;
     private VideoPlayer videoPlayer;
 
+    VideoRenderMode mode;
+
     private void Awake()
     {
         videoPlayer = GetComponentInChildren<VideoPlayer>();
         player = GetComponentInChildren<YoutubePlayer>();
+
         player.videoPlayer = videoPlayer;
+        mode = videoPlayer.renderMode;
     }
 
     private void Start()
@@ -35,5 +40,20 @@ public class YoutubeSimplified : MonoBehaviour
 
         if(autoPlay)
             player.Play(url);
+    }
+
+    public void SetFullScreen()
+    {
+        if(player.mainCamera == null)
+        {
+            Debug.Log("Set Up Camera");
+            videoPlayer.targetCamera = Player.LocalPlayerInstance.cam;
+            player.mainCamera = Player.LocalPlayerInstance.cam;
+        }
+
+        if (videoPlayer.renderMode == mode)
+            videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
+        else
+            videoPlayer.renderMode = mode;
     }
 }
